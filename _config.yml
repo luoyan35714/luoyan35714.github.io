@@ -1,0 +1,31 @@
+name: Freud's Blog
+email: luoyan35714@126.com
+author: Freud Kang
+url: http://www.hifreud.com
+baseurl: ""
+description: Stay hungry, stay foolish. 少年辛苦终身事，莫向光阴惰寸功。
+
+#permalink: /:categories/:year/:month/:day/:title/
+permalink: /:year/:month/:day/:title/
+paginate: 10
+highlighter: rouge
+
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
+
+github_username:  luoyan35714
+
+# Build settings
+markdown: kramdown
+
+FB:
+  comments :
+    provider : duoshuo
+    duoshuo:
+        short_name : luoyan35714
+    # disqus :
+    #   short_name : freudkang
+    # facebook :
+    #   appid : 123
+    #   num_posts: 5
+    #   width: 580
+    #   colorscheme: light

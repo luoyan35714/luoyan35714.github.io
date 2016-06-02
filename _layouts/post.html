@@ -1,0 +1,34 @@
+---
+layout: default
+---
+<article class="post">
+ <a href="/categories/#{{page.categories}}-ref">{{page.categories}}</a> -> <a href="/tag/#{{page.tag}}-ref">{{page.tag}}</a>
+	{% if page.external-url %}
+		<h1>
+			<a href="{{ page.external-url }}">{{ page.title }}</a> 
+			<a class="anchor" href="{{ page.url }}"><i class="icon-anchor"></i></a>
+		</h1>
+	{% else %}
+		<h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
+	{% endif %}
+  <div class="meta">Posted on <span class="postdate">{{ page.date | date: "%b %d, %Y" }}</span> By <a href="/about">{{ site.author }}</a></div>
+  <br>
+	<div class="post-content">{{ content }}</div>
+
+  <hr>
+  <div>
+    {% if page.previous %}
+      <a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&laquo; Previous</a>
+    {% else %}
+      <a>&larr; Previous</a>
+    {% endif %}
+
+    {% if page.next %}
+      <a style="float:right;" href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">Next &raquo;</a>
+    {% else %}
+      <a style="float:right;">Next &rarr;</a>
+    {% endif %}
+  </div>
+  <hr>
+  {% include solar/comments %}
+</article>
