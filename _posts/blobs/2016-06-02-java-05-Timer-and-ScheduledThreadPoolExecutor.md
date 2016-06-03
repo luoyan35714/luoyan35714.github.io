@@ -54,7 +54,7 @@ public class TimerTest {
 					Thread.sleep(1000);
 					System.out.println("Timer 1 finish at:"
 							+ (System.currentTimeMillis() - start));
-					// throw new RuntimeException("eee");
+					// throw new RuntimeException("Exception occured here!");
 				} catch (InterruptedException e) {
 					System.out.println("Thread was interrupted.");
 				}
@@ -145,7 +145,7 @@ private void mainLoop() {
 }
 {% endhighlight %}
 
-+ 打开TimerTest中注释掉的`throw new RuntimeException("eee");`代码，会发现Task2不会执行。
++ 打开TimerTest中注释掉的`throw new RuntimeException("Exception occured here!");`代码，会发现Task2不会执行。
 
 
 ScheduledThreadPoolExecutor
@@ -176,7 +176,7 @@ public class ScheduledThreadPoolExecutorTest {
 					Thread.sleep(1000);
 					System.out.println("Schedule 1 finish at:"
 							+ (System.currentTimeMillis() - start));
-					// throw new RuntimeException("eee");
+					// throw new RuntimeException("Exception occured here!");
 				} catch (InterruptedException e) {
 					System.out.println("Thread was interrupted.");
 				}
@@ -238,7 +238,7 @@ Schedule 2 finish at:4009
 Schedule 2 start at:4009
 {% endhighlight %}
 
-+ 当打开`throw new RuntimeException("eee");`之后会发现Schedule2正常执行，Schedule1的异常不会影响Schedule2的执行
++ 当打开`throw new RuntimeException("Exception occured here!");`之后会发现Schedule2正常执行，Schedule1的异常不会影响Schedule2的执行
 
 {% highlight text %}
 Schedule 1 start at:1003
@@ -256,6 +256,10 @@ Schedule 2 finish at:6004
 Schedule 2 start at:6004
 {% endhighlight %}
 
+结论
+==========================
+
+Timer可以做的事情，通过ScheduledThreadPoolExecutor都可以做到，并且修复了其中Timer的部分设计上的缺陷。并且实现了多线程的执行，相对来说功能是比Timer强大了一个等级。
 
 <br />
 <br />
