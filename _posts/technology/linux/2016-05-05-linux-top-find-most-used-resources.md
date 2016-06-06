@@ -6,7 +6,7 @@ categories: 技术文档
 tag: Linux
 ---
 
-Linux Top 命令找出Java进程中线程资源占用情况
+[转] Linux Top 命令找出Java进程中线程资源占用情况
 ==============================
 
 * 先用top命令找出占用资源厉害的java进程id，如：如java的进程id为'8343'，接下来用top命令单独对这个进程中的所有线程作监视：
@@ -25,22 +25,14 @@ Linux Top 命令找出Java进程中线程资源占用情况
 [root@localhost bin]# jstack 8343 > stack.log
 {% endhighlight %}
 
-* 然后使用'jtgrep'脚本把这个进程号为'5875'的java线程在stack.log中抓出来：
+* 使用python将5875转换成16进制显示。
 
 {% highlight bash %}
-[root@localhost bin]# jtgrep 5875 stack.log
+[root@localhost bin]# python -c "print hex(5875)"
+0x16f3
 {% endhighlight %}
 
-* 其中，'jtgrep'是自己随便写的一个shell脚本：
-
-{% highlight bash %}
-#!/bin/sh
- 
-nid=`python -c "print hex($1)"`
-grep -i $nid $2
-{% endhighlight %}
-
-* 道理很简单，就是把'5875'转换成16进制后，直接grep stack.log;可以看到，被grep出的那个线程的nid=0x16f3，正好是5875的16进制表示。
+* 通过vi打开stack.log,然后输入‘/’，再将刚刚的16进制数字输入就可以查到对应的线程信息
 
 <br />
  
