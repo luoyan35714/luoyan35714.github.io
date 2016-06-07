@@ -1,4 +1,4 @@
- ---
+---
 layout: post
 title:  JAVA OSGi教程(零)-OSGi简介
 date:   2014-12-18 12:31:01 +0800
