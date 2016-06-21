@@ -15,7 +15,7 @@ permlink: /method
 <hr>
 您可以选择手机支付宝扫一扫
 
-![支付宝二维码付款给Freud](/images/zhifubao_2.JPG)
+<img src="/images/zhifubao_2.JPG" alt="支付宝二维码付款给Freud" width="310" />
 
 <br>
 <br>
