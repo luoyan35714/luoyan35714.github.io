@@ -192,7 +192,7 @@ public class MP4Filter implements Filter {
 
 
 解决方案就是在web.xml文件中添加如下配置，并且要写在DispatcherServlet的前面， 让defaultServlet先拦截，这个就不会进入Spring了。
-{% highlightlight %}
+{% highlight xml %}
 <servlet-mapping>
 	<servlet-name>default</servlet-name>
 	<url-pattern>*.mp4</url-pattern>
