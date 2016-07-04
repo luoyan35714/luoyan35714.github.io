@@ -95,7 +95,7 @@ VideoJs官网有一个BUG说Demo中单引号的问题[https://github.com/videojs
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* About to connect() to localhost port 80 (#0)
-*   Trying 118.202.213.126...
+*   Trying localhost...
 * Connected to localhost (127.0.0.1) port 80 (#0)
 > GET /TestSpring/resources/mp4/pr6.mp4 HTTP/1.1
 > User-Agent: curl/7.29.0
@@ -183,7 +183,7 @@ public class MP4Filter implements Filter {
 }
 {% endhighlight %}
 
-> 结果发现依旧不行，不过这个故事还是我，买了一年的《HTTP协议详解》不能再蹭灰了，要好好看看啊，少年！要不就不至于这么被动了。
+> 结果发现依旧不行，不过这个故事告诉我，买了一年的《HTTP协议详解》不能再蹭灰了，要好好看看啊，少年！要不就不至于这么被动了。
 
 
 继续往下走，想起来在项目中使用的Spring MVC，而DispatcherServlet我配置的是`<url-pattern>/</url-pattern>`，所有静态文件都是走的Spring MVC的`<mvc:resources mapping="/resources/**" location="/resources/" />`，会不会是这个原因呢，于是自己重新写个最简单的Web项目。部署上去一看，我去，还真是。赶紧想办法。
