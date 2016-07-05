@@ -6,6 +6,8 @@ category : 技术文档
 tag : Modbus
 ---
 
+> 文章内容摘录自[百度百科](http://baike.baidu.com/link?url=H1ELU5azOMpLO-u8I0iO32GRLue0hRq63kSr5dIaiv-mleKo2uNL7A0VGy_zXoQBz62cLxOxx2FdJ4y4g4QkO)
+
 1.简介
 ======================
 
