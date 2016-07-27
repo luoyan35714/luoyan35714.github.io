@@ -34,7 +34,7 @@ Linux串口相关
 {% highlight bash %}
 ##确认一下编译参数
 [root@localhost bin]# cat /boot/config-`uname -r` | grep 8250
-[root@localhost bin]# vi /boot/grub/grub.conf 
+[root@localhost bin]# vi /boot/grub/grub.conf 或者 vi /etc/grub.conf 
 ##在kernel在末尾加空格，还有加上下面几个字8250.nr_uarts=16 
 ##这段参数里的 16 是指打开16个串口，但不一定能和实际硬件对的上的， 请重新启动 Linux ，查看 /dev 目录下面， 数一下 ttyS×× 的数量
 {% endhighlight %}
