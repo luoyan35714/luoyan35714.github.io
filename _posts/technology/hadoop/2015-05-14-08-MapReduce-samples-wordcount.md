@@ -6,6 +6,10 @@ categories: 技术文档
 tag: Hadoop
 ---
 
+* content
+{:toc}
+
+
 MapReduce Sample之WorldCount
 ===================================
 

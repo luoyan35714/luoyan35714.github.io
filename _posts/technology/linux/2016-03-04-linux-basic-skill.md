@@ -6,6 +6,10 @@ categories: 技术文档
 tag: Linux
 ---
 
+* content
+{:toc}
+
+
 Linux 常用功能和快捷键记录
 ==============================
 

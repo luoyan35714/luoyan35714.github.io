@@ -6,6 +6,10 @@ categories: 技术文档
 tag: Hadoop
 ---
 
+* content
+{:toc}
+
+
 4.x卸载 - [http://ju.outofmemory.cn/entry/22477](http://ju.outofmemory.cn/entry/22477)
 =================
 

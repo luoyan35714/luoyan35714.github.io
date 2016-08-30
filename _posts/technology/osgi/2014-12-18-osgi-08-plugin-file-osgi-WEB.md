@@ -6,6 +6,10 @@ categories: 技术文档
 tag: OSGi
 ---
 
+* content
+{:toc}
+
+
 * 在第七节的基础上，在OSGi_equinox_web项目上右键新建一个File，命名为plugin.xml
 * 在META-INF/MANIFEST.MF文件中修改
 {% highlight text %}

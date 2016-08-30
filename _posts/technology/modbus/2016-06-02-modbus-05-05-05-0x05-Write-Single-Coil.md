@@ -6,8 +6,9 @@ category : 技术文档
 tag : Modbus
 ---
 
-Write Single Coil(写单线圈寄存器)
-============================
+* content
+{:toc}
+
 
 + Request
 ![Request](/images/blog/modbus/modbus-05-05-Write-Single-Coil/01_Request.png)

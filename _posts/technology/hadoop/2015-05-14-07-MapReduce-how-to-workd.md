@@ -6,6 +6,10 @@ categories: 技术文档
 tag: Hadoop
 ---
 
+* content
+{:toc}
+
+
 转载自[http://blog.csdn.net/dpc27149/article/details/23374181](http://blog.csdn.net/dpc27149/article/details/23374181)
 <br />
 

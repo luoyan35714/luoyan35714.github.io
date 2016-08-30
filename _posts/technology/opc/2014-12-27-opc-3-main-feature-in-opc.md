@@ -6,6 +6,10 @@ category : 技术文档
 tag : OPC
 ---
 
+* content
+{:toc}
+
+
 * `同步访问`：OPC服务器把按照OPC应用程序的要求得到的数据访问结果作为方法的参数返回给OPC应用程序，OPC应用程序在结果被返回为止一直必须处于等待状态。
 ![Synch Read](/images/blog/opc/3_main_feature/1_sync_read.png)
 

@@ -6,6 +6,10 @@ categories: 技术文档
 tag: OSGi
 ---
 
+* content
+{:toc}
+
+
 * 在`第四章`的基础上，在`osgi_equinox_impl`项目中的`META-INF`目录下的`MANIFEST.MF`文件中删除Bundle-Activator: `com.freud.osgi.impl.Activator`
 * 在项目上新建一个文件夹`osgi-INF`
 * 在`OSGi-INF`上，右键新建一个`Component Definition`,注意在Class上填写`com.freud.osgi.impl.HelloWorldServiceImpl`![new component definition](/images/blog/osgi/5_component_register_service/01_new_component_definition.png)

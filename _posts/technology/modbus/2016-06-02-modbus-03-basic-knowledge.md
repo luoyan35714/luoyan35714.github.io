@@ -6,6 +6,10 @@ category : 技术文档
 tag : Modbus
 ---
 
+* content
+{:toc}
+
+
 + 功能码，Modbus功能码有三种，第一种是公共功能码(Public Function Codes),第二种是 用户自定义功能码(User-Defined Function Codes),第三种是保留功能码(Reserved Function Codes), 每部分的定义如下
 ![/images/blog/modbus/modbus-03-basic-knowledge/01.png](/images/blog/modbus/modbus-03-basic-knowledge/01.png)
 

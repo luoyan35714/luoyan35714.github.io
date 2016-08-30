@@ -6,6 +6,10 @@ categories: 技术文档
 tag: OSGi
 ---
 
+* content
+{:toc}
+
+
 1. 将上一章中的`osgi_equinox_activator`导出为jar包
 - 在项目上右键`Export`->`Deployable plug-ins and fragments`
 - `Directory`中选择指定的目录(本人的测试目录为`f:/test`), `Finish`![Export](/images/blog/osgi/3_osgi_under_dos/01_export.png)

@@ -6,8 +6,9 @@ category : 技术文档
 tag : Modbus
 ---
 
-Write Single Register(写单保持寄存器)
-============================
+* content
+{:toc}
+
 
 + Request
 ![Request](/images/blog/modbus/modbus-05-06-Write-Single-Register/01_Request.png)

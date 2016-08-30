@@ -6,6 +6,10 @@ categories: 技术文档
 tag: OSGi
 ---
 
+* content
+{:toc}
+
+
 在java的SOA中可以分为两个阵营，解决了两个不同层级的问题，第一阵营算是WebService，解决了分布式系统级别SOA问题；第二阵营就是OSGi了，解决了jar级别的SOA问题。而今天要讲的就是OSGi。
 
 * OSGi(Open Service Gateway Initiative)技术是面向Java的动态模型系统。OSGi服务平台提供一个通用、安全并且可管理的Java框架；它可以动态管理部署在框架内的Bundle，在不重启系统的情况下对Bundle进行安装和移除，而Java提供在多个平台支持产品的可移植性

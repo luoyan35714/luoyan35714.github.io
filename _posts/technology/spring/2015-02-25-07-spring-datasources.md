@@ -6,6 +6,10 @@ categories: 技术文档
 tag: Spring
 ---
 
+* content
+{:toc}
+
+
 > 核心思想：Spring在每次操作数据库的时候都会通过AbstractRoutingDataSource类中的determineTargetDataSource()方法获取当前数据源，我们就可以通过切面技术，在不同的切面，切入不同的数据源名称，使Spring获取的时候拿到的是不同的数据源。
 
 ![AbstractRoutingDataSource类中的determineTargetDataSource()方法的源码](/images/blog/spring/07-spring-datasource/01_source_determinate.png)

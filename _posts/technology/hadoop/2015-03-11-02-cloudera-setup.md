@@ -6,6 +6,10 @@ categories: 技术文档
 tag: Hadoop
 ---
 
+* content
+{:toc}
+
+
 > Cloudera搭建分为两部分，第一部分是Cloudera Manager的安装过程，第二部分为CDH的安装
 
 第一部分：CM安装

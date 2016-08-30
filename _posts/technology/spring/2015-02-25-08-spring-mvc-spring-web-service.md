@@ -6,6 +6,10 @@ categories: 技术文档
 tag: Spring
 ---
 
+* content
+{:toc}
+
+
 以前写过基于JAXB的传统Java WebService服务端,通过IBM WebSphere Message Broker生成过WebService服务端，最近项目要在Spring MVC搭建的Web项目中添加WebService服务。研究之后发现主流的实现无外乎Apache CXF，Axis 2，Spring WebService。通过对比发现，CXF需要引入的jar依赖太多，Axis 2太重量级，最后选择Spring WebService,主要原因是原有的Web项目是基于Spring MVC的，Spring WebSercice可以与之无缝整合，Spring WebService完全可以支撑现有的业务，并且相对比较轻量级。
 
 > 基于Spring MVC的web项目上可以通过Spring WebService添加Webservice的服务端实现。

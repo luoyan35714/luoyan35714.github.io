@@ -6,6 +6,10 @@ categories: 技术文档
 tag: Mysql
 ---
 
+* content
+{:toc}
+
+
 Mysql安装
 ------------------------------
 

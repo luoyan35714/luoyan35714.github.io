@@ -6,8 +6,9 @@ category : 技术文档
 tag : Modbus
 ---
 
-Read Input Registers(读输入寄存器)
-============================
+* content
+{:toc}
+
 
 + Request
 ![Request](/images/blog/modbus/modbus-05-04-Read-Input-Registers/01_Request.png)

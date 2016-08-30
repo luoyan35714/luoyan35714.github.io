@@ -6,6 +6,10 @@ categories: 技术文档
 tag: OSGi
 ---
 
+* content
+{:toc}
+
+
 * 新建一个`plug-in project`,命名为`osgi_equinox_provider`
 ![new provider project](/images/blog/osgi/4_modularity_osgi/01_new_provider_project.png)
 

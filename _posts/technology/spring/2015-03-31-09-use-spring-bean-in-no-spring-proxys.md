@@ -6,8 +6,9 @@ categories: 技术文档
 tag: Spring
 ---
 
-非Spring的Bean中使用SpringBean的方法
-================================
+* content
+{:toc}
+
 
 继承`ApplicationContextAware`接口，并注入静态`ApplicationContext`对象
 --------------------------------

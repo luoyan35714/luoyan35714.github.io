@@ -6,6 +6,10 @@ categories: 技术文档
 tag: Postgresql
 ---
 
+* content
+{:toc}
+
+
 Yum安装
 ===============	
 

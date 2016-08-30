@@ -6,6 +6,10 @@ categories: 技术文档
 tag: OSGi
 ---
 
+* content
+{:toc}
+
+
 * 在`第五章`的基础上，将`OSGi_equinox_consumer`项目下的`META-INF/MANIFEST.MF`文件中的`Bundle-Activator`项删除
 * 在`MANIFEST.MF`中添加`org.eclipse.osgi.framework.console` Bundle的支持
 ![mainefest file configuration](/images/blog/osgi/6-component-register-user-defined-command/1_mf_file_configuration.png)

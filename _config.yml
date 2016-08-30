@@ -1,18 +1,24 @@
+# Site settings
 name: Freud's Blog
 email: luoyan35714@126.com
 author: Freud Kang
 url: http://www.hifreud.com
+resume_site: http://www.hifreud.com/Resume.io/
+github: https://github.com/luoyan35714/
 baseurl: ""
 description: Stay hungry, stay foolish. 少年辛苦终身事，莫向光阴惰寸功。
+meta_description: 康志华;个人博客;学而不思则罔;思而不学则殆;生命不止;折腾不休
+motto: It's our wits that make us men.
+banner: 学而不思则罔，思而不学则殆。
 
 #permalink: /:categories/:year/:month/:day/:title/
 permalink: /:year/:month/:day/:title/
 paginate: 10
-highlighter: rouge
 
 exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
 
-github_username:  luoyan35714
+github_username: luoyan35714
+#highlighter: rouge
 
 # Build settings
 markdown: kramdown
@@ -22,8 +28,8 @@ FB:
     provider : duoshuo
     duoshuo:
         short_name : luoyan35714
-    # disqus :
-    #   short_name : freudkang
+    disqus :
+        short_name : freudkang
     # facebook :
     #   appid : 123
     #   num_posts: 5

@@ -6,6 +6,10 @@ categories: 技术文档
 tag: Spring
 ---
 
+* content
+{:toc}
+
+
 PlaceHolder
 -------------------------------------
 在Spring中，Placeholder的实现有2种方式，第一种是Context标签下的property-placeholder，第二种是PropertyPlaceholderConfigure的Bean配置。

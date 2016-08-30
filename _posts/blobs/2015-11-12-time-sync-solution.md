@@ -6,6 +6,9 @@ categories: 杂乱
 tag: 时间同步
 ---
 
+* content
+{:toc}
+
 
 Rdate解决Linux与Linux之间同步
 ===============================

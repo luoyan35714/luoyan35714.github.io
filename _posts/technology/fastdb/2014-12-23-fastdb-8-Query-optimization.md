@@ -6,6 +6,10 @@ category : 技术文档
 tag : fastdb
 ---
 
+* content
+{:toc}
+
+
 The execution of queries, when all data is present in memory, is very fast, compared with the time for query execution in a traditional RDBMS. But FastDB even more increases the speed for query execution by applying several optimizations: using indices, inverse references and query parallelization. The following sections supply more information about these optimizations.
 
 Using indices in queries

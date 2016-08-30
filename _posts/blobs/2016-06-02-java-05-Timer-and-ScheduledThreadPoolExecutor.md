@@ -6,8 +6,9 @@ categories: 杂乱
 tag: 深入理解java
 ---
 
-Java中Timer和ThreadPoolExecutor的区别和比较
-===============================
+* content
+{:toc}
+
 
 今天闲来无事读Java中Timer的源码，发现Timer的注释中有这么一段
 

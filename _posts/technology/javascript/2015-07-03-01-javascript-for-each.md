@@ -6,8 +6,9 @@ categories: 技术文档
 tag: javascript
 ---
 
-javascript的foreach问题
-================================
+* content
+{:toc}
+
 
 javascript的`for in`在使用的过程中，ie 11下和firefox,Chrome下，其中`for(var item in data)`的item值是不一样的，导致相同的代码在各个浏览器下兼容性不好。最后的解决方案是使用原生的for循环解决。
 

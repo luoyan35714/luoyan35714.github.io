@@ -6,6 +6,10 @@ categories: 杂乱
 tag: 二维码
 ---
 
+* content
+{:toc}
+
+
 ZXing
 -------------------
 ZXing(Zebra Crossing)是一个Google开源的,支持多种格式的条形码图像处理库,使用java实现,同时为其他语言提供接口。

@@ -2,11 +2,11 @@
 
 {% case site.FB.comments.provider %}
 {% when "disqus" %}
-  {% include solar/comments-providers/disqus %}
+  {% include LessOrMore/comments-providers/disqus %}
 {% when "facebook" %}
-  {% include solar/comments-providers/facebook %}
+  {% include LessOrMore/comments-providers/facebook %}
 {% when "duoshuo" %}
-  {% include solar/comments-providers/duoshuo %}
+  {% include LessOrMore/comments-providers/duoshuo %}
 {% when "custom" %}
   {% include custom/comments %}
 {% endcase %}

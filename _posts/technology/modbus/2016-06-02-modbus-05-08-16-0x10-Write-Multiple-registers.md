@@ -6,8 +6,9 @@ category : 技术文档
 tag : Modbus
 ---
 
-Write Multiple registers(写多保持寄存器 )
-============================
+* content
+{:toc}
+
 
 + Request
 ![Request](/images/blog/modbus/modbus-05-16-Write-Multiple-registers/01_Request.png)

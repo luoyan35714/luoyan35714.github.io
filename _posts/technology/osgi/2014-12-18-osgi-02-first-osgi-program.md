@@ -6,6 +6,10 @@ categories: 技术文档
 tag: OSGi
 ---
 
+* content
+{:toc}
+
+
 - 新建一个`Plug-in Project`，命名为`osgi_equinox_activator`, 并在`OSGI framework`中选中`standard`，如下图                  
 ![create a new project](/images/blog/osgi/2_first_osgi/01_new_project.png)
 

@@ -6,8 +6,9 @@ category : 技术文档
 tag : Modbus
 ---
 
-Read Discrete Inputs(读取离散量输入)
-============================
+* content
+{:toc}
+
 
 + Request
 ![Request](/images/blog/modbus/modbus-05-02-read-discrete-inputs/01_Request.png)

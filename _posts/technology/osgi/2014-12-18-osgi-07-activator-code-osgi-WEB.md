@@ -6,6 +6,10 @@ categories: 技术文档
 tag: OSGi
 ---
 
+* content
+{:toc}
+
+
 * 新建一个Plug-in Project，命名为OSGi_equinox_web
 * 下一步，在接下来的页面输入如下内容，然后finish
 ![new project](/images/blog/osgi/7-activator-code-osgi-WEB/01_new_project.png)

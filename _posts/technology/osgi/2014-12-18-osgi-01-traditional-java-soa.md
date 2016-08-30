@@ -6,6 +6,10 @@ categories: 技术文档
 tag: OSGi
 ---
 
+* content
+{:toc}
+
+
 - 创建一个新的`java project`，命名为`ServiceProvider`
 
 - 在`com.freud.service`包下创建一个新的`interface`，命名为`HelloWorldService`

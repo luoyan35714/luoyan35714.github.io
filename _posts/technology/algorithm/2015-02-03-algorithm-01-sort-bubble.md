@@ -6,6 +6,10 @@ categories: 技术文档
 tag: 算法
 ---
 
+* content
+{:toc}
+
+
 冒泡排序（名字由来是因为越大的元素会经由交换慢慢“浮”到数列的顶端）
 --------------------------------------------------------
 ![冒泡Logo](/images/blog/algorithm/sort/bubble/1-bobble-logo.png)

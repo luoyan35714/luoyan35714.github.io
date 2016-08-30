@@ -6,6 +6,10 @@ category : 技术文档
 tag : fastdb
 ---
 
+* content
+{:toc}
+
+
 自[FastDB Main Memory Database Management System](http://www.garret.ru/fastdb/FastDB.htm#sql)
 =================================
 

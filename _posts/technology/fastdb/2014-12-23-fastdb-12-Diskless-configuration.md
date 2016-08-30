@@ -6,6 +6,10 @@ category : 技术文档
 tag : fastdb
 ---
 
+* content
+{:toc}
+
+
 Some application needs only query engine and do not need to store data to the disk (for example, applications for mobile devices). FastDB provides diskless configuration. It is switched on by rebuilding FastDB with DISKLESS_CONFIGURATION option set in makefile. In this case FastDB will not write any data to the disk. When application is started database is always empty. Other application can be connected to the same database, concurrently accessing the same data. Database exists until there is some application using it. When last application closes database, memory mapped object is destructed and all data is lost.
 It is important to notice that unlike normal mode, FastDB is not able to extend database in diskless mode. To be able to reallocate memory mapped object (to extend its size), FastDB will have to create somewhere (in memory) temporary buffer to hold all database data, copy all data to this buffer, destruct original memory mapping object, create new memory mapping object, copy data from buffer to the new memory mapping object and then destruct the buffer. So if database size was N, then reallocation requires 3*N free memory and copying of all database data two times. I think this is too large memory and CPU overhead.
 

@@ -6,6 +6,10 @@ category : 技术文档
 tag : fastdb
 ---
 
+* content
+{:toc}
+
+
 从2.18版本开始，FastDB支持在不通DataBases之间共享Classes，要使用此功能，需要：
 
 * 通过`REGISTER_UNASSIGNED`宏定义来注册Classes

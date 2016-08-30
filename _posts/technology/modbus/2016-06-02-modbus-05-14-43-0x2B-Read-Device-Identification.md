@@ -6,8 +6,9 @@ category : 技术文档
 tag : Modbus
 ---
 
-Read Device Identification(读设备识别码)
-============================
+* content
+{:toc}
+
 
 + Request
 ![Request](/images/blog/modbus/modbus-05-43-Read-Device-Identification/01_Request.png)

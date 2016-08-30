@@ -6,8 +6,9 @@ category : 技术文档
 tag : Modbus
 ---
 
-ReadWrite Multiple registers(读/写多个寄存器)
-============================
+* content
+{:toc}
+
 
 + Request
 ![Request](/images/blog/modbus/modbus-05-23-ReadWrite-Multiple-registers/01_Request.png)

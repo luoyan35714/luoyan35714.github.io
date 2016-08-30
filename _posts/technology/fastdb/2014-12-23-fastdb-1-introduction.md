@@ -5,6 +5,11 @@ date:   2014-12-23 16:32:01 +0800
 category : 技术文档
 tag : fastdb
 ---
+
+* content
+{:toc}
+
+
 翻译自[FastDB Main Memory Database Management System](http://www.garret.ru/fastdb/FastDB.htm#introduction)
 
 

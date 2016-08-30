@@ -6,6 +6,10 @@ category : 技术文档
 tag : fastdb
 ---
 
+* content
+{:toc}
+
+
 * 创建一个新的对象类，并在内部添加一个以static final修饰的String类型变量`CONSTRAINTS`
 
 {% highlight java %}

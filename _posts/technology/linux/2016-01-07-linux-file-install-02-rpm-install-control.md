@@ -6,6 +6,10 @@ categories: 技术文档
 tag: Linux
 ---
 
+* content
+{:toc}
+
+
 RPM命令管理
 ==============================
 

@@ -6,6 +6,10 @@ category : 技术文档
 tag : fastdb
 ---
 
+* content
+{:toc}
+
+
 This section describes some aspects of the FastDB implementation. It is not necessary to read this section unless you want to know more about FastDB internals.
 
 Memory allocation

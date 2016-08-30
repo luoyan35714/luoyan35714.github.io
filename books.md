@@ -1,13 +1,17 @@
 ---
-layout: default
+layout: post
 title: 我的书单
 permalink: /books/
 ---
 
+* content
+{:toc}
+
+
 2016书单
 -----------------------------------------------------------------
 
-+ 《Think in java 4th》 -- INPROGRESS
++ 《Think in java 4th》
 + 《鸟哥的Linux私房菜基础学习篇-第三版》
 + 《重构》
 + 《Getting real》

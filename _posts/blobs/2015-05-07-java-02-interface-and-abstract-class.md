@@ -6,6 +6,10 @@ categories: 杂乱
 tag: 深入理解java
 ---
 
+* content
+{:toc}
+
+
 接口(Interface)和抽象类(Abstract Class)
 --------------------------------
 

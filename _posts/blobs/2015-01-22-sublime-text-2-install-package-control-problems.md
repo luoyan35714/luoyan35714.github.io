@@ -6,6 +6,10 @@ categories: 杂乱
 tag: 解决问题
 ---
 
+* content
+{:toc}
+
+
 package control安装问题解决
 ----------------------------------
 

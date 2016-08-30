@@ -6,8 +6,9 @@ category : 技术文档
 tag : Modbus
 ---
 
-Read FIFO Queue(读取先入先出队列)
-============================
+* content
+{:toc}
+
 
 + Request
 ![Request](/images/blog/modbus/modbus-05-24-Read-FIFO-Queue/01_Request.png)
