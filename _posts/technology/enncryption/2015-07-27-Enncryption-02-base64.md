@@ -18,7 +18,7 @@ BASE64的三种实现方法
 * Bouncy Castle
 
 Maven依赖
-------------------------------------
+===========================
 
 {% highlight xml %}
 <dependencies>
@@ -38,7 +38,7 @@ Maven依赖
 ---
 
 Base64Test类
-------------------------------------
+===========================
 
 {% highlight java %}
 package com.freud.test.security;
@@ -112,7 +112,7 @@ public class Base64Test {
 <br />
 
 参考资料
---------------------------------------------------------
+===========================
 
 [慕课网-Java实现Base64加密](http://www.imooc.com/learn/285)
 

@@ -46,7 +46,7 @@ swfu = new SWFUpload(settings);
 <br />
 
 参考资料：
--------------------------------------
+===========================
 
 解决ssh项目用swfupload上传文件时session丢失问题 ：[http://blog.csdn.net/zhanngle/article/details/7538252](http://blog.csdn.net/zhanngle/article/details/7538252)
 

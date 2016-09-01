@@ -102,7 +102,8 @@ public static void main(String[] args) {
 <br />
 
 参考资料：
--------------------------------------
+===========================
+
 补位：[http://piranha.iteye.com/blog/1700952](http://piranha.iteye.com/blog/1700952)
 
 位操作：[http://www.cnblogs.com/jinc/archive/2013/02/26/2934022.html](http://www.cnblogs.com/jinc/archive/2013/02/26/2934022.html)

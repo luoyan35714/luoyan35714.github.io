@@ -87,7 +87,7 @@ Yum安装
 <br />
 
 参考资料：
--------------------------------------
+===========================
 
 CentOS 6.3下PostgreSQL 的安装与配置：[http://www.cnblogs.com/mchina/archive/2012/06/06/2539003.html](http://www.cnblogs.com/mchina/archive/2012/06/06/2539003.html)
 

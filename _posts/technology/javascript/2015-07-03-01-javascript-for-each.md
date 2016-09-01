@@ -20,7 +20,7 @@ document.write(cars[i] + "<br>");
 {% endhighlight %}
 
 参考资料
----------------------------
+===========================
 
 js中for in 和 for each in的用法和区别 [http://blog.sina.com.cn/s/blog_855dfd9e0101a2w0.html](http://blog.sina.com.cn/s/blog_855dfd9e0101a2w0.html)
 

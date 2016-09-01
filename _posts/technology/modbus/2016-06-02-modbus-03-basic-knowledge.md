@@ -10,23 +10,36 @@ tag : Modbus
 {:toc}
 
 
+Modbus功能码
+====================
+
 + 功能码，Modbus功能码有三种，第一种是公共功能码(Public Function Codes),第二种是 用户自定义功能码(User-Defined Function Codes),第三种是保留功能码(Reserved Function Codes), 每部分的定义如下
+
 ![/images/blog/modbus/modbus-03-basic-knowledge/01.png](/images/blog/modbus/modbus-03-basic-knowledge/01.png)
 
 + 其中公共功能码如下：
+
 ![/images/blog/modbus/modbus-03-basic-knowledge/02.png](/images/blog/modbus/modbus-03-basic-knowledge/02.png)
  
-+ 标准的modbus协议组成(RTU和ASCII)
-![/images/blog/modbus/modbus-03-basic-knowledge/03.png](/images/blog/modbus/modbus-03-basic-knowledge/03.png)
+标准的modbus协议组成(RTU和ASCII)
+====================
 
-+ Modbus TCP/IP协议组成
-![/images/blog/modbus/modbus-03-basic-knowledge/04.png](/images/blog/modbus/modbus-03-basic-knowledge/04.png)
+<image src="/images/blog/modbus/modbus-03-basic-knowledge/03.png" alt="/images/blog/modbus/modbus-03-basic-knowledge/03.png" style="width:757px"/>
 
-+ MBAP头消息解析
+Modbus TCP/IP协议组成
+====================
+
+<image src="/images/blog/modbus/modbus-03-basic-knowledge/04.png" alt="/images/blog/modbus/modbus-03-basic-knowledge/04.png" style="width:757px"/>
+
+MBAP头消息解析
+====================
+
 ![/images/blog/modbus/modbus-03-basic-knowledge/05.png](/images/blog/modbus/modbus-03-basic-knowledge/05.png)
 
-+ Modbus正常解析流程
-![/images/blog/modbus/modbus-03-basic-knowledge/06.png](/images/blog/modbus/modbus-03-basic-knowledge/06.png)
+Modbus正常解析流程
+====================
+
+<image src="/images/blog/modbus/modbus-03-basic-knowledge/06.png" alt="/images/blog/modbus/modbus-03-basic-knowledge/06.png" style="width:757px"/>
 
 + The header is 7 bytes long: 
 	* Transaction Identifier - It is used for transaction pairing, the MODBUS server copies in the response the transaction identifier of the request. 
@@ -37,19 +50,25 @@ tag : Modbus
 
 > Remark : the different fields are encoded in Big-endian.
 
-+ Modbus异常解析流程
-![/images/blog/modbus/modbus-03-basic-knowledge/07.png](/images/blog/modbus/modbus-03-basic-knowledge/07.png)
+Modbus异常解析流程
+====================
 
-+ 缩写
+<image src="/images/blog/modbus/modbus-03-basic-knowledge/07.png" alt="/images/blog/modbus/modbus-03-basic-knowledge/07.png" style="width:757px"/>
+
+缩写
+====================
+
 ![/images/blog/modbus/modbus-03-basic-knowledge/08.png](/images/blog/modbus/modbus-03-basic-knowledge/08.png)
 
-+ 错误码
+错误码
+====================
+
 ![/images/blog/modbus/modbus-03-basic-knowledge/09.png](/images/blog/modbus/modbus-03-basic-knowledge/09.png) 
 
 <br>
 <br>
 
 参考资料
-================================
+====================
 
 Modbus官方文档:《Modbus_Application_Protocol_V1_1b3》

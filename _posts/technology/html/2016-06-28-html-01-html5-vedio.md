@@ -217,7 +217,7 @@ public class MP4Filter implements Filter {
 <br />
  
 参考资料
---------------------------------------------------------
+====================
 
 《dive into html5》: [http://diveintohtml5.info/video.html](http://diveintohtml5.info/video.html)
 

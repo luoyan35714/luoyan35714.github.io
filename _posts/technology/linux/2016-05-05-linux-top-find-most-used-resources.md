@@ -10,8 +10,7 @@ tag: Linux
 {:toc}
 
 
-[转] Linux Top 命令找出Java进程中线程资源占用情况
-==============================
+> [转自[http://blog.163.com/wf_shunqiziran/blog/static/176307209201252901951722/](http://blog.163.com/wf_shunqiziran/blog/static/176307209201252901951722/)] 
 
 * 先用top命令找出占用资源厉害的java进程id，如：如java的进程id为'8343'，接下来用top命令单独对这个进程中的所有线程作监视：
 
@@ -41,7 +40,7 @@ tag: Linux
 <br />
  
 参考资料
---------------------------------------------------------
+====================
 
 java:linux上找出最耗资源的线程方法 : [http://blog.163.com/wf_shunqiziran/blog/static/176307209201252901951722/](http://blog.163.com/wf_shunqiziran/blog/static/176307209201252901951722/)
 

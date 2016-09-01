@@ -47,7 +47,7 @@ tag: Linux
 <br />
 
 参考资料：
--------------------------------------
+===========================
 
 慕课网-Linux软件安装管理：[http://www.imooc.com/learn/447](http://www.imooc.com/learn/447)
 

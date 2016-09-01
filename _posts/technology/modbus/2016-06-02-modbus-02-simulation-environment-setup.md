@@ -74,8 +74,8 @@ tag : Modbus
 + l) 协议具体的传输信息可以通过选中Toolbar的Display, 点击Communication在弹出的对话框中查看。
 ![/images/blog/modbus/modbus-02-simulation-environment-setup/11.png](/images/blog/modbus/modbus-02-simulation-environment-setup/11.png)
 
-至此，基于TCP和RTU的modbus协议模拟Server和Client就都搭建完了。
-================================
+`至此，基于TCP和RTU的modbus协议模拟Server和Client就都搭建完了。`
+
 
 <br>
 <br>

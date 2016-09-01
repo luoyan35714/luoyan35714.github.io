@@ -11,7 +11,7 @@ tag: 定时器设计
 
 
 版本
------------------------
+===========================
 {% highlight xml %}
 <spring.version>3.1.0.RELEASE</spring.version>
 <dependency> 
@@ -22,10 +22,10 @@ tag: 定时器设计
 {% endhighlight%}
 
 非集群
-----------------------
+===========================
 
 application-quartz-singleton.xml
-==========================
+----------------------
 {% highlight xml %}
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -63,7 +63,7 @@ application-quartz-singleton.xml
 {% endhighlight%}
 
 SingletonTimerSample.java
-==========================
+----------------------
 {% highlight java %}
 package com.freud.test.demo;
 
@@ -95,7 +95,7 @@ public class SingletonTimerSample
 {% endhighlight%}
 
 TestService.java
-==========================
+----------------------
 {% highlight java %}
 package com.freud.test.demo;
 
@@ -121,10 +121,10 @@ public class TestService
 {% endhighlight%}
 
 集群方式(支持Spring注入)
-------------------------------
+===========================
 
 application-quartz-cluster.xml
-===========================
+----------------------
 {% highlight xml %}
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -165,7 +165,7 @@ application-quartz-cluster.xml
 {% endhighlight%}
 
 quartz.properties
-===========================
+----------------------
 {% highlight text %}
 #============================================================================
 # Configure Main Scheduler Properties
@@ -203,7 +203,7 @@ org.quartz.dataSource.freudDS.maxConnections = 100
 {% endhighlight%}
 
 ClusterTimerSample.java
-===========================
+----------------------
 {% highlight java %}
 package com.freud.test.demo;
 
@@ -242,7 +242,7 @@ public class ClusterTimerSample extends QuartzJobBean
 {% endhighlight%}
 
 AutoWiringSpringBeanJobFactory.java
-===========================
+----------------------
 {% highlight java %}
 package com.freud.test;
 

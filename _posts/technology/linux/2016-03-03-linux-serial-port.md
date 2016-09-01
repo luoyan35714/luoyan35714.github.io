@@ -48,7 +48,7 @@ Linux串口相关
 <br />
 
 参考资料：
--------------------------------------
+===========================
 
 linux支持串口(serial)登录配置方法：[http://www.cnblogs.com/zhuhongbao/archive/2011/05/26/2059206.html](http://www.cnblogs.com/zhuhongbao/archive/2011/05/26/2059206.html)
 
