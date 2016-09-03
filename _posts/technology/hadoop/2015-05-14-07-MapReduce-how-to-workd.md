@@ -10,11 +10,7 @@ tag: Hadoop
 {:toc}
 
 
-转载自[http://blog.csdn.net/dpc27149/article/details/23374181](http://blog.csdn.net/dpc27149/article/details/23374181)
-<br />
-
-MapReduce工作机制
-=================================
+> 转载自[http://blog.csdn.net/dpc27149/article/details/23374181](http://blog.csdn.net/dpc27149/article/details/23374181)
 
 图解
 ---------------------------------

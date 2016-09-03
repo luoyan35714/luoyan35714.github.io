@@ -10,9 +10,6 @@ tag: Hadoop
 {:toc}
 
 
-MapReduce Sample之WorldCount
-===================================
-
 WordCount原理解析
 ---------------------------
 

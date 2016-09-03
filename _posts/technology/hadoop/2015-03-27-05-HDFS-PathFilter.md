@@ -18,9 +18,10 @@ tag: Hadoop
 * 自定义`PathFilter`
 	* 实现PathFilter接口
 	* 实现accept方法
-		{% highlight java%}
+		{% highlight java %}
 			public boolean accept(Path path);
 		{% endhighlight %}
+
 	* 符合过滤条件的返回true，不符合的返回false
 	* `FileSystem.globStatus (Path, PathFilter)`;
 	* `FileInputFormat.setInputPathFilter(Job, PathFilter)`

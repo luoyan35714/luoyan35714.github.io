@@ -10,8 +10,8 @@ tag : mybatis
 {:toc}
 
 
-所需要用到的其他工具或技术:
----------------------
+所需要用到的其他工具或技术
+=============================
 
 | 项目管理工具 | Maven |
 | 测试运行工具 | Junit |
@@ -19,7 +19,8 @@ tag : mybatis
 
 废话不多说,直接代码
 
-Maven Dependencies:
+Maven Dependencies
+=============================
 
 {% highlight xml %}
 <dependencies>
@@ -47,7 +48,9 @@ Maven Dependencies:
 </dependencies>
 {% endhighlight %}
 
-SQL 建表及数据插入:
+SQL 建表及数据插入
+=============================
+
 {% highlight sql %}
 CREATE TABLE USER_TEST_TB(
 ID INT PRIMARY KEY,
@@ -61,8 +64,14 @@ INSERT INTO USER_TEST_TB VALUES(2,'2nd','222','Rose');
 INSERT INTO USER_TEST_TB VALUES(3,'3rd','333','Will');
 {% endhighlight %}
 
-Mybatis配置文件 src/main/resource源目录下
+Mybatis配置文件
+=============================
+
+`src/main/resource`源目录下
+
 test-mybatis-configuration.xml
+-----------------------------
+
 {% highlight xml %}
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
@@ -90,7 +99,11 @@ test-mybatis-configuration.xml
 </configuration>
 {% endhighlight%}
 
-UserMapper.xml  Mapper文件（src/main/java/com.freud.practice目录下）
+UserMapper.xml  Mapper文件
+-----------------------------
+
+`src/main/java/com.freud.practice`目录下
+
 {% highlight xml %}
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
@@ -104,7 +117,11 @@ UserMapper.xml  Mapper文件（src/main/java/com.freud.practice目录下）
 </mapper>
 {% endhighlight%}
 
-User.java对象类（src/main/java/com.freud.practice目录下）
+User.java对象类
+-----------------------------
+
+`src/main/java/com.freud.practice`目录下
+
 {% highlight java %}
 package com.freud.practice;
 
@@ -162,7 +179,11 @@ public class User
 }
 {% endhighlight%}
 
-UserMapper.java Mapper类（src/main/java/com.freud.practice目录下）
+UserMapper.java Mapper类
+-----------------------------
+
+`src/main/java/com.freud.practice`目录下
+
 {% highlight java %}
 package com.freud.practice;
 
@@ -176,7 +197,11 @@ public interface UserMapper
 }
 {% endhighlight%}
 
-测试类TestMyBatis.java（src/test/java/com.freud.practice目录下）
+测试类TestMyBatis.java
+-----------------------------
+
+`src/test/java/com.freud.practice`目录下
+
 {% highlight java %}
 package com.freud.practice;
 

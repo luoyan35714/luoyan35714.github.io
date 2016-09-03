@@ -180,9 +180,9 @@ public class Test {
 {% endhighlight %}
 
 
-参考文章
-------------------------
-[springMVC 注解方式实现全程+文件上传](http://blog.csdn.net/sundenskyqq/article/details/6799038)
+参考资料
+======================
 
+[springMVC 注解方式实现全程+文件上传](http://blog.csdn.net/sundenskyqq/article/details/6799038)
 
 [java 发送文件（Http Post），带其他参数](http://blog.csdn.net/zhouyingge1104/article/details/28267827)

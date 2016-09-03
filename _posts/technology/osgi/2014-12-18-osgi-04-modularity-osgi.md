@@ -11,6 +11,7 @@ tag: OSGi
 
 
 * 新建一个`plug-in project`,命名为`osgi_equinox_provider`
+
 ![new provider project](/images/blog/osgi/4_modularity_osgi/01_new_provider_project.png)
 
 * 在`com.freud.osgi`包下新建一个`HelloWorldService`的接口
@@ -25,9 +26,11 @@ public interface HelloWorldService {
 {% endhighlight %}
 
 * 新建一个`plug-in project`，命名为`osgi_equinox_impl`
+
 ![new implement project](/images/blog/osgi/4_modularity_osgi/02_new_impl_project.png)
 
 * 修改`META-INF`下的文件`MANIFEST.MF`，在`import-package`上添加`com.freud.osgi`
+
 ![import package](/images/blog/osgi/4_modularity_osgi/03_import_package.png)
 
 * 在`com.freud.osgi.impl`下添加一个类`HelloWorldServiceImpl`，内容为
@@ -82,9 +85,11 @@ public class Activator implements BundleActivator {
 {% endhighlight %}
 
 * 新建一个`plug-in project`,命名为`osgi_equinox_consumer`
+
 ![new consumer project](/images/blog/osgi/4_modularity_osgi/04_new_consumer_project.png)
 
 * 修改`META-INF`目录下的`MANIFEST.MF`文件为
+
 ![import consumer package](/images/blog/osgi/4_modularity_osgi/05_import_consumer_package.png)
 
 * 修改`com.freud.osgi.consumer`目录下的`Activator`文件内容为
@@ -123,9 +128,11 @@ public class Activator implements BundleActivator {
 {% endhighlight %}
 
 * 在`osgi_equinox_provider`项目上`右键`->`run as`->`Run configurations-new OSGi FrameWork`
+
 ![run configuration](/images/blog/osgi/4_modularity_osgi/06_run_configure.png)
 
 * 得出的控制台`输出`如下              
+
 ![ss stdout](/images/blog/osgi/4_modularity_osgi/07_ss_stout.png)
 
 <br/>

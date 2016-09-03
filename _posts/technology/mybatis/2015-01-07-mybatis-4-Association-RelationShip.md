@@ -10,14 +10,15 @@ tag : mybatis
 {:toc}
 
 
-所需要用到的其他工具或技术:
----------------------
+所需要用到的其他工具或技术
+==============================
 
 | 项目管理工具 | Maven |
 | 测试运行工具 | Junit |
 | 数据库 | Derby |
 
-Maven Dependencies:
+Maven Dependencies
+==============================
 
 {% highlight xml %}
 <dependencies>
@@ -45,7 +46,12 @@ Maven Dependencies:
 </dependencies>
 {% endhighlight %}
 
-SQL 建表及数据插入（新建一个USER_TEST_TB_RELATIONSHIP表，然后CopyUSER_TEST_TB的数据，Derby不支持表结构中列名的修改，只能这么做了）:
+
+SQL 建表及数据插入
+==============================
+
+`新建一个USER_TEST_TB_RELATIONSHIP表，然后CopyUSER_TEST_TB的数据，Derby不支持表结构中列名的修改，只能这么做了`
+
 {% highlight sql %}
 CREATE TABLE USER_TEST_TB_RELATIONSHIP(
 USER_ID INT PRIMARY KEY,    
@@ -57,9 +63,14 @@ USER_NICKNAME VARCHAR(20) NOT NULL
 INSERT INTO USER_TEST_TB_RELATIONSHIP(USER_ID,USER_USERNAME,USER_PASSWORD,USER_NICKNAME) SELECT ID,USERNAME,PASSWORD,NICKNAME FROM USER_TEST_TB;
 {% endhighlight %}
 
-Mybatis配置文件 src/main/resource源目录下
+Mybatis配置文件 
+==============================
+
+`src/main/resource`源目录下
 
 test-mybatis-configuration.xml
+---------------------
+
 {% highlight xml %}
 <?xml version="1.0" encoding="UTF-8" ?>  
 <!DOCTYPE configuration  
@@ -86,7 +97,11 @@ test-mybatis-configuration.xml
 </configuration>  
 {% endhighlight %}
 
-User.java对象类(src/main/java/com/freud/practice目录下)
+User.java对象类
+---------------------
+
+`src/main/java/com/freud/practice`目录下
+
 {% highlight java %}
 package com.freud.practice;
 
@@ -144,7 +159,11 @@ public class User
 }
 {% endhighlight %}
 
-UserMapper.xml  Mapper文件（src/main/java/com.freud.practice目录下）
+UserMapper.xml 
+---------------------
+
+Mapper文件`src/main/java/com.freud.practice`目录下
+
 {% highlight xml %}
 <?xml version="1.0" encoding="UTF-8" ?>  
 <!DOCTYPE mapper  
@@ -168,7 +187,11 @@ UserMapper.xml  Mapper文件（src/main/java/com.freud.practice目录下）
 </mapper>
 {% endhighlight %}
 
-UserMapper.java Mapper类（src/main/java/com.freud.practice目录下）
+UserMapper.java
+---------------------
+
+Mapper类`src/main/java/com.freud.practice`目录下
+
 {% highlight java %}
 package com.freud.practice;
 

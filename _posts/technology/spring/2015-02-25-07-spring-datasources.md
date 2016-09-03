@@ -247,10 +247,8 @@ public final class ThreadLocalUtils {
 <br />
 
 参考资料
-----------------------------
-[Spring mvc动态多数据源](http://blog.csdn.net/geloin/article/details/7580685)
-<br />
-[spring框架中多数据源创建加载并且实现动态切换的配置实例代码](http://www.zuidaima.com/share/1774074130205696.htm)
+======================
 
-<br />
-<br />
+[Spring mvc动态多数据源](http://blog.csdn.net/geloin/article/details/7580685)
+
+[spring框架中多数据源创建加载并且实现动态切换的配置实例代码](http://www.zuidaima.com/share/1774074130205696.htm)

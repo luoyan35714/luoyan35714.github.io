@@ -20,6 +20,7 @@ import urllib2,os;pf='Package Control.sublime-package';ipp=sublime.installed_pac
 {% endhighlight %}
 
 * 结果报错如下
+
 ![install_package_control_proxy_problem](/images/blog/blobs/sublime_text2_package_control_problems/1_install_package_control_proxy_problem.png)
 
 * 发现python的网络读取出错，怀疑是代理的原因
@@ -54,6 +55,7 @@ install package代理问题解决
 ![6_download_chanel_json_location](/images/blog/blobs/sublime_text2_package_control_problems/6_download_chanel_json_location.png)
 
 * 重启Sublime, 恩~好用了，哈哈
+
 ![7_package_control_open](/images/blog/blobs/sublime_text2_package_control_problems/7_package_control_open.png)
 
 安装ConvertToUTF8又一次遇到问题

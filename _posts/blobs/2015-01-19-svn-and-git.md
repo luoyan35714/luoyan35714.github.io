@@ -65,8 +65,8 @@ GIT
 <br />
 
 
-参考资料：
--------------------------------------
+参考资料
+======================
 SVN百度百科 : [http://baike.baidu.com/svn](http://baike.baidu.com/link?url=YdOtdLIqvKRtfwV9ceq-DIpbaMaUx11gXtHcog7AF2wRbB6XmEKJcghG1Vn9f_eEAfstGvhpwyEZW43gU9trva)
 
 GIT百度百科: [http://baike.baidu.com/git](http://baike.baidu.com/link?url=r2ILs2AUmTEIot2Wd6EDw53Mo8XtOGRwzdNR8M7tpp1hT11vSKbBgSHYJtVZnSMwi2-KF7_g6FtqX-H29eQqSqpYFCIMrU1CzYJkYpyKWhS)

@@ -40,7 +40,7 @@ PropertyPlaceholderConfigure
 
 
 参考资料
--------------------------------------------
+============================
 
 [http://blog.sina.com.cn/s/blog_4550f3ca0100ubmt.html](http://blog.sina.com.cn/s/blog_4550f3ca0100ubmt.html)
 

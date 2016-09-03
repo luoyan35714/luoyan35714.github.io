@@ -20,6 +20,7 @@ Bundle-SymbolicName: com.freud.osgi.web
 Bundle-SymbolicName: com.freud.osgi.web;singleton:=true
 {% endhighlight %}
 删除Activator，并且添加红线标注部分
+
 ![edit manifest](/images/blog/osgi/8-plugin-file-osgi-WEB/01_edit_manifest.png)
 
 * 修改plugin.xml文件内容如下
@@ -67,12 +68,19 @@ This is the jsp file -- version 3
 </html>
 {% endhighlight %}
 * 运行，以下为运行的Configuration
+
 ![run configuration](/images/blog/osgi/8-plugin-file-osgi-WEB/02_run_configuration.png)
+
 * 测试：打开一个浏览器，输入地址：[http://localhost/files/index.html](http://localhost/files/index.html)，得到结果如图
+
 ![index.html test result](/images/blog/osgi/8-plugin-file-osgi-WEB/03_index_test.png)
+
 * REST测试：打开一个浏览器，输入地址：[http://localhost/hello](http://localhost/hello)，得到结果如下图
+
 ![hello test result](/images/blog/osgi/8-plugin-file-osgi-WEB/04_hello_test.png)
+
 * 测试：打开一个浏览器，输入地址：[http://localhost/jsp/index.jsp](http://localhost/jsp/index.jsp)，得到结果如下图
+
 ![index jsp test result](/images/blog/osgi/8-plugin-file-osgi-WEB/05_index_jsp_test.png)
 
 <br/>

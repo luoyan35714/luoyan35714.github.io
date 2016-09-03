@@ -10,8 +10,8 @@ tag : mybatis
 {:toc}
 
 
-所需要用到的其他工具或技术:
----------------------
+所需要用到的其他工具或技术
+=============================
 
 | 项目管理工具 | Maven |
 | 测试运行工具 | Junit |
@@ -20,7 +20,9 @@ tag : mybatis
 
 继续不废话
 
-Maven Dependencies:
+Maven Dependencies
+=============================
+
 {% highlight xml %}
 <dependency>
 	<groupId>junit</groupId>
@@ -47,7 +49,9 @@ Maven Dependencies:
 </dependency>
 {% endhighlight%}
 
-SQL 建表及数据插入（如果在第一节中作过，可以跳过此步）:
+SQL 建表及数据插入（如果在第一节中作过，可以跳过此步）
+=============================
+
 {% highlight sql %}
 CREATE TABLE USER_TEST_TB(
 ID INT PRIMARY KEY,
@@ -61,8 +65,14 @@ INSERT INTO USER_TEST_TB VALUES(2,'2nd','222','Rose');
 INSERT INTO USER_TEST_TB VALUES(3,'3rd','333','Will');
 {% endhighlight%}
 
-Mybatis配置文件 src/main/resource源目录下
+Mybatis配置文件
+=============================
+
+`src/main/resource`源目录下
+
 test-mybatis-configuration.xml
+-----------------------------
+
 {% highlight xml %}
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration>
@@ -87,7 +97,11 @@ test-mybatis-configuration.xml
 </configuration>
 {% endhighlight%}
 
-User.java对象类(src/main/java/com/freud/practice目录下)
+User.java对象类
+-----------------------------
+
+`src/main/java/com/freud/practice`目录下
+
 {% highlight java %}
 package com.freud.practice;
 
@@ -150,7 +164,11 @@ public class User
 }
 {% endhighlight%}
 
-Select.java 注解类（src/main/java/com/freud/practice/annotation目录下）
+Select.java 注解类
+-----------------------------
+
+`src/main/java/com/freud/practice/annotation`目录下
+
 {% highlight java %}
 package com.freud.practice.annotation;
 
@@ -169,7 +187,11 @@ public @interface Select
 }
 {% endhighlight%}
 
-UserMapper.java 基于Annotation的配置类（src/main/java/com/freud/practice/annotation目录下）
+UserMapper.java
+-----------------------------
+
+基于Annotation的配置类`src/main/java/com/freud/practice/annotation`目录下
+
 {% highlight java %}
 package com.freud.practice.annotation;
 
@@ -185,7 +207,11 @@ public interface UserMapper
 }
 {% endhighlight%}
 
-Mapper.java 对象类（src/main/java/com/freud/practice/simulation目录下）
+Mapper.java 对象类
+-----------------------------
+
+`src/main/java/com/freud/practice/simulation`目录下
+
 {% highlight java %}
 package com.freud.practice.simulation;
 
@@ -229,7 +255,11 @@ public class Mapper
 }
 {% endhighlight%}
 
-SQLSelectProxy.java AOP动态代理类（src/main/java/com/freud/practice/simulation目录下）
+SQLSelectProxy.java AOP动态代理类
+-----------------------------
+
+`src/main/java/com/freud/practice/simulation`目录下
+
 {% highlight java %}
 package com.freud.practice.simulation;
 
@@ -301,7 +331,11 @@ public class SQLSelectProxy implements InvocationHandler
 }
 {% endhighlight%}
 
-SqlSession.java Mybatis模拟接口（src/main/java/com/freud/practice/simulation目录下）
+SqlSession.java Mybatis模拟接口
+-----------------------------
+
+`src/main/java/com/freud/practice/simulation`目录下
+
 {% highlight java %}
 package com.freud.practice.simulation;
 
@@ -322,7 +356,11 @@ public interface SqlSession
 }
 {% endhighlight%}
 
-SqlSessionFactory.java Mybatis模拟类（src/main/java/com/freud/practice/simulation目录下）
+SqlSessionFactory.java Mybatis模拟类
+-----------------------------
+
+`src/main/java/com/freud/practice/simulation`目录下
+
 {% highlight java %}
 package com.freud.practice.simulation;
 
@@ -445,7 +483,11 @@ public class SqlSessionFactory
 }
 {% endhighlight%}
 
-SqlSessionFactoryBuilder.java Mybatis模拟类（src/main/java/com/freud/practice/simulation目录下）
+SqlSessionFactoryBuilder.java Mybatis模拟类
+-----------------------------
+
+`src/main/java/com/freud/practice/simulation`目录下
+
 {% highlight java %}
 package com.freud.practice.simulation;
 
@@ -469,7 +511,11 @@ public class SqlSessionFactoryBuilder
 }
 {% endhighlight%}
 
-SqlSessionImpl.java Mybatis模拟类（src/main/java/com/freud/practice/simulation目录下）
+SqlSessionImpl.java Mybatis模拟类
+-----------------------------
+
+`src/main/java/com/freud/practice/simulation`目录下
+
 {% highlight java %}
 package com.freud.practice.simulation;
 
@@ -625,7 +671,11 @@ public class SqlSessionImpl implements SqlSession
 }
 {% endhighlight%}
 
-UserMapper.xml 基于XML的Mapper配置文件（src/main/java/com/freud/practice/xml目录下）
+UserMapper.xml 基于XML的Mapper配置文件
+-----------------------------
+
+`src/main/java/com/freud/practice/xml`目录下
+
 {% highlight xml %}
 <?xml version="1.0" encoding="UTF-8" ?>
   <!-- namespace 当基于XML进行配置的时候是根据namespace+id来拼接进行SQL操作 -->
@@ -638,7 +688,11 @@ UserMapper.xml 基于XML的Mapper配置文件（src/main/java/com/freud/practice
 </mapper>
 {% endhighlight%}
 
-TestMyBatis.java 测试类(src/test/java/com/freud/practice目录下)
+TestMyBatis.java 测试类
+-----------------------------
+
+`src/test/java/com/freud/practice`目录下
+
 {% highlight java %}
 package com.freud.practice;
 

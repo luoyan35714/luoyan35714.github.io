@@ -161,9 +161,11 @@ Hadoop Cluster安装
 + 修改conf/slaves文件添加DataNode的hostname
 + 修改conf/masters文件添加SecondaryNameNode的HostName
 + 通过NameNode的bin/start-all.sh开启
+
 ![Start all log](/images/blog/hadoop/01-hadoop-setup/01-start-all-log.png)
 
 + 然后在每台服务器用jps查看是否每个服务正确启动
+
 ![jps log](/images/blog/hadoop/01-hadoop-setup/02-jps-log.png)
 
 <br />

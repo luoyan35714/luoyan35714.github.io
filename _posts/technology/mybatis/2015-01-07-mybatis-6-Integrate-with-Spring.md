@@ -10,8 +10,8 @@ tag : mybatis
 {:toc}
 
 
-所需要用到的其他工具或技术:
----------------------
+所需要用到的其他工具或技术
+======================
 
 | 项目管理工具 | Maven |
 | 前台WEB展示 | JSP |
@@ -19,7 +19,10 @@ tag : mybatis
 | 数据库 | Derby |
 
 新建一个Maven的Web项目
-Maven Dependencies:
+
+Maven Dependencies
+======================
+
 {% highlight xml %}
 <!-- Spring -->
 <dependency>
@@ -204,8 +207,13 @@ appServlet-servlet.xml（Spring的Servlet配置文件scr/main/webapp/WEB-INF下�
 {% endhighlight %}
 
 JSP文件
-----------------------------
-show.jsp(src/main/webapp/WEB-INF/views目录下)
+======================
+
+show.jsp
+---------------------
+
+`src/main/webapp/WEB-INF/views`目录下
+
 {% highlight html %}
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -249,7 +257,11 @@ padding: 0px;
 </html>
 {% endhighlight %}
 
-update.jsp(src/main/webapp/WEB-INF/views目录下)
+update.jsp
+---------------------
+
+`src/main/webapp/WEB-INF/views`目录下
+
 {% highlight html %}
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -271,7 +283,11 @@ update.jsp(src/main/webapp/WEB-INF/views目录下)
 </html>
 {% endhighlight %}
 
-insert.jsp(src/main/webapp/WEB-INF/views目录下)
+insert.jsp
+---------------------
+
+`src/main/webapp/WEB-INF/views`目录下
+
 {% highlight html %}
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -294,7 +310,11 @@ insert.jsp(src/main/webapp/WEB-INF/views目录下)
 </html>
 {% endhighlight %}
 
-applicationContext.xml(Spring的Application配置文件在src/main/resources目录下)
+applicationContext.xml
+---------------------
+
+`Spring的Application配置文件在src/main/resources目录下`
+
 {% highlight xml %}
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -340,8 +360,13 @@ applicationContext.xml(Spring的Application配置文件在src/main/resources目�
 {% endhighlight %}
 
 Java文件
+======================
+
+UserController.java
 --------------------------------
-UserController.java（在src/main/java/com.freud.practice.controller目录下）
+
+在`src/main/java/com.freud.practice.controller`目录下
+
 {% highlight java %}
 package com.freud.practice.controller;
 
@@ -454,7 +479,11 @@ public class UserController
 }
 {% endhighlight %}
 
-User.java(在src/main/java/com.freud.practice)
+User.java
+--------------------------------
+
+在`src/main/java/com.freud.practice`目录下
+
 {% highlight java %}
 package com.freud.practice;
 
@@ -519,7 +548,11 @@ public class User
 }
 {% endhighlight %}
 
-UserMapper.java(在src/main/java/com.freud.practice目录下)
+UserMapper.java
+--------------------------------
+
+在`src/main/java/com.freud.practice`目录下
+
 {% highlight java %}
 package com.freud.practice;
 
@@ -571,7 +604,11 @@ public interface UserMapper
 }
 {% endhighlight %}
 
-UserMapper.xml（mybatis的mapper配置文件，在src/main/java/com.freud.practice目录下）
+UserMapper.xml
+--------------------------------
+
+mybatis的mapper配置文件，在`src/main/java/com.freud.practice`目录下
+
 {% highlight xml %}
 <?xml version="1.0" encoding="UTF-8" ?>  
 <!DOCTYPE mapper  

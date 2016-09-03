@@ -12,13 +12,20 @@ tag: OSGi
 
 * 在`第四章`的基础上，在`osgi_equinox_impl`项目中的`META-INF`目录下的`MANIFEST.MF`文件中删除Bundle-Activator: `com.freud.osgi.impl.Activator`
 * 在项目上新建一个文件夹`osgi-INF`
-* 在`OSGi-INF`上，右键新建一个`Component Definition`,注意在Class上填写`com.freud.osgi.impl.HelloWorldServiceImpl`![new component definition](/images/blog/osgi/5_component_register_service/01_new_component_definition.png)
+* 在`OSGi-INF`上，右键新建一个`Component Definition`,注意在Class上填写`com.freud.osgi.impl.HelloWorldServiceImpl`
 
-* 打开`component`文件，切到`Services tab`下，修改如下![provide services](/images/blog/osgi/5_component_register_service/02_provide_services.png)
+![new component definition](/images/blog/osgi/5_component_register_service/01_new_component_definition.png)
 
-* 重新`Run as`-`Run configuration`![run configuration](/images/blog/osgi/5_component_register_service/03_run_configuration.png)
+* 打开`component`文件，切到`Services tab`下，修改如下
+
+![provide services](/images/blog/osgi/5_component_register_service/02_provide_services.png)
+
+* 重新`Run as`-`Run configuration`
+
+![run configuration](/images/blog/osgi/5_component_register_service/03_run_configuration.png)
 
 * 控制台`输出`为                      
+
 ![ss stdout](/images/blog/osgi/5_component_register_service/04_ss_stdout.png)
 
 <br/>

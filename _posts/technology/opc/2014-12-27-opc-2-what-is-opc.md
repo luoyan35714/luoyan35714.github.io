@@ -21,9 +21,11 @@ OPC(OLE for Process Control, 用于过程控制的OLE)是一个工业标准，�
 OPC是为了不同供应厂商的设备和应用程序之间的软件接口标准化，使其间的数据交换更加简单化的目的而提出的。作为结果，从而可以向用户提供不依靠于特定开发语言和开发环境的可以自由组合使用的过程控制软件组件产品。
 
 利用驱动器的系统连接：
+
 ![Driver connection](/images/blog/opc/2_what_is_opc/1_driver_connection.png)
 
 利用OPC的控制系统构成:
+
 ![OPC connection](/images/blog/opc/2_what_is_opc/2_opc_connection.png)
 
 Opc的分层结构
