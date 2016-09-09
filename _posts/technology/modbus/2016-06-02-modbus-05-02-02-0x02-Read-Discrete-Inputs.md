@@ -22,7 +22,7 @@ Setup -> Slave Definition
 
 ![setup-definition](/images/blog/modbus/modbus-05-02-read-discrete-inputs/07-modbus-slave-setup-definition.png)
 
-双击00000列第一行
+双击00000列第二行
 -----------------------------
 
 ![setup-value](/images/blog/modbus/modbus-05-02-read-discrete-inputs/08-modbus-slave-setup-value.png)
