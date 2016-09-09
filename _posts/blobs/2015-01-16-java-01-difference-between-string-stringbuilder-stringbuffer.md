@@ -88,8 +88,9 @@ StringBuffer线程安全的可变字符序列，StringBuffer和StringBuilder都�
 
 综上所述:
 -----------------------------
-| * | String | StringBuilder | StringBuffer |
-| 可变 | 否 | 是 | 是 |
-| 线程安全 | 否 | 否 | 是 |
+
+| *        | String | StringBuilder | StringBuffer |
+| 可变     | 否     | 是            | 是           |
+| 线程安全 | 否     | 否            | 是           |
 
 > 字符拼接速度比较:`StringBuilder` > `StringBuffer` > `String`
