@@ -9,18 +9,19 @@ tag : Modbus
 * content
 {:toc}
 
+
 模拟器Server设置
 =============================
 
 Connection -> Connect
 -----------------------------
 
-![connect-setup](/images/blog/modbus/modbus-05-04-Read-Input-Registers/06-modbus-slave-connect-setup.png)
+![connect-setup](/images/blog/modbus/modbus-05-05-Write-Single-Coil/06-modbus-slave-connect-setup.png)
 
 Setup -> Slave Definition
 -----------------------------
 
-![setup-definition](/images/blog/modbus/modbus-05-04-Read-Input-Registers/07-modbus-slave-setup-definition.png)
+![setup-definition](/images/blog/modbus/modbus-05-05-Write-Single-Coil/07-modbus-slave-setup-definition.png)
 
 代码实现
 =============================
@@ -53,10 +54,9 @@ public class Test0X05 {
 			socket = new Socket("localhost", 502);
 			os = socket.getOutputStream();
 			is = socket.getInputStream();
-			byte[] request = new byte[] { 0X00, 0X01, 0X00, 0X00, 0X00, 0X06, 0X01, 0X05, 0X00,
-					0X00, (byte) 0XFF, 0X00 };
-			System.out.println("Request  : " + bytes2HexString(request));
-			os.write(request);
+			String request = "00010000000601050000FF00";
+			System.out.println("Request  : " + request);
+			os.write(hexStrToBytes(request));
 			Thread.sleep(100);
 			byte[] buffer = new byte[is.available()];
 			is.read(buffer);
@@ -74,6 +74,17 @@ public class Test0X05 {
 				socket.close();
 			}
 		}
+	}
+
+	public static byte[] hexStrToBytes(String hexStr) {
+		if (hexStr.length() % 2 != 0) {
+			throw new IllegalArgumentException("十六进制的字符串长度必须是2的倍数!");
+		}
+		byte[] ret = new byte[hexStr.length() / 2];
+		for (int i = 0; i < hexStr.length(); i = i + 2) {
+			ret[i / 2] = (byte) Integer.parseInt(hexStr.substring(i, i + 2), 16);
+		}
+		return ret;
 	}
 
 	public static String bytes2HexString(byte[] src) {
@@ -94,7 +105,7 @@ public class Test0X05 {
 }
 
 /**
- * Request  : 00010000000601050000FF00
+ * Request  : 00010000000601050000FF00 
  * response : 00010000000601050000FF00
  */
 {% endhighlight %}
@@ -102,7 +113,7 @@ public class Test0X05 {
 Request解析
 -----------------------------
 
-`0X00, 0X01, 0X00, 0X00, 0X00, 0X06, 0X01, 0X05, 0X00, 0X00, 0XFF, 0X00`解析为16进制为`00010000000601050000FF00`
+`00010000000601050000FF00`
 
 | 传输标志(2) | 协议标志(2) | 长度(2) | 单元标志(1) | 功能码(1) | 输出地址(2) | 值(2) |
 | 0001        | 0000        | 0006    | 01          | 05        | 0000        | FF00  |
@@ -117,6 +128,12 @@ Response解析
 
 | 传输标志(2) | 协议标志(2) | 长度(2) | 单元标志(1) | 功能码(1) | 线圈地址(1) | 值(2) |
 | 0001        | 0000        | 0007    | 01          | 05        | 0000        | FF00  |
+
+
+模拟器Server控制结果
+=============================
+
+![Request](/images/blog/modbus/modbus-05-05-Write-Single-Coil/08-modbus-slave-control-result.png)
 
 
 官方文档
