@@ -25,6 +25,7 @@ Setup -> Slave Definition
 ![setup-definition](/images/blog/modbus/modbus-05-06-Write-Single-Register/07-modbus-slave-setup-definition.png)
 
 Display -> Signed
+-----------------------------
 
 ![Display-Signed](/images/blog/modbus/modbus-05-06-Write-Single-Register/08-modbus-slave-data-type-setup.png)
 
