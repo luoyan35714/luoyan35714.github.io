@@ -26,7 +26,7 @@ Setup -> Slave Definition
 Display -> Signed
 -----------------------------
 
-![Display-Signed](/images/blog/modbus/modbus-05-06-Write-Single-Register/08-modbus-slave-data-type-setup.png)
+![Display-Signed](/images/blog/modbus/modbus-05-16-Write-Multiple-registers/08-modbus-slave-data-type-setup.png)
 
 
 代码实现
@@ -141,7 +141,7 @@ Response解析
 模拟器Server控制结果
 =============================
 
-![Request](/images/blog/modbus/modbus-05-06-Write-Single-Register/09-modbus-slave-control-result.png)
+![Request](/images/blog/modbus/modbus-05-16-Write-Multiple-registers/09-modbus-slave-control-result.png)
 
 
 官方文档
