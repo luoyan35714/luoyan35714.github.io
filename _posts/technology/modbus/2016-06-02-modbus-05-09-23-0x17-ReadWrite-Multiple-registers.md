@@ -189,3 +189,5 @@ State Diagram
 ================================
 
 Modbus官方文档:《Modbus_Application_Protocol_V1_1b3》
+
+Modbus RTU和ASCII 协议解析 : [http://www.modbustools.com/modbus.html](http://www.modbustools.com/modbus.html)
