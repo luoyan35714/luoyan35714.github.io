@@ -26,7 +26,7 @@ tag: 硬盘
 常用Raid图示
 ====================================
 
-(Raid常用技术总结图示)[/images/blog/blobs/common-raid-methods/raid-examples.png]
+!(Raid常用技术总结图示)[/images/blog/blobs/common-raid-methods/raid-examples.png]
 
 
 常用Raid比较结论
