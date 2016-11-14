@@ -124,3 +124,11 @@ jekyll server
 微信
 ----------------
 ![微信二维码付款给Freud]({{ '/styles/images/weixin.png' | prepend: site.baseurl }})
+
+
+感谢！
+------------------------------
+
+| [@白想](https://github.com/baixiaoustc) | 18.8 | 2016-11-14 |
+
+<br />
