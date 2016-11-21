@@ -49,7 +49,10 @@ header: 打赏
 感谢！
 ------------------------------
 
-| [@白想](https://github.com/baixiaoustc) | 18.8 | 2016-11-14 |
+| nickname                                 | amount | date       | remarks                    |
+| [@白想](https://github.com/baixiaoustc)  | 18.8   | 2016-11-14 | 		                      |
+| [anonymous](#) 						   | 66.66  | 2016-11-21 | 请留下您的大名，万分感谢！ |
+
 
 <hr>
 
