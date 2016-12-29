@@ -70,3 +70,8 @@ Linux中文输入法，node.js开发指南的原作者。14年大学本科清华
 =====================
 Windows下FFmpeg快速入门
 [http://blog.csdn.net/hemingwang0902/article/details/4382429](http://blog.csdn.net/hemingwang0902/article/details/4382429)
+
+[雷霄骅]
+=====================
+视音频编解码技术学习方法
+[http://blog.csdn.net/leixiaohua1020/article/details/18893769](http://blog.csdn.net/leixiaohua1020/article/details/18893769)
