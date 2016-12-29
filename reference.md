@@ -20,11 +20,6 @@ Axis 2.0的入门
 =====================
 [曹胜欢][http://blog.csdn.net/csh624366188/article/details/8362696](http://blog.csdn.net/csh624366188/article/details/8362696)
 
-高爽|Coder 
-=====================
-这个人的博客对java底层的东西研究比较深入。
-[http://blog.csdn.net/ghsau/article/details/20395681](http://blog.csdn.net/ghsau/article/details/20395681)
-
 [一线码农]
 =====================
 算法入门和分布式缓存入门
@@ -40,16 +35,6 @@ http://blog.csdn.net/lifetragedy
 =====================
 话说这哥们是个大牛，以前看过一些文章。
 [http://blog.csdn.net/fenglibing](http://blog.csdn.net/fenglibing)
-
-[汪海的实验室]
-=====================
-一个14年毕业的学生，差距啊！
-[http://blog.csdn.net/pleasecallmewhy/article/details/8923725](http://blog.csdn.net/pleasecallmewhy/article/details/8923725)
-
-[Byvoid]
-=====================
-Linux中文输入法，node.js开发指南的原作者。14年大学本科清华毕业
-[https://www.byvoid.com/](https://www.byvoid.com/)
 
 [rowen的专栏]
 =====================
