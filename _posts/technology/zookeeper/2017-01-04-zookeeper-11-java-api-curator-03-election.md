@@ -32,6 +32,9 @@ LeaderSelector
 {% highlight java %}
 package com.freud.zk.curator;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
@@ -53,83 +56,74 @@ public class CuratorLeaserElectionZookeeper {
 	private static int count = 1;
 
 	public static void main(String[] args) throws Exception {
+		ExecutorService service = Executors.newFixedThreadPool(3);
+		for (int i = 0; i < 3; i++) {
+			final int index = i;
+			service.submit(new Runnable() {
+				public void run() {
+					try {
+						new CuratorLeaserElectionZookeeper().schedule(index);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+		}
 
-		final CuratorLeaserElectionZookeeper instance = new CuratorLeaserElectionZookeeper();
-		CuratorFramework client = instance.getStartedClient();
+		Thread.sleep(10 * SECOND);
+		service.shutdownNow();
+	}
+
+	private void schedule(final int thread) throws Exception {
+		CuratorFramework client = this.getStartedClient(thread);
 		String path = "/leader_selector";
 		if (client.checkExists().forPath(path) == null) {
 			client.create().creatingParentsIfNeeded().forPath(path);
 		}
-
 		LeaderSelector selector = new LeaderSelector(client, path, new LeaderSelectorListener() {
 			public void stateChanged(CuratorFramework cf, ConnectionState state) {
-				System.out.println("[Callback] State changed to :" + state.name());
+				System.out.println("Thread [" + thread + "][Callback] State changed to :" + state.name());
 			}
 
 			public void takeLeadership(CuratorFramework cf) throws Exception {
 				Thread.sleep(1 * SECOND);
-				System.out.println("Do some business work...timestamp [" + System.currentTimeMillis() + "] times ["
-						+ count++ + "]");
+				System.out.println("Thread [" + thread + "]Do some business work...timestamp ["
+						+ System.currentTimeMillis() + "] times [" + count++ + "]");
 			}
 		});
 
 		// 自动重新部署竞选
 		selector.autoRequeue();
 		selector.start();
-
-		Thread.sleep(10 * SECOND);
-		if (client != null) {
-			client.close();
-		}
-		System.out.println("Server closed...");
 	}
 
-	private CuratorFramework getStartedClient() {
+	private CuratorFramework getStartedClient(final int thread) {
 		RetryPolicy rp = new ExponentialBackoffRetry(1 * SECOND, 3);
 		// Fluent风格创建
 		CuratorFramework cfFluent = CuratorFrameworkFactory.builder().connectString("localhost:2181")
 				.sessionTimeoutMs(5 * SECOND).connectionTimeoutMs(3 * SECOND).retryPolicy(rp).build();
 		cfFluent.start();
-		System.out.println("Server connected...");
+		System.out.println("Thread [" + thread + "]Server connected...");
 		return cfFluent;
 	}
 }
 {% endhighlight %}
 
-连续启动三次之后输出结果如下
-
-打印结果一
+打印结果
 ----------------------
 
 {% highlight text %}
-Server connected...
-Do some business work...timestamp [1484297959468] times [1]
-Do some business work...timestamp [1484297961764] times [2]
-Do some business work...timestamp [1484297965066] times [3]
-Do some business work...timestamp [1484297968279] times [4]
-Server closed...
-{% endhighlight %}
-
-打印结果二
-----------------------
-
-{% highlight text %}
-Server connected...
-Do some business work...timestamp [1484297960635] times [1]
-Do some business work...timestamp [1484297964003] times [2]
-Do some business work...timestamp [1484297967167] times [3]
-Server closed...
-{% endhighlight %}
-
-打印结果三
-----------------------
-
-{% highlight text %}
-Server connected...
-Do some business work...timestamp [1484297962870] times [1]
-Do some business work...timestamp [1484297966115] times [2]
-Do some business work...timestamp [1484297969404] times [3]
-Server closed...
+Thread [1]Server connected...
+Thread [2]Server connected...
+Thread [0]Server connected...
+Thread [0]Do some business work...timestamp [1484621709106] times [1]
+Thread [1]Do some business work...timestamp [1484621710198] times [2]
+Thread [2]Do some business work...timestamp [1484621711329] times [3]
+Thread [0]Do some business work...timestamp [1484621712396] times [4]
+Thread [1]Do some business work...timestamp [1484621713438] times [5]
+Thread [2]Do some business work...timestamp [1484621714586] times [6]
+Thread [0]Do some business work...timestamp [1484621715688] times [7]
+Thread [1]Do some business work...timestamp [1484621716725] times [8]
 {% endhighlight %}
 
 > 观察结果之后发现在相同的秒数内只有一个Server执行了打印输出。
@@ -146,6 +140,8 @@ LeaderLatch
 package com.freud.zk.curator;
 
 import java.text.MessageFormat;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
@@ -164,12 +160,28 @@ import org.apache.curator.retry.ExponentialBackoffRetry;
 public class CuratorLeaserLatchZookeeper {
 
 	private static final int SECOND = 1000;
-	private static int count = 1;
 
 	public static void main(String[] args) throws Exception {
+		ExecutorService service = Executors.newFixedThreadPool(3);
+		for (int i = 0; i < 3; i++) {
+			final int index = i;
+			service.submit(new Runnable() {
+				public void run() {
+					try {
+						new CuratorLeaserLatchZookeeper().schedule(index);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+		}
 
-		final CuratorLeaserLatchZookeeper instance = new CuratorLeaserLatchZookeeper();
-		CuratorFramework client = instance.getStartedClient();
+		Thread.sleep(10 * SECOND);
+		service.shutdownNow();
+	}
+
+	private void schedule(final int thread) throws Exception {
+		CuratorFramework client = this.getStartedClient(thread);
 		String path = "/leader_latch";
 		if (client.checkExists().forPath(path) == null) {
 			client.create().creatingParentsIfNeeded().forPath(path);
@@ -179,35 +191,35 @@ public class CuratorLeaserLatchZookeeper {
 		latch.addListener(new LeaderLatchListener() {
 
 			public void notLeader() {
-				System.out.println(MessageFormat.format("I am not the leader... timestamp [{0}]",
-						System.currentTimeMillis()));
+				System.out.println(MessageFormat.format("Thread [" + thread
+						+ "] I am not the leader... timestamp [{0}]", System.currentTimeMillis()));
 			}
 
 			public void isLeader() {
-				System.out.println(MessageFormat.format("I am the leader... timestamp [{0}]",
+				System.out.println(MessageFormat.format("Thread [" + thread + "] I am the leader... timestamp [{0}]",
 						System.currentTimeMillis()));
 			}
 		});
 
 		latch.start();
 
-		Thread.sleep(5 * SECOND);
+		Thread.sleep(2 * (thread + 1) * SECOND);
 		if (latch != null) {
 			latch.close();
 		}
 		if (client != null) {
 			client.close();
 		}
-		System.out.println("Server closed...");
+		System.out.println("Thread [" + thread + "] Server closed...");
 	}
 
-	private CuratorFramework getStartedClient() {
+	private CuratorFramework getStartedClient(final int thread) {
 		RetryPolicy rp = new ExponentialBackoffRetry(1 * SECOND, 3);
 		// Fluent风格创建
 		CuratorFramework cfFluent = CuratorFrameworkFactory.builder().connectString("localhost:2181")
 				.sessionTimeoutMs(5 * SECOND).connectionTimeoutMs(3 * SECOND).retryPolicy(rp).build();
 		cfFluent.start();
-		System.out.println("Server connected...");
+		System.out.println("Thread [" + thread + "] Server connected...");
 		return cfFluent;
 	}
 }
@@ -215,31 +227,19 @@ public class CuratorLeaserLatchZookeeper {
 
 连续启动三次之后输出结果如下
 
-打印结果一
+打印结果
 ----------------------
 
 {% highlight text %}
-Server connected...
-I am the leader... timestamp [1,484,298,352,265]
-Server closed...
-{% endhighlight %}
-
-打印结果二
-----------------------
-
-{% highlight text %}
-Server connected...
-I am the leader... timestamp [1,484,298,356,989]
-Server closed...
-{% endhighlight %}
-
-打印结果三
-----------------------
-
-{% highlight text %}
-Server connected...
-I am the leader... timestamp [1,484,298,357,848]
-Server closed...
+Thread [1] Server connected...
+Thread [0] Server connected...
+Thread [2] Server connected...
+Thread [0] I am the leader... timestamp [1,484,622,048,539]
+Thread [0] Server closed...
+Thread [1] I am the leader... timestamp [1,484,622,050,431]
+Thread [2] I am the leader... timestamp [1,484,622,052,427]
+Thread [1] Server closed...
+Thread [2] Server closed...
 {% endhighlight %}
 
 > 观察结果之后发现在Master节点挂掉之后，会马上重新选举一个新的Master出来。
