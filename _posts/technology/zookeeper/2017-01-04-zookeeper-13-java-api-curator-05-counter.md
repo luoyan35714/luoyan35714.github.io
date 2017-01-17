@@ -1,7 +1,7 @@
 ---
 layout:			post
 title:			Zookeeper学习笔记之(十三) - zookeeper java API - curator - 05 - 分布式计数器
-date:			2017-01-13 14:26:00 +0800
+date:			2017-01-17 15:57:00 +0800
 categories:		技术文档
 tag:			zookeeper
 ---
@@ -10,39 +10,224 @@ tag:			zookeeper
 {:toc}
 
 
-Curator高级API - Master选举
-=======================================
+Shared Counter(共享计数器)
+=====================
 
-在分布式系统中，经常会碰到这样的场景：对于一个复杂的任务，仅需要从集群中选举出一台进行处理即可。称为'Master选举'问题。借助Zookeeper，可以比较简单的实现Master选举的功能，大体思路如下：
+Manages a shared integer. All clients watching the same path will have the up-to-date value of the shared integer (considering ZK's normal consistency guarantees).
 
-> 选择一个根节点，例如/master_select,多台机器同事向该节点创建一个子节点/master_select/lock,利用Zookeeper的特性，最终只有一台机器能够创建成功，成功的哪台机器就作为Master。
+> 共享计数器，适用于Master操作，并将计数结果同步到其他所有的从服务器的情景，Zk Watcher的一个基础应用
 
-Curator也是基于这个思路，但是它将节点创建，事件监听和自动选举过程进行了封装，开发人员只需要条用简单的API就可以实现Master选举
+示例代码
+---------------------
+
+{% highlight java %}
+package com.freud.zk.curator;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import org.apache.curator.RetryPolicy;
+import org.apache.curator.framework.CuratorFramework;
+import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.framework.recipes.shared.SharedCount;
+import org.apache.curator.framework.recipes.shared.SharedCountListener;
+import org.apache.curator.framework.recipes.shared.SharedCountReader;
+import org.apache.curator.framework.state.ConnectionState;
+import org.apache.curator.retry.ExponentialBackoffRetry;
+
+/**
+ * 
+ * Zookeeper - Curator - Counter - SharedCounter
+ * 
+ * 共享计数器，适用于Master操作，并将计数结果同步到其他所有的从服务器的情景
+ * 
+ * @author Freud
+ *
+ */
+public class CuratorCounterSharedCounterZookeeper {
+
+	private static final int SECOND = 1000;
+
+	public static void main(String[] args) throws Exception {
+		ExecutorService service = Executors.newFixedThreadPool(3);
+		for (int i = 0; i < 3; i++) {
+			final int index = i;
+			service.submit(new Runnable() {
+				public void run() {
+					try {
+						new CuratorCounterSharedCounterZookeeper().schedule(index);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+		}
+
+		Thread.sleep(10 * SECOND);
+		service.shutdownNow();
+	}
+
+	private void schedule(final int index) throws Exception {
+
+		CuratorFramework client = this.getStartedClient(index);
+		String path = "/curator_counter/shared_counter";
+
+		final SharedCount count = new SharedCount(client, path, 100);
+		count.addListener(new SharedCountListener() {
+
+			public void stateChanged(CuratorFramework client, ConnectionState state) {
+				System.out.println("Thread [" + index + "][Callback]State changed!");
+			}
+
+			public void countHasChanged(SharedCountReader reader, int value) throws Exception {
+				System.out.println("Thread [" + index + "][Callback]Count changed to [" + value + "]!");
+			}
+		});
+
+		new Thread(new Runnable() {
+
+			public void run() {
+				try {
+					Thread.sleep((index + 1) * 1000);
+					count.setCount(index);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+
+		count.start();
+	}
+
+	private CuratorFramework getStartedClient(final int index) {
+		RetryPolicy rp = new ExponentialBackoffRetry(1 * SECOND, 3);
+		// Fluent风格创建
+		CuratorFramework cfFluent = CuratorFrameworkFactory.builder().connectString("localhost:2181")
+				.sessionTimeoutMs(5 * SECOND).connectionTimeoutMs(3 * SECOND).retryPolicy(rp).build();
+		cfFluent.start();
+		System.out.println("Thread [" + index + "] Server connected...");
+		return cfFluent;
+	}
+}
+{% endhighlight %}
+
+打印结果
+---------------------
+
+{% highlight text %}
+Thread [2] Server connected...
+Thread [1] Server connected...
+Thread [0] Server connected...
+Thread [0][Callback]State changed!
+Thread [2][Callback]State changed!
+Thread [1][Callback]State changed!
+Thread [2][Callback]Count changed to [0]!
+Thread [1][Callback]Count changed to [0]!
+Thread [0][Callback]Count changed to [0]!
+Thread [2][Callback]Count changed to [1]!
+Thread [1][Callback]Count changed to [1]!
+Thread [0][Callback]Count changed to [1]!
+Thread [0][Callback]Count changed to [2]!
+Thread [2][Callback]Count changed to [2]!
+Thread [1][Callback]Count changed to [2]!
+{% endhighlight %}
 
 
-Curator高级API - 分布式锁
-=======================================
+Distributed Atomic Long(分布式计数器)
+=====================
 
+A counter that attempts atomic increments. It first tries using optimistic locking. If that fails, an optional InterProcessMutex is taken. For both optimistic and mutex, a retry policy is used to retry the increment.
 
-Curator高级API - 分布式计数器
-=======================================
+示例代码
+---------------------
 
-Curator高级API - 分布式Barrier
-=======================================
+{% highlight java %}
+package com.freud.zk.curator;
 
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-Curator工具类
-=======================================
+import org.apache.curator.RetryPolicy;
+import org.apache.curator.framework.CuratorFramework;
+import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.framework.recipes.atomic.AtomicValue;
+import org.apache.curator.framework.recipes.atomic.DistributedAtomicLong;
+import org.apache.curator.retry.ExponentialBackoffRetry;
 
-ZKPaths
------------------
+/**
+ * 
+ * Zookeeper - Curator - Counter - DistributedAtomicLong
+ * 
+ * 分布式计数器
+ * 
+ * @author Freud
+ *
+ */
+public class CuratorCounterDistributedAtomicLongZookeeper {
 
-EnsurePath
------------------
+	private static final int SECOND = 1000;
+
+	private final static CountDownLatch down = new CountDownLatch(1);
+
+	public static void main(String[] args) throws Exception {
+		ExecutorService service = Executors.newFixedThreadPool(3);
+		for (int i = 0; i < 3; i++) {
+			final int index = i;
+			service.submit(new Runnable() {
+				public void run() {
+					try {
+						new CuratorCounterDistributedAtomicLongZookeeper().schedule(index);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+		}
+		down.countDown();
+		Thread.sleep(10 * SECOND);
+		service.shutdownNow();
+	}
+
+	private void schedule(final int index) throws Exception {
+		down.await();
+		CuratorFramework client = this.getStartedClient(index);
+		String path = "/curator_counter/distribute_atomic_long";
+		DistributedAtomicLong count = new DistributedAtomicLong(client, path, new ExponentialBackoffRetry(1000, 3));
+		Thread.sleep((index + 1) * SECOND);
+		AtomicValue<Long> al = count.get();
+		System.out.println("Thread [" + index + "] get new Long value [" + al.postValue() + "] result status ["
+				+ al.succeeded() + "]");
+		count.increment();
+	}
+
+	private CuratorFramework getStartedClient(final int index) {
+		RetryPolicy rp = new ExponentialBackoffRetry(1 * SECOND, 3);
+		// Fluent风格创建
+		CuratorFramework cfFluent = CuratorFrameworkFactory.builder().connectString("localhost:2181")
+				.sessionTimeoutMs(5 * SECOND).connectionTimeoutMs(3 * SECOND).retryPolicy(rp).build();
+		cfFluent.start();
+		System.out.println("Thread [" + index + "] Server connected...");
+		return cfFluent;
+	}
+}
+{% endhighlight %}
+
+打印结果
+---------------------
+
+{% highlight text %}
+Thread [0] Server connected...
+Thread [1] Server connected...
+Thread [2] Server connected...
+Thread [0] get new Long value [0] result status [true]
+Thread [1] get new Long value [1] result status [true]
+Thread [2] get new Long value [2] result status [true]
+{% endhighlight %}
 
 
 参考资料
-=======================================
+=====================
 
 《从PAXOS到ZOOKEEPER分布式一致性原理与实践》 - 倪超
 
