@@ -10,9 +10,6 @@ tag:			zookeeper
 {:toc}
 
 
-Curator高级API - 分布式锁
-==========================
-
 Shared Reentrant Lock(分布式可重入锁)
 ==========================
 
