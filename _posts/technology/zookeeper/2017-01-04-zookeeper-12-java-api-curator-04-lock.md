@@ -629,4 +629,11 @@ Curator官网 : [http://curator.apache.org/](http://curator.apache.org/)
 
 《从PAXOS到ZOOKEEPER分布式一致性原理与实践》 - 倪超
 
+java并发编程--互斥锁, 读写锁及条件 [http://coolxing.iteye.com/blog/1236909](http://coolxing.iteye.com/blog/1236909)
+
+Java 信号量 Semaphore 介绍 [http://www.cnblogs.com/whgw/archive/2011/09/29/2195555.html](http://www.cnblogs.com/whgw/archive/2011/09/29/2195555.html)
+
+synchronized和ReentrantLock的区别 [http://www.cnblogs.com/fanguangdexiaoyuer/p/5313653.html](http://www.cnblogs.com/fanguangdexiaoyuer/p/5313653.html)
+
+
 > 上文中标题中的`shared`应当翻译为`共享`，但是笔者觉得`共享`不足以表达此处需要表达的分布式意思，所以翻译为了`分布式`。
