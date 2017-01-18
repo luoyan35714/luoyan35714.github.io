@@ -50,7 +50,7 @@ import org.apache.curator.retry.ExponentialBackoffRetry;
  * @author Freud
  *
  */
-public class CuratorLeaserElectionZookeeper {
+public class CuratorLeaderElectionZookeeper {
 
 	private static final int SECOND = 1000;
 	private static int count = 1;
@@ -62,7 +62,7 @@ public class CuratorLeaserElectionZookeeper {
 			service.submit(new Runnable() {
 				public void run() {
 					try {
-						new CuratorLeaserElectionZookeeper().schedule(index);
+						new CuratorLeaderElectionZookeeper().schedule(index);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -128,6 +128,7 @@ Thread [1]Do some business work...timestamp [1484621716725] times [8]
 
 > 观察结果之后发现在相同的秒数内只有一个Server执行了打印输出。
 
+
 LeaderLatch
 =======================================
 
@@ -157,7 +158,7 @@ import org.apache.curator.retry.ExponentialBackoffRetry;
  * @author Freud
  *
  */
-public class CuratorLeaserLatchZookeeper {
+public class CuratorLeaderLatchZookeeper {
 
 	private static final int SECOND = 1000;
 
@@ -168,7 +169,7 @@ public class CuratorLeaserLatchZookeeper {
 			service.submit(new Runnable() {
 				public void run() {
 					try {
-						new CuratorLeaserLatchZookeeper().schedule(index);
+						new CuratorLeaderLatchZookeeper().schedule(index);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

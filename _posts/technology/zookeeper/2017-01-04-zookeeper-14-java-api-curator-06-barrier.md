@@ -1,7 +1,7 @@
 ---
 layout:			post
 title:			Zookeeper学习笔记之(十四) - zookeeper java API - curator - 06 - barrier
-date:			2017-01-13 14:26:00 +0800
+date:			2017-01-17 16:48:00 +0800
 categories:		技术文档
 tag:			zookeeper
 ---
@@ -10,40 +10,216 @@ tag:			zookeeper
 {:toc}
 
 
-Curator高级API - Master选举
-=======================================
+Barrier(分布式栅栏)
+=====================
 
-在分布式系统中，经常会碰到这样的场景：对于一个复杂的任务，仅需要从集群中选举出一台进行处理即可。称为'Master选举'问题。借助Zookeeper，可以比较简单的实现Master选举的功能，大体思路如下：
+Distributed systems use barriers to block processing of a set of nodes until a condition is met at which time all the nodes are allowed to proceed.
 
-> 选择一个根节点，例如/master_select,多台机器同事向该节点创建一个子节点/master_select/lock,利用Zookeeper的特性，最终只有一台机器能够创建成功，成功的哪台机器就作为Master。
+分布式栅栏 - 等待一定时间，然后将所有数据一起触发
 
-Curator也是基于这个思路，但是它将节点创建，事件监听和自动选举过程进行了封装，开发人员只需要条用简单的API就可以实现Master选举
+示例代码
+---------------------
+
+{% highlight java %}
+package com.freud.zk.curator;
+
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import org.apache.curator.RetryPolicy;
+import org.apache.curator.framework.CuratorFramework;
+import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.framework.recipes.barriers.DistributedBarrier;
+import org.apache.curator.retry.ExponentialBackoffRetry;
+
+/**
+ * 
+ * Zookeeper - Curator - Barriers - Barrier
+ * 
+ * 分布式栅栏或 - 等待一定时间，然后将所有数据一起触发
+ * 
+ * @author Freud
+ *
+ */
+public class CuratorBarriersBarrierZookeeper {
+
+	private static final int SECOND = 1000;
+	private static final int thread = 5;
+	private static final String path = "/curator_barrier/distribute_barrier";
+	private final static CountDownLatch down = new CountDownLatch(1);
+	private static DistributedBarrier barrier;
+
+	public static void main(String[] args) throws Exception {
+		ExecutorService service = Executors.newFixedThreadPool(thread);
+		for (int i = 0; i < thread; i++) {
+			final int index = i;
+			service.submit(new Runnable() {
+				public void run() {
+					try {
+						new CuratorBarriersBarrierZookeeper().schedule(index);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+		}
+		down.countDown();
+
+		Thread.sleep(2 * SECOND);
+		barrier.removeBarrier();
+
+		Thread.sleep(1 * SECOND);
+		service.shutdownNow();
+	}
+
+	private void schedule(final int index) throws Exception {
+		down.await();
+		CuratorFramework client = this.getStartedClient(index);
+		barrier = new DistributedBarrier(client, path);
+		System.out.println("Thread [" + index + "] on ready!");
+		barrier.setBarrier();
+		barrier.waitOnBarrier();
+		System.out.println("Thread [" + index + "] finised!");
+	}
+
+	private CuratorFramework getStartedClient(final int index) {
+		RetryPolicy rp = new ExponentialBackoffRetry(1 * SECOND, 3);
+		// Fluent风格创建
+		CuratorFramework cfFluent = CuratorFrameworkFactory.builder().connectString("localhost:2181")
+				.sessionTimeoutMs(5 * SECOND).connectionTimeoutMs(3 * SECOND).retryPolicy(rp).build();
+		cfFluent.start();
+		// System.out.println("Thread [" + index + "] Server connected...");
+		return cfFluent;
+	}
+}
+{% endhighlight %}
+
+打印结果
+---------------------
+
+{% highlight text %}
+Thread [2] on ready!
+Thread [0] on ready!
+Thread [3] on ready!
+Thread [4] on ready!
+Thread [1] on ready!
+Thread [4] finised!
+Thread [3] finised!
+Thread [0] finised!
+Thread [2] finised!
+Thread [1] finised!
+{% endhighlight %}
 
 
-Curator高级API - 分布式锁
-=======================================
+Double Barrier
+=====================
 
+Double barriers enable clients to synchronize the beginning and the end of a computation. When enough processes have joined the barrier, processes start their computation and leave the barrier once they have finished.
 
-Curator高级API - 分布式计数器
-=======================================
+双栅栏允许客户端在计算的开始和结束时同步。当足够的进程加入到双栅栏时，进程开始计算， 当计算完成时，离开栅栏。 
 
-Curator高级API - 分布式Barrier
-=======================================
+示例代码
+---------------------
 
+{% highlight java %}
+package com.freud.zk.curator;
 
-Curator工具类
-=======================================
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-ZKPaths
------------------
+import org.apache.curator.RetryPolicy;
+import org.apache.curator.framework.CuratorFramework;
+import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.framework.recipes.barriers.DistributedDoubleBarrier;
+import org.apache.curator.retry.ExponentialBackoffRetry;
 
-EnsurePath
------------------
+/**
+ * 
+ * Zookeeper - Curator - Barriers - Barrier
+ * 
+ * 分布式栅栏 - 等待一定时间，然后将所有数据一起触发
+ * 
+ * @author Freud
+ *
+ */
+public class CuratorBarriersDoubleBarrierZookeeper {
+
+	private static final int SECOND = 1000;
+	private static final int thread = 5;
+	private static final String path = "/curator_barrier/double_barrier";
+	private final static CountDownLatch down = new CountDownLatch(1);
+
+	public static void main(String[] args) throws Exception {
+		ExecutorService service = Executors.newFixedThreadPool(thread);
+		for (int i = 0; i < thread; i++) {
+			final int index = i;
+			service.submit(new Runnable() {
+				public void run() {
+					try {
+						new CuratorBarriersDoubleBarrierZookeeper().schedule(index);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+		}
+		down.countDown();
+		Thread.sleep(10 * SECOND);
+		service.shutdownNow();
+	}
+
+	private void schedule(final int index) throws Exception {
+		down.await();
+		DistributedDoubleBarrier barrier = new DistributedDoubleBarrier(
+				new CuratorBarriersDoubleBarrierZookeeper().getStartedClient(), path, thread);
+		System.out.println("Thread [" + index + "] on ready!");
+		barrier.enter();
+		System.out.println("Thread [" + index + "] Running!");
+		barrier.leave();
+		System.out.println("Thread [" + index + "] finised!");
+	}
+
+	private CuratorFramework getStartedClient() {
+		RetryPolicy rp = new ExponentialBackoffRetry(1 * SECOND, 3);
+		// Fluent风格创建
+		CuratorFramework cfFluent = CuratorFrameworkFactory.builder().connectString("localhost:2181")
+				.sessionTimeoutMs(5 * SECOND).connectionTimeoutMs(3 * SECOND).retryPolicy(rp).build();
+		cfFluent.start();
+		// System.out.println("Server connected...");
+		return cfFluent;
+	}
+}
+{% endhighlight %}
+
+打印结果
+---------------------
+
+{% highlight text %}
+Thread [4] on ready!
+Thread [1] on ready!
+Thread [0] on ready!
+Thread [2] on ready!
+Thread [3] on ready!
+Thread [3] Running!
+Thread [0] Running!
+Thread [4] Running!
+Thread [1] Running!
+Thread [2] Running!
+Thread [2] finised!
+Thread [4] finised!
+Thread [0] finised!
+Thread [3] finised!
+Thread [1] finised!
+{% endhighlight %}
 
 
 参考资料
-=======================================
-
-《从PAXOS到ZOOKEEPER分布式一致性原理与实践》 - 倪超
+=====================
 
 Curator官网 : [http://curator.apache.org/](http://curator.apache.org/)
+
+跟着实例学习ZooKeeper的用法： Barrier [http://ifeve.com/zookeeper-barrier/](http://ifeve.com/zookeeper-barrier/)
+
+《从PAXOS到ZOOKEEPER分布式一致性原理与实践》 - 倪超
