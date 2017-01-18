@@ -9,6 +9,7 @@ tag:			zookeeper
 * content
 {:toc}
 
+
 > Curator官方强烈不建议把Zookeeper当作MQ使用。IMPORTANT - We recommend that you do NOT use ZooKeeper for Queues. Please see [Tech Note 4](https://cwiki.apache.org/confluence/display/CURATOR/TN4) for details.
 
 Distributed Queue(分布式队列)
