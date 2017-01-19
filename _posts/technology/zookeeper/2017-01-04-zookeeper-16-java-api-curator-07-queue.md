@@ -169,7 +169,7 @@ Thread [2] get the queue value : message 19
 {% endhighlight %}
 
 
-Distributed Id Queue
+Distributed Id Queue(分布式ID队列)
 =====================
 
 A version of DistributedQueue that allows IDs to be associated with queue items. Items can then be removed from the queue if needed.
@@ -327,7 +327,7 @@ Thread [1] get the queue value : message 19
 {% endhighlight %}
 
 
-Distributed Priority Queue
+Distributed Priority Queue(分布式优先级队列)
 =====================
 
 An implementation of the Distributed Priority Queue ZK recipe.
@@ -484,7 +484,7 @@ Thread [0] get the queue value : message 0
 {% endhighlight %}
 
 
-Distributed Delay Queue
+Distributed Delay Queue(分布式延迟队列)
 =====================
 
 An implementation of a Distributed Delay Queue.
@@ -649,7 +649,7 @@ Thread [1] get the queue value : message 19
 > 可以观察到消息打印按照500毫秒的间隔依次有序打印出来。
 
 
-Simple Distributed Queue
+Simple Distributed Queue(简单分布式队列)
 =====================
 
 A drop-in replacement for the DistributedQueue that comes with the ZK distribution.
