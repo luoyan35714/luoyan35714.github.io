@@ -27,4 +27,5 @@ permalink: /books/
 + 《数据结构(C语言版)》
 + 《企业应用架构模式》
 + 《Java nio》
++  <del>《从PAXOS到ZOOKEEPER分布式一致性原理与实践.pdf》</del> 
 +  <del>《Maven实战》</del> 
