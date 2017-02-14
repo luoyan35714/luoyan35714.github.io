@@ -52,6 +52,8 @@ header: 打赏
 | nickname                                 | amount | date       | remarks                    |
 | [@白想](https://github.com/baixiaoustc)  | 18.8   | 2016-11-14 | 感谢	                      |
 | [@王强](https://github.com/ecowang)      | 66.66  | 2016-11-21 | 感谢                       |
+| [@齐济](#)							   | 16.66  | 2017-02-14 | 感谢                       |
+| [@齐济](#)							   | 6.66   | 2017-02-14 | 感谢                       |
 
 
 <hr>
