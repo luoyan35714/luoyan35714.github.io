@@ -1,6 +1,6 @@
 ---
 layout:			post
-title:			Zookeeper学习笔记之(五) - zookeeper应用场景
+title:			Zookeeper学习笔记之(五) - zookeeper应用场景 *
 date:			2017-01-08 14:14:00 +0800
 categories:		技术文档
 tag:			zookeeper

@@ -1,6 +1,6 @@
 ---
 layout:			post
-title:			Zookeeper学习笔记之(一) - Zookeeper基本介绍
+title:			Zookeeper学习笔记之(一) - Zookeeper基本介绍 *
 date:			2017-01-04 14:02:00 +0800
 categories:		技术文档
 tag:			zookeeper
