@@ -10,9 +10,6 @@ tag: SWFFileupload
 {:toc}
 
 
-SWFFileupload组件整合Spring Security在火狐浏览器下无法上传文件问题解决方案
-===============================
-
 + 问题描述
 
 项目中上传组件选用的是SWFFileupload,此技术需要使用到Adobe的Flash技术，但是在上传的时候会丢失Session，权限验证框架使用的Spring Security，统一对除登录页面之外的所有页面做了权限拦截。所以如果想上传，必须在构建URL的时候重写URL手动将Session添加上，才能确保有足够的操作权限。
