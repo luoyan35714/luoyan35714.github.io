@@ -1,6 +1,6 @@
 ---
 layout:			post
-title:			Zookeeper学习笔记之(一) - Zookeeper基本介绍 *
+title:			Zookeeper学习笔记之(一) - Zookeeper基本介绍
 date:			2017-01-04 14:02:00 +0800
 categories:		技术文档
 tag:			zookeeper
@@ -91,10 +91,6 @@ Zookeeper提供的命名空间类似于文件系统。每个目录项如 NameSer
 | PERSISTENT_SEQUENTIAL	| 持久化顺序编号目录节点。客户端与zookeeper断开连接后，该节点依旧存在，只是Zookeeper给该节点名称进行顺序编号 |
 | EPHEMERAL 			| 临时目录节点。客户端与zookeeper断开连接后，该节点被删除 |
 | EPHEMERAL_SEQUENTIAL	| 临时顺序编号目录节点。客户端与zookeeper断开连接后，该节点被删除，只是Zookeeper给该节点名称进行顺序编号 |
-
-
-工作原理
-=======================================
 
 
 参考资料
