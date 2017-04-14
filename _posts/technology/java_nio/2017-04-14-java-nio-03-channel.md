@@ -165,9 +165,103 @@ public class RandomAccessFileTest {
 SocketChannel
 =======================================
 
+{% highlight java %}
+package com.freud.nio;
+
+import java.net.InetSocketAddress;
+import java.nio.ByteBuffer;
+import java.nio.channels.SocketChannel;
+
+/**
+ * @author Freud
+ */
+public class SocketChannelTest {
+
+	public static void main(String[] args) throws Exception {
+
+		SocketChannel channel = SocketChannel.open();
+		// 设置是否为阻塞式Socket IO，如果非阻塞，则connet(),read(),write()方法都将为异步
+		// 本示例为阻塞模式，非阻塞模式将在Selector一章介绍
+		channel.configureBlocking(true);
+		channel.connect(new InetSocketAddress(7794));
+
+		System.out.println("Connection building up.");
+		while (!channel.finishConnect()) {
+			System.out.print(".");
+		}
+		System.out.println();
+
+		channel.write(ByteBuffer.wrap("HelloWorld".getBytes()));
+		channel.shutdownOutput();
+		System.out.println("Client Request sended.");
+
+		ByteBuffer response = ByteBuffer.allocate(1);
+		while (channel.read(response) != -1) {
+			response.flip();
+			while (response.hasRemaining()) {
+				System.out.print((char) response.get());
+			}
+			response.clear();
+		}
+		channel.shutdownInput();
+		System.out.println("\r\nFinished read from server.");
+		channel.close();
+	}
+}
+{% endhighlight %}
+
 
 ServerSocketChannel
 =======================================
+
+{% highlight java %}
+package com.freud.nio;
+
+import java.net.InetSocketAddress;
+import java.nio.ByteBuffer;
+import java.nio.channels.ServerSocketChannel;
+import java.nio.channels.SocketChannel;
+import java.text.MessageFormat;
+
+/**
+ * @author Freud
+ */
+public class ServerSocketChannelTest {
+
+	public static void main(String[] args) throws Exception {
+		ServerSocketChannel serverChannel = ServerSocketChannel.open();
+		// 设置是否为阻塞式Socket IO，如果非阻塞，则connet(),read(),write()方法都将为异步
+		// 本示例为阻塞模式，非阻塞模式将在Selector一章介绍
+		serverChannel.configureBlocking(true);
+		serverChannel.bind(new InetSocketAddress(7794));
+
+		int count = 0;
+		while (true) {
+			try {
+				SocketChannel channel = serverChannel.accept();
+				System.out.println(MessageFormat.format(
+						"Connection [{0}] build up.", count++));
+				ByteBuffer buffer = ByteBuffer.allocate(1);
+				while (channel.read(buffer) != -1) {
+					buffer.flip();
+					while (buffer.hasRemaining()) {
+						System.out.print((char) buffer.get());
+					}
+					buffer.clear();
+				}
+				channel.shutdownInput();
+				System.out.println();
+				System.out.println("Finished read from Client.");
+				channel.write(ByteBuffer.wrap("HelloWorldResponse".getBytes()));
+				channel.shutdownOutput();
+				System.out.println("Finished write response to Client.");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}
+{% endhighlight %}
 
 
 DatagramChannel
