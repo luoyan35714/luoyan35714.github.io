@@ -48,14 +48,13 @@ public class ByteBufferTest {
 				"resources/ByteBufferTest.txt"), "rw");
 		FileChannel channel = file.getChannel();
 		ByteBuffer buffer = ByteBuffer.allocate(10);
-		int index = channel.read(buffer);
-		while (index != -1) {
-			buffer.flip();
-			print1(buffer);
-			print2(buffer);
-			buffer.clear();
-			index = channel.read(buffer);
-		}
+		while (channel.read(buffer) != -1) {
+            buffer.flip();
+            print1(buffer);
+            print2(buffer);
+            buffer.clear();
+            buffer.mark();
+        }
 		channel.close();
 		file.close();
 	}
