@@ -183,7 +183,7 @@ public class SocketChannelTest {
 		// 设置是否为阻塞式Socket IO，如果非阻塞，则connet(),read(),write()方法都将为异步
 		// 本示例为阻塞模式，非阻塞模式将在Selector一章介绍
 		channel.configureBlocking(true);
-		channel.connect(new InetSocketAddress(7794));
+		channel.connect(new InetSocketAddress("127.0.0.1", 7794));
 
 		System.out.println("Connection building up.");
 		while (!channel.finishConnect()) {
@@ -191,11 +191,14 @@ public class SocketChannelTest {
 		}
 		System.out.println();
 
+		// 发送Socket请求
 		channel.write(ByteBuffer.wrap("HelloWorld".getBytes()));
 		channel.shutdownOutput();
 		System.out.println("Client Request sended.");
 
-		ByteBuffer response = ByteBuffer.allocate(1);
+		ByteBuffer response = ByteBuffer.allocate(16);
+		System.out.print(">>>");
+		// 解析返回的response
 		while (channel.read(response) != -1) {
 			response.flip();
 			while (response.hasRemaining()) {
@@ -236,12 +239,16 @@ public class ServerSocketChannelTest {
 		serverChannel.bind(new InetSocketAddress(7794));
 
 		int count = 0;
+		// 循环接收所有Client的请求
 		while (true) {
 			try {
+				// 获取到Client的请求
 				SocketChannel channel = serverChannel.accept();
 				System.out.println(MessageFormat.format(
 						"Connection [{0}] build up.", count++));
-				ByteBuffer buffer = ByteBuffer.allocate(1);
+				ByteBuffer buffer = ByteBuffer.allocate(16);
+				System.out.print(">>>");
+				// 解析请求内容
 				while (channel.read(buffer) != -1) {
 					buffer.flip();
 					while (buffer.hasRemaining()) {
@@ -252,6 +259,7 @@ public class ServerSocketChannelTest {
 				channel.shutdownInput();
 				System.out.println();
 				System.out.println("Finished read from Client.");
+				// 回写Response到Client
 				channel.write(ByteBuffer.wrap("HelloWorldResponse".getBytes()));
 				channel.shutdownOutput();
 				System.out.println("Finished write response to Client.");
@@ -267,9 +275,98 @@ public class ServerSocketChannelTest {
 DatagramChannel
 =======================================
 
+DatagramChannelServerTest
+---------------
 
-通道之间的数据传输 
-=======================================
+{% highlight java %}
+package com.freud.nio;
+
+import java.net.InetSocketAddress;
+import java.net.SocketAddress;
+import java.nio.ByteBuffer;
+import java.nio.channels.DatagramChannel;
+import java.text.MessageFormat;
+
+/**
+ * @author Freud
+ */
+public class DatagramChannelServerTest {
+
+	public static void main(String[] args) throws Exception {
+		// 设置UDP Server相关信息,并启动Server
+		DatagramChannel channel = DatagramChannel.open();
+		channel.configureBlocking(true);
+		channel.bind(new InetSocketAddress(7795));
+
+		while (true) {
+			ByteBuffer buffer = ByteBuffer.allocate(128);
+			// 接收UDP消息
+			SocketAddress address = channel.receive(buffer);
+			buffer.flip();
+			// 解析接收到的UDP消息
+			byte[] bytes = new byte[buffer.limit()];
+			int i = 0;
+			while (buffer.hasRemaining()) {
+				bytes[i] = buffer.get();
+				i++;
+			}
+			System.out
+					.println(MessageFormat.format(
+							"From client[{0}] value [{1}]", address,
+							new String(bytes)));
+			// 向发送UDP的地址发送Response消息。模拟TCP的有链接模式。
+			channel.send(ByteBuffer.wrap("Hello I am response.".getBytes()),
+					address);
+			System.out.println("Finished send the response.");
+		}
+	}
+}
+{% endhighlight %}
+
+DatagramChannelClientTest
+---------------
+
+{% highlight java %}
+package com.freud.nio;
+
+import java.net.InetSocketAddress;
+import java.nio.ByteBuffer;
+import java.nio.channels.DatagramChannel;
+import java.text.MessageFormat;
+
+/**
+ * @author Freud
+ */
+public class DatagramChannelClientTest {
+
+	public static void main(String[] args) throws Exception {
+		// 建立UDP连接
+		DatagramChannel channel = DatagramChannel.open();
+		channel.configureBlocking(true);
+		channel.connect(new InetSocketAddress("localhost", 7795));
+
+		// 发送UDP数据
+		channel.write(ByteBuffer.wrap("Hi I am request................."
+				.getBytes()));
+		System.out.println("Finished send the request.");
+
+		// 接收UDP数据
+		ByteBuffer buffer = ByteBuffer.allocate(1024);
+		channel.read(buffer);
+		buffer.flip();
+		// 解析接收到的UDP数据
+		byte[] bytes = new byte[buffer.limit()];
+		int i = 0;
+		while (buffer.hasRemaining()) {
+			bytes[i] = buffer.get();
+			i++;
+		}
+
+		System.out.println(MessageFormat.format(
+				"Received the server side response [{0}]", new String(bytes)));
+	}
+}
+{% endhighlight %}
 
 
 参考资料
