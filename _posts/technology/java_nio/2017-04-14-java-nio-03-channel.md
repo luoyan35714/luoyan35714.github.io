@@ -295,6 +295,8 @@ public class DatagramChannelServerTest {
 	public static void main(String[] args) throws Exception {
 		// 设置UDP Server相关信息,并启动Server
 		DatagramChannel channel = DatagramChannel.open();
+		// 设置是否为阻塞式IO，如果非阻塞，则connet(),receive(),read(),write()方法都将为异步
+		// 本示例为阻塞模式，非阻塞模式将在Selector一章介绍
 		channel.configureBlocking(true);
 		channel.bind(new InetSocketAddress(7795));
 
@@ -342,6 +344,8 @@ public class DatagramChannelClientTest {
 	public static void main(String[] args) throws Exception {
 		// 建立UDP连接
 		DatagramChannel channel = DatagramChannel.open();
+		// 设置是否为阻塞式IO，如果非阻塞，则connet(),receive(),read(),write()方法都将为异步
+		// 本示例为阻塞模式，非阻塞模式将在Selector一章介绍
 		channel.configureBlocking(true);
 		channel.connect(new InetSocketAddress("localhost", 7795));
 

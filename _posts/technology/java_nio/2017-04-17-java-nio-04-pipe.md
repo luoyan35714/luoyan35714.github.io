@@ -15,7 +15,7 @@ Pipe
 概述
 --------------------
 
-Java NIO Pipe是2个线程之间的单向数据连接。在多线程编程中除了ThreadLocal, wait(), notify(), notifyAll()等，增加了一种新的线程间通讯方式。Pipe有一个source通道和一个sink通道。数据会被写到sink通道，从source通道读取。如下图示例，数据通过Thread A 写入 sink通道，然后通过Thread B 读取source通道获得数据。
+Java NIO Pipe是2个线程之间的单向数据连接。在多线程编程中除了wait(), notify(), notifyAll()等，增加了一种新的线程间通讯方式。Pipe有一个source通道和一个sink通道。数据会被写到sink通道，从source通道读取。如下图示例，数据通过Thread A 写入 sink通道，然后通过Thread B 读取source通道获得数据。
 
 ![/images/blog/java-nio/04-pipe/01-pipe.bmp](/images/blog/java-nio/04-pipe/01-pipe.bmp)
 
