@@ -25,36 +25,10 @@ Axis 2.0的入门
 算法入门和分布式缓存入门
 [http://www.cnblogs.com/huangxincheng/archive/2011/11/14/2249046.html](http://www.cnblogs.com/huangxincheng/archive/2011/11/14/2249046.html)
 
-[通向架构师的道路]
-=====================
-说实话没仔细看过这些博客，纯粹被标题吸引
-[http://blog.csdn.net/lifetragedy](http://blog.csdn.net/lifetragedy)
-http://blog.csdn.net/lifetragedy
-
 [冯立彬的博客]
 =====================
 话说这哥们是个大牛，以前看过一些文章。
 [http://blog.csdn.net/fenglibing](http://blog.csdn.net/fenglibing)
-
-[rowen的专栏]
-=====================
-数据挖掘的基础入门
-[http://blog.csdn.net/luowen3405/article/details/6331763](http://blog.csdn.net/luowen3405/article/details/6331763)
-
-[淘宝团队的博客]
-=====================
-淘宝团队的积累
-[http://www.searchtb.com/](http://www.searchtb.com/)
-
-[axman]
-=====================
-多线程相关写的比较好
-[http://blog.csdn.net/axman/article/category/894625](http://blog.csdn.net/axman/article/category/894625)
-
-[旺仔专栏]
-=====================
-Windows下FFmpeg快速入门
-[http://blog.csdn.net/hemingwang0902/article/details/4382429](http://blog.csdn.net/hemingwang0902/article/details/4382429)
 
 [雷霄骅]
 =====================
