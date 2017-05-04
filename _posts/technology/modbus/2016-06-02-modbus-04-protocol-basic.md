@@ -12,17 +12,178 @@ tag : Modbus
 
 RTU协议报文格式
 ================================
-![/images/blog/modbus/modbus-04-protocol-basic/01.png](/images/blog/modbus/modbus-04-protocol-basic/01.png)
+
+<div class="container">
+    <div class="row col-md-6 col-sm-6">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th colspan="4" text-align="center">ADU</th>
+                </tr>
+                <tr>
+                    <th scope="row"></th>
+                    <th></th>
+                    <th colspan="2">PDU</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>序号</th>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <th>长度(byte)</th>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>*</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <th>构成</th>
+                    <td>Additional address</td>
+                    <td>Function code</td>
+                    <td>Data</td>
+                    <td>CRC Error check</td>
+                </tr>
+                <tr>
+                    <th>中文</th>
+                    <td>单元标志</td>
+                    <td>功能码</td>
+                    <td>数据</td>
+                    <td>CRC校验位</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 
 TCP/IP协议报文格式
 ================================
-![/images/blog/modbus/modbus-04-protocol-basic/02.png](/images/blog/modbus/modbus-04-protocol-basic/02.png)
+
+<div class="container">
+    <div class="row col-md-6 col-sm-6">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th colspan="6" text-align="center">ADU</th>
+                </tr>
+                <tr>
+                    <th scope="row"></th>
+                    <th colspan="4">MBAP</th>
+                    <th colspan="2">PDU</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>序号</th>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <th>长度(byte)</th>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>*</td>
+                </tr>
+                <tr>
+                    <th>构成</th>
+                    <td>Transaction Identifier</td>
+                    <td>Protocol Identifier</td>
+                    <td>Length</td>
+                    <td>Additional address</td>
+                    <td>Function Code</td>
+                    <td>Data</td>
+                </tr>
+                <tr>
+                    <th>中文</th>
+                    <td>传输标志</td>
+                    <td>协议标志</td>
+                    <td>长度</td>
+                    <td>单元标志</td>
+                    <td>功能码</td>
+                    <td>数据</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 
 ASCII协议报文格式
 ================================
-![/images/blog/modbus/modbus-04-protocol-basic/03.png](/images/blog/modbus/modbus-04-protocol-basic/03.png)
+
+<div class="container">
+    <div class="row col-md-6 col-sm-6">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th colspan="6" text-align="center">ADU</th>
+                </tr>
+                <tr>
+                    <th scope="row"></th>
+                    <th></th>
+                    <th></th>
+                    <th colspan="2">PDU</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>序号</th>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <th>长度(byte)</th>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>*</td>
+                    <td>2</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <th>构成</th>
+                    <td>STX</td>
+                    <td>Additional address</td>
+                    <td>Function Code</td>
+                    <td>Data</td>
+                    <td>LRC</td>
+                    <td>End</td>
+                </tr>
+                <tr>
+                    <th>中文</th>
+                    <td>起始字符(3AH)</td>
+                    <td>单元标志</td>
+                    <td>功能码</td>
+                    <td>数据</td>
+                    <td>LRC校验</td>
+                    <td>结束字符, 高位=CR(0DH)低位=LF(0AH)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 
 参考资料
