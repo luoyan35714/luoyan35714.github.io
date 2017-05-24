@@ -26,6 +26,8 @@ permalink: /books/
 + 《阿弥陀佛么么哒》
 + 《数据结构(C语言版)》
 + 《企业应用架构模式》
++  <del>《人类简史 从动物到上帝》</del> 
++  <del>《JavaEE开发的颠覆者 Spring Boot实战》</del> 
 +  <del>《Java NIO》</del> 
 +  <del>《从PAXOS到ZOOKEEPER分布式一致性原理与实践.pdf》</del> 
 +  <del>《Maven实战》</del> 
