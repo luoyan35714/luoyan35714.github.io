@@ -13,7 +13,6 @@ permalink: /books/
 我的书单
 -----------------------------------------------------------------
 
-+ 《Think in java 4th》
 + 《鸟哥的Linux私房菜基础学习篇-第三版》
 + 《重构》
 + 《Getting real》
@@ -23,11 +22,16 @@ permalink: /books/
 + 《算法(第四版)》
 + 《HTTP协议详解》
 + 《TCP/IP协议详解-卷一》
-+ 《阿弥陀佛么么哒》
 + 《数据结构(C语言版)》
 + 《企业应用架构模式》
-+  <del>《人类简史 从动物到上帝》</del> 
-+  <del>《JavaEE开发的颠覆者 Spring Boot实战》</del> 
-+  <del>《Java NIO》</del> 
-+  <del>《从PAXOS到ZOOKEEPER分布式一致性原理与实践.pdf》</del> 
-+  <del>《Maven实战》</del> 
++ 《人类简史 - 从动物到上帝》
++ 《亿级流量网站架构核心技术——跟开涛学搭建高可用高并发系统》
++ 《Spring Cloud微服务实战》
++ 《大型网站技术架构：核心原理与案例分析》
++ 《淘宝技术这十年》
++  <del>《JavaEE开发的颠覆者 Spring Boot实战》</del>  - 2017
++  <del>《Java NIO》</del>  - 2017
++  <del>《从PAXOS到ZOOKEEPER分布式一致性原理与实践.pdf》 - 2017</del>  - 2017
++  <del>《Maven实战》</del>  - 2016
++  <del>《阿弥陀佛么么哒》</del> - 2016
++  <del>《Think in java 4th》</del> - 2016
