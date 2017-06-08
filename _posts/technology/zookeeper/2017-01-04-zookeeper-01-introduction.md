@@ -69,16 +69,24 @@ Watcher(事件监听器)，是Zookeeper中的一个很重要的特性。Zookeepe
 ACL
 ----------------------------------
 
-Zookeeper采用ACL(Access Control Lists)策略来进行权限控制，类似于Unix文件系统的权限控制。
+Zookeeper采用ACL(Access Control Lists)策略来进行权限控制，权限被分为五类：
 
-+ CREATE：创建子节点的权限
-+ READ：获取节点数据和子节点列表的权限
-+ WRITE：更新节点数据的权限
-+ DELETE：删除子节点的权限
-+ ADMIN：设置节点ACL权限
+| world  | 有个单一的ID，anyone，表示任何人。 |
+| auth   | 不使用任何ID，表示任何通过验证的用户（验证是指创建该znode的权限）。 |
+| digest | 用 username:password 字符串来产生一个MD5串，然后该串被用来作为ACL ID。认证是通过明文发送username:password 来进行的，当用在ACL时，表达式为username:base64 ，base64是password的SHA1摘要的编码。 |
+| ip     | 使用客户端的主机IP作为ACL ID 。这个ACL表达式的格式为addr/bits ，此时addr中的有效位与客户端addr中的有效位进行比对。 |
+
+具体的操作权限类似于Unix文件系统的权限控制，分为如下几种
+
++ CREATE：创建子节点的权限，缩写'c'
++ READ：获取节点数据和子节点列表的权限，缩写'r'
++ WRITE：更新节点数据的权限，缩写'w'
++ DELETE：删除子节点的权限，缩写'd'
++ ADMIN：设置节点ACL权限，缩写'a'
 
 > 尤其需要注意的是，CREATE和DELETE这两种权限都是针对子节点的权限控制。
 
+关于ACL权限后面章节会有详细讲解和使用。
 
 数据模型
 =======================================
@@ -91,6 +99,19 @@ Zookeeper提供的命名空间类似于文件系统。每个目录项如 NameSer
 | PERSISTENT_SEQUENTIAL	| 持久化顺序编号目录节点。客户端与zookeeper断开连接后，该节点依旧存在，只是Zookeeper给该节点名称进行顺序编号 |
 | EPHEMERAL 			| 临时目录节点。客户端与zookeeper断开连接后，该节点被删除 |
 | EPHEMERAL_SEQUENTIAL	| 临时顺序编号目录节点。客户端与zookeeper断开连接后，该节点被删除，只是Zookeeper给该节点名称进行顺序编号 |
+
+
+应用场景
+=======================================
+
++ 数据发布/订阅
++ 负载均衡
++ 命名服务
++ 分布式协调/通知
++ 集群管理
++ Master选举
++ 分布式锁
++ 分布式队列
 
 
 参考资料

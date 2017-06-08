@@ -310,13 +310,56 @@ quit
 
 > quit
 
+setAcl path acl
+---------------------------------------
+
+为某个节点设置ACL权限。
+
+> setAcl path acl
+
+{% highlight bash %}
+[zk: localhost:2181(CONNECTED) 1] setAcl /hifreud world:anyone:cdwra
+cZxid = 0x5
+ctime = Thu Jun 08 09:56:28 CST 2017
+mZxid = 0x5
+mtime = Thu Jun 08 09:56:28 CST 2017
+pZxid = 0x5
+cversion = 0
+dataVersion = 0
+aclVersion = 1
+ephemeralOwner = 0x0
+dataLength = 7
+numChildren = 0
+{% endhighlight %}
+
+getAcl path
+---------------------------------------
+
+查看某个节点的ACL权限。
+
+> getAcl path
+
+{% highlight bash %}
+[zk: localhost:2181(CONNECTED) 2] getAcl /hifreud
+'world,'anyone
+: cdrwa
+{% endhighlight %}
+
+addauth scheme auth
+---------------------------------------
+
+添加认证信息，类似于登录。如果某个节点需要认证后才能查看，则需要此命令。
+
+> addauth scheme auth
+
+{% highlight bash %}
+addauth digest admin:admin
+{% endhighlight %}
+
 不常用
 ---------------------------------------
 
 + rmr path
-+ getAcl path
-+ setAcl path acl
-+ addauth scheme auth
 + ls2 path [watch]
 + listquota path
 + sync path
