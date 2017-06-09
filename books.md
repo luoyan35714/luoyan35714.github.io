@@ -24,14 +24,14 @@ permalink: /books/
 + 《TCP/IP协议详解-卷一》
 + 《数据结构(C语言版)》
 + 《企业应用架构模式》
-+ 《人类简史 - 从动物到上帝》
 + 《亿级流量网站架构核心技术——跟开涛学搭建高可用高并发系统》
 + 《Spring Cloud微服务实战》
 + 《大型网站技术架构：核心原理与案例分析》
 + 《淘宝技术这十年》
-+  <del>《JavaEE开发的颠覆者 Spring Boot实战》</del>  - 2017
-+  <del>《Java NIO》</del>  - 2017
-+  <del>《从PAXOS到ZOOKEEPER分布式一致性原理与实践.pdf》 - 2017</del>  - 2017
-+  <del>《Maven实战》</del>  - 2016
-+  <del>《阿弥陀佛么么哒》</del> - 2016
-+  <del>《Think in java 4th》</del> - 2016
++ 《人类简史 - 从动物到上帝》
++  <del>《JavaEE开发的颠覆者 Spring Boot实战》</del>  - 2017.05
++  <del>《Java NIO》</del>  - 2017.03
++  <del>《从PAXOS到ZOOKEEPER分布式一致性原理与实践.pdf》</del>  - 2017.01
++  <del>《Maven实战》</del>  - 2016.12
++  <del>《阿弥陀佛么么哒》</del> - 2016.05
++  <del>《Think in java 4th》</del> - 2016.08
