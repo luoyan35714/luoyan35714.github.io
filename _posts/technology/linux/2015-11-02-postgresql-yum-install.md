@@ -16,21 +16,27 @@ Yum安装
 * 安装Yum源
 
 {% highlight bash %}
-[root@localhost ~]# yum install http://yum.postgresql.org/9.4/redhat/rhel-6-x86_64/pgdg-redhat94-9.4-1.noarch.rpm 
+[root@localhost ~]# yum install https://download.postgresql.org/pub/repos/yum/9.3/redhat/rhel-6-x86_64/pgdg-redhat93-9.3-3.noarch.rpm
+{% endhighlight %}
+
+* Yum查询下是否有可用的安装包
+
+{% highlight bash %}
+[root@localhost ~]# yum search postgresql93
 {% endhighlight %}
 
 * Yum安装
 
 {% highlight bash %}
-[root@localhost ~]# yum install postgresql94-server postgresql94-contrib
+[root@localhost ~]# yum install postgresql93-server postgresql93-contrib
 {% endhighlight %}
 
 初始化数据库，并启动数据库
 ===============
 	
 {% highlight bash %}
-[root@localhost ~]# service postgresql-9.4 initdb
-[root@localhost ~]# service postgresql-9.4 start
+[root@localhost ~]# service postgresql-9.3 initdb
+[root@localhost ~]# service postgresql-9.3 start
 {% endhighlight %}
 
 
@@ -38,7 +44,7 @@ Yum安装
 ===============
 	
 {% highlight bash %}
-[root@localhost ~]# chkconfig postgresql-9.4 on 
+[root@localhost ~]# chkconfig postgresql-9.3 on 
 [root@localhost ~]# chkconfig --list|grep postgres
 {% endhighlight %}
 
@@ -70,17 +76,27 @@ Yum安装
 * 修改postgresql.conf 文件，如果想让PostgreSQL 监听整个网络的话，将listen_addresses 前的#去掉，并将 listen_addresses = 'localhost' 改成 listen_addresses = '*'
 
 {% highlight bash %}
-[root@localhost ~]# vi /var/lib/pgsql/9.2/data/postgresql.conf
+[root@localhost ~]# vi /var/lib/pgsql/9.3/data/postgresql.conf
 {% endhighlight %}
 
 * 修改客户端认证配置文件pg_hba.conf，在IPV4下面添加一条记录"host  all    all    10.1.5.0/24    md5"，其中10.1.5.0代表网段'10.1.5.*', 24是子网掩码，代表10.1.5.0-10.1.5.255, md5代表使用md5加密
 
 {% highlight bash %}
-[root@localhost ~]# vi /var/lib/pgsql/9.2/data/pg_hba.conf
+[root@localhost ~]# vi /var/lib/pgsql/9.3/data/pg_hba.conf
+#信任10.1.5.*网段所有IP
+host    all             all             10.1.5.0/24         md5
+#信任所有IP
+host    all             all             0.0.0.0/0           trust 
 {% endhighlight %}
 
 
-* <b>远程连接测试，默认端口是5432 - 成功
+* 重启postgresql
+	
+{% highlight bash %}
+[root@localhost ~]# service postgresql-9.3 restart
+{% endhighlight %}
+
+* 远程连接测试，默认端口是5432 - 成功
 
 
 <br />
