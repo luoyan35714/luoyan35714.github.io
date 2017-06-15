@@ -13,7 +13,7 @@ tag:			zookeeper
 简介
 ==================
 
-Zookeeper_admin [![Build Status](https://travis-ci.org/luoyan35714/zookeeper_admin.svg?branch=master)](https://travis-ci.org/luoyan35714/zookeeper_admin) 是一款基于Java EE的Zookeeper后台管理系统。实现了对Zookeeper实例的统一管理。
+[Zookeeper_admin](https://github.com/luoyan35714/zookeeper_admin) [![Build Status](https://travis-ci.org/luoyan35714/zookeeper_admin.svg?branch=master)](https://travis-ci.org/luoyan35714/zookeeper_admin) 是一款基于Java EE的Zookeeper后台管理系统。实现了对Zookeeper实例的统一管理。
 
 前台使用了`Bootstrap`，基于`gentelella`主题实现。后台使用了`Spring MVC`，`Mybatis`，`Curator`等技术。Jar包管理通过`Maven`来实现。数据库选用了`Mysql`。
 
