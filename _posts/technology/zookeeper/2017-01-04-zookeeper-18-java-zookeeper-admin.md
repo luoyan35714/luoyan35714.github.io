@@ -1,6 +1,6 @@
 ---
 layout:			post
-title:			Zookeeper学习笔记之(十七) - 我的开源zookeeper_admin *
+title:			Zookeeper学习笔记之(十七) - 我的开源zookeeper_admin
 date:			2017-01-19 10:20:00 +0800
 categories:		技术文档
 tag:			zookeeper
@@ -88,17 +88,67 @@ git clone https://github.com/luoyan35714/zookeeper_admin.git
 基本操作
 ------------------
 
+![/images/blog/zookeeper/17-zookeeper-admin/08.png](/images/blog/zookeeper/17-zookeeper-admin/08.png)
+
++ `Expand Node` : 选中节点树中的某个节点，点击Exapnse Node会展开下一级的节点
++ `Collapse Node` : 选中节点树中的某个节点，点击Collapse Node会收起下一级的节点
++ `Toggle Node` : 选中节点树中的某个节点，点击Toggle Node会在展开和收起下一级节点之间切换
++ `Expand All` : 点击Expand All会展开所有节点
++ `Collapse All` : 点击Collapse All会收起所有节点
+
+查看操作
+------------------
+
+![/images/blog/zookeeper/17-zookeeper-admin/09.png](/images/blog/zookeeper/17-zookeeper-admin/09.png)
+
++ `左键选中节点` : 在节点树上左键点击节点，会在右侧出现节点详细信息
++ `Detail` : 选中某节点之后，点击Detail，会在右侧出现节点详细信息
+
+![/images/blog/zookeeper/17-zookeeper-admin/10.png](/images/blog/zookeeper/17-zookeeper-admin/10.png)
+
 修改操作
 ------------------
+
+![/images/blog/zookeeper/17-zookeeper-admin/11.png](/images/blog/zookeeper/17-zookeeper-admin/11.png)
+
++ `Add Child Node` : 选中某节点，添加其下层子节点
++ `Add Subling Node` : 选中某节点，添加其兄弟节点
++ `Edit Node` : 选中某节点，修改节点内容，但不能修改节点名称
++ `Delete Node` : 选中某节点，删除，可以选中父级节点，递归删除。
+
+![/images/blog/zookeeper/17-zookeeper-admin/12.png](/images/blog/zookeeper/17-zookeeper-admin/12.png)
 
 权限管理
 ------------------
 
-查看ACL管理
+点击节点树右上角的`设置`，选择`设置权限信息`。
+![/images/blog/zookeeper/17-zookeeper-admin/13.png](/images/blog/zookeeper/17-zookeeper-admin/13.png)
+
+进入权限列表，点击`ADD`, 添加相应的权限。
+
+![/images/blog/zookeeper/17-zookeeper-admin/14.png](/images/blog/zookeeper/17-zookeeper-admin/14.png)
+
+权限列表如下，还可以点击`UPDATE`,`DELET`进行对应的操作。
+
+![/images/blog/zookeeper/17-zookeeper-admin/15.png](/images/blog/zookeeper/17-zookeeper-admin/15.png)
+
+查看ACL
 ------------------
 
-ACL管理
+![/images/blog/zookeeper/17-zookeeper-admin/16.png](/images/blog/zookeeper/17-zookeeper-admin/16.png)
+
++ `ACL` : 选中节点，点击`ACL`,获取ACL相关信息。
+
+![/images/blog/zookeeper/17-zookeeper-admin/17.png](/images/blog/zookeeper/17-zookeeper-admin/17.png)
+
+设置ACL
 ------------------
+
+![/images/blog/zookeeper/17-zookeeper-admin/18.png](/images/blog/zookeeper/17-zookeeper-admin/18.png)
+
++ `SET ACL` : 选中节点，点击`SET ACL`,设置相关ACL信息，其中ACL的组成为`scheme:auth:perms`组成，如果想设置多个ACL可以用`;`分隔开。举例如`world:anyone:cdrwa`或`digest:admin:admin:cdrwa;digest:admin:test:cdrwa`,具体ACL相关信息可以参见[Zookeeper学习笔记之(五) - zookeeper ACL](http://www.hifreud.com/2017/01/08/zookeeper-05-acl/)
+
+![/images/blog/zookeeper/17-zookeeper-admin/19.png](/images/blog/zookeeper/17-zookeeper-admin/19.png)
 
 <br />
 <br />
