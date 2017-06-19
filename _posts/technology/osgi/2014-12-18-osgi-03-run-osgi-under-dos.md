@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  JAVA OSGi教程(三)-Terminal下运行OSGI
+title:  JAVA OSGi学习笔记(三)-Terminal下运行OSGI
 date:   2014-12-18 15:51:01 +0800
 categories: 技术文档
 tag: OSGi

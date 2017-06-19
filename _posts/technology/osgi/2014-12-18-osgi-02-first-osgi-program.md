@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  JAVA OSGi教程(二)-第一个OSGI程序
+title:  JAVA OSGi学习笔记(二)-第一个OSGI程序
 date:   2014-12-18 15:43:00 +0800
 categories: 技术文档
 tag: OSGi

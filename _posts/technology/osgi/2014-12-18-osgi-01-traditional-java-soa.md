@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  JAVA OSGi教程(一)-传统的java模块化
+title:  JAVA OSGi学习笔记(一)-传统的java模块化
 date:   2014-12-18 13:31:01 +0800
 categories: 技术文档
 tag: OSGi

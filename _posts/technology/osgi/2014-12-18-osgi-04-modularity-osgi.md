@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  JAVA OSGi教程(四)-模块化的OSGI
+title:  JAVA OSGi学习笔记(四)-模块化的OSGI
 date:   2014-12-18 22:50:01 +0800
 categories: 技术文档
 tag: OSGi

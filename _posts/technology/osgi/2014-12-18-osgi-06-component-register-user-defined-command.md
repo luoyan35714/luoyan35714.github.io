@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  JAVA OSGi教程(六)-component注册自定义控制台命令实现
+title:  JAVA OSGi学习笔记(六)-component注册自定义控制台命令实现
 date:   2014-12-20 23:20:01 +0800
 categories: 技术文档
 tag: OSGi

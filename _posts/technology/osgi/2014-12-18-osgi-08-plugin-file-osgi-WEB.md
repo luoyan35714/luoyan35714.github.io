@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  JAVA OSGi教程(八)-基于plugin.xml文件配置的OSGi实现WEB项目
+title:  JAVA OSGi学习笔记(八)-基于plugin.xml文件配置的OSGi实现WEB项目
 date:   2014-12-21 00:13:01 +0800
 categories: 技术文档
 tag: OSGi
