@@ -68,7 +68,7 @@ src/main/resources/application.properties
 ------------------
 
 {% highlight text %}
-spring.application.name=test-02
+spring.application.name=test-03
 server.port= 9091
 {% endhighlight %}
 
@@ -143,7 +143,7 @@ banner.txt文件
 ![/images/blog/spring-boot/04-banner/07-console-output.png](/images/blog/spring-boot/04-banner/07-console-output.png)
 
 
-其他
+其他方式
 ==================
 
 以上的例子中使用的是默认位置的banner.txt文件，当然我们也可以指定banner文件的位置，通过以下几种方式修改Banner。并且banner的文件类型可以是txt，或者banner.gif,
@@ -156,7 +156,7 @@ application.properties
 banner.location=classpath:/path/banner.txt
 {% endhighlight %}
 
-App设置-普通API
+代码设置--普通API
 ------------------
 
 {% highlight java %}
@@ -166,12 +166,47 @@ app.setBanner(banner);
 app.run(args);
 {% endhighlight %}
 
-App设置-Fluent Builder API
+代码设置--Fluent Builder API
 ------------------
 
 {% highlight java %}
-new SpringApplicationBuilder().sources(Parent.class).child(App.class)
+new SpringApplicationBuilder()
+	.sources(Parent.class)
+	.child(App.class)
 	.banner(new ResourceBanner(new FileSystemResource(new File("src/main/resources/path/banner.txt"))))
+	.run(args);
+{% endhighlight %}
+
+
+关闭banner显示
+==================
+
+当然，有时候我们不想要banner显示，我们可以通过配置，将banner的显示关掉。
+
+application.properties
+------------------
+
+{% highlight text %}
+spring.main.banner-mode=off
+{% endhighlight %}
+
+代码设置--普通API
+------------------
+
+{% highlight java %}
+SpringApplication app = new SpringApplication(App.class);
+		app.setBannerMode(Banner.Mode.OFF);
+		app.run(args);
+{% endhighlight %}
+
+代码设置--Fluent Builder API
+------------------
+
+{% highlight java %}
+new SpringApplicationBuilder()
+	.sources(Parent.class)
+	.child(App.class)
+	.bannerMode(Banner.Mode.OFF)
 	.run(args);
 {% endhighlight %}
 
