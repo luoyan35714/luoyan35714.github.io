@@ -171,8 +171,7 @@ app.run(args);
 
 {% highlight java %}
 new SpringApplicationBuilder()
-	.sources(Parent.class)
-	.child(App.class)
+	.sources(App.class)
 	.banner(new ResourceBanner(new FileSystemResource(new File("src/main/resources/path/banner.txt"))))
 	.run(args);
 {% endhighlight %}
@@ -204,8 +203,7 @@ SpringApplication app = new SpringApplication(App.class);
 
 {% highlight java %}
 new SpringApplicationBuilder()
-	.sources(Parent.class)
-	.child(App.class)
+	.sources(App.class)
 	.bannerMode(Banner.Mode.OFF)
 	.run(args);
 {% endhighlight %}
