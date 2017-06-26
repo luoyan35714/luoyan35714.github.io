@@ -303,12 +303,14 @@ application.yml
 server:
   port: 9091
 
+name: Freud, Kang
+
 configuration:
-  name: Freud, Kang(configuration)
+  name: ${name} (configuration)
   age: 29
 
 internal:
-  name: Freud, Kang(Internal)
+  name: ${name} (Internal)
   age: 30
   
 # 随机数不可以以radom开头，否则将产生都是随机字符串。
