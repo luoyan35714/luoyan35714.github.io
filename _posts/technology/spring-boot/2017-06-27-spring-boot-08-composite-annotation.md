@@ -46,7 +46,7 @@ public @interface RestControllerShadow {
 }
 {% endhighlight %}
 
-传递属性给元注解元注解
+传递属性给元注解
 ------------------
 
 而当我们使用的元注解需要配置属性的时候，可以通过如下指定：
