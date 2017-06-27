@@ -194,8 +194,8 @@ spring.main.banner-mode=off
 
 {% highlight java %}
 SpringApplication app = new SpringApplication(App.class);
-		app.setBannerMode(Banner.Mode.OFF);
-		app.run(args);
+app.setBannerMode(Banner.Mode.OFF);
+app.run(args);
 {% endhighlight %}
 
 代码设置--Fluent Builder API
