@@ -300,6 +300,9 @@ application.yml
 ------------------
 
 {% highlight yml %}
+spring:
+  application:
+    name: test-05
 server:
   port: 9091
 
