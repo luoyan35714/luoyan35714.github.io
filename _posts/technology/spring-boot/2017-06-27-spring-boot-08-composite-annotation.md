@@ -243,10 +243,15 @@ public @interface RestControllerShadow {
 }
 {% endhighlight %}
 
+项目结构
+------------------
+
+![/images/blog/spring-boot/08-composite-annotation/02-project-hierarchy.png](/images/blog/spring-boot/08-composite-annotation/02-project-hierarchy.png)
+
 运行结果
 ------------------
 
-![/images/blog/spring-boot/08-composite-annotation/02-explorer-show.png](/images/blog/spring-boot/08-composite-annotation/02-explorer-show.png)
+![/images/blog/spring-boot/08-composite-annotation/03-explorer-show.png](/images/blog/spring-boot/08-composite-annotation/03-explorer-show.png)
 
 
 参考资料

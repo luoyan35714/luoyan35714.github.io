@@ -206,10 +206,15 @@ public class MyThing {
 }
 {% endhighlight %}
 
+项目结构
+------------------
+
+![/images/blog/spring-boot/09-web-service-json-rest/03-project-hierarchy.png](/images/blog/spring-boot/09-web-service-json-rest/03-project-hierarchy.png)
+
 运行结果
 ------------------
 
-![/images/blog/spring-boot/09-web-service-json-rest/03-explorer-result.png](/images/blog/spring-boot/09-web-service-json-rest/03-explorer-result.png)
+![/images/blog/spring-boot/09-web-service-json-rest/04-explorer-result.png](/images/blog/spring-boot/09-web-service-json-rest/04-explorer-result.png)
 
 
 参考资料

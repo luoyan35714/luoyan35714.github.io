@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Spring Boot学习笔记(十) - 构建web服务 - XML REST
-date:   2017-06-27 17:30:00 +0800
+date:   2017-06-27 18:00:00 +0800
 categories: Spring Boot
 tag: 教程
 ---
@@ -31,12 +31,10 @@ XML REST服务
 </dependency>
 {% endhighlight %}
 
-如果Jackson的XML扩展不可用，Spring Boot将使用JAXB（JDK默认提供），不过 MyThing 需要注解 `@JacksonXmlRootElement` ：
+如果Jackson的XML扩展不可用，Spring Boot将使用JAXB（JDK默认提供），不过 MyThing 需要注解 `@XmlRootElement` 或 `@JacksonXmlRootElement` ：
 
 {% highlight java %}
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-
-@JacksonXmlRootElement
+@XmlRootElement
 public class MyThing {
 	private String name;
 	// .. getters and setters
@@ -189,12 +187,12 @@ package com.freud.test.springboot;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * @author Freud
  */
-@JacksonXmlRootElement
+@XmlRootElement
 public class MyThing {
 
 	private Date when;
@@ -219,10 +217,15 @@ public class MyThing {
 }
 {% endhighlight %}
 
+项目结构
+------------------
+
+![/images/blog/spring-boot/10-web-service-xml-rest/02-project-hierarchy.png](/images/blog/spring-boot/10-web-service-xml-rest/02-project-hierarchy.png)
+
 运行结果
 ------------------
 
-![/images/blog/spring-boot/10-web-service-xml-rest/02-explorer-result.png](/images/blog/spring-boot/10-web-service-xml-rest/02-explorer-result.png)
+![/images/blog/spring-boot/10-web-service-xml-rest/03-explorer-result.png](/images/blog/spring-boot/10-web-service-xml-rest/03-explorer-result.png)
 
 
 参考资料
