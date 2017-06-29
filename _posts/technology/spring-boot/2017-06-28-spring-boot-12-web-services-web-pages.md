@@ -572,6 +572,11 @@ public interface MessageRepository {
 }
 {% endhighlight %}
 
+项目结构
+------------------
+
+![/images/blog/spring-boot/12-web-service-web-pages/02-project-hierarchy.png](/images/blog/spring-boot/12-web-service-web-pages/02-project-hierarchy.png)
+
 
 运行结果
 ==================
@@ -581,30 +586,30 @@ public interface MessageRepository {
 
 + `http://localhost:9090/test/hifreud.html`
 
-![/images/blog/spring-boot/12-web-service-web-pages/02-run-result-static-hifreud.png](/images/blog/spring-boot/12-web-service-web-pages/02-run-result-static-hifreud.png)
+![/images/blog/spring-boot/12-web-service-web-pages/03-run-result-static-hifreud.png](/images/blog/spring-boot/12-web-service-web-pages/03-run-result-static-hifreud.png)
 
 + `http://localhost:9090/test/hi.html`
 
-![/images/blog/spring-boot/12-web-service-web-pages/03-run-result-static-hi.png](/images/blog/spring-boot/12-web-service-web-pages/03-run-result-static-hi.png)
+![/images/blog/spring-boot/12-web-service-web-pages/04-run-result-static-hi.png](/images/blog/spring-boot/12-web-service-web-pages/04-run-result-static-hi.png)
 
 WEB运行结果
 ------------------
 
 + `http://localhost:9090/`
 
-![/images/blog/spring-boot/12-web-service-web-pages/04-run-result-message-list.png](/images/blog/spring-boot/12-web-service-web-pages/04-run-result-message-list.png)
+![/images/blog/spring-boot/12-web-service-web-pages/05-run-result-message-list.png](/images/blog/spring-boot/12-web-service-web-pages/05-run-result-message-list.png)
 
 + 点击 `Create Message`
 
-![/images/blog/spring-boot/12-web-service-web-pages/05-run-result-add-message.png](/images/blog/spring-boot/12-web-service-web-pages/05-run-result-add-message.png)
+![/images/blog/spring-boot/12-web-service-web-pages/06-run-result-add-message.png](/images/blog/spring-boot/12-web-service-web-pages/06-run-result-add-message.png)
 
 + 点击`Save`之后显示如下，
 
-![/images/blog/spring-boot/12-web-service-web-pages/06-run-result-message-detail.png](/images/blog/spring-boot/12-web-service-web-pages/06-run-result-message-detail.png)
+![/images/blog/spring-boot/12-web-service-web-pages/07-run-result-message-detail.png](/images/blog/spring-boot/12-web-service-web-pages/07-run-result-message-detail.png)
 
 + 还可以点击`delete`或者`modify`进行删除或修改操作。也可以点击上方的`Messages`显示是所有Message列表
 
-![/images/blog/spring-boot/12-web-service-web-pages/07-run-result-message-list.png](/images/blog/spring-boot/12-web-service-web-pages/07-run-result-message-list.png)
+![/images/blog/spring-boot/12-web-service-web-pages/08-run-result-message-list.png](/images/blog/spring-boot/12-web-service-web-pages/08-run-result-message-list.png)
 
 
 参考资料
