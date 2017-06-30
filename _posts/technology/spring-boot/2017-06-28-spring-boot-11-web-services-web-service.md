@@ -159,13 +159,11 @@ package com.freud.test.springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author Freud
  */
 @SpringBootApplication
-@RestController
 public class App {
 
 	public static void main(String[] args) {
