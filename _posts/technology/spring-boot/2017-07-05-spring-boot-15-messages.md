@@ -45,7 +45,7 @@ spring.artemis.user=admin
 spring.artemis.password=secret
 {% endhighlight %}
 
-当使用内嵌模式时，你可以选择是否启用持久化，及目的地列表。这些可以通过逗号分割的列表来指定，也可以分别定义 `org.apache.activemq.artemis.jms.server.config.JMSQueueConfiguration` 或 `org.apache.activemq.artemis.jms.server.config.TopicConfiguration` 类型的bean来进一步配置队列和topic，具体支持选项可参考[ArtemisProperties](https://github.com/spring-projects/spring-boot/blob/v1.4.1.RELEASE/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/jms/artemis/ArtemisProperties.java)。
+当使用内嵌模式时，你可以选择是否启用持久化，及目的地列表。这些可以通过逗号分割的列表来指定，也可以分别定义 `org.apache.activemq.artemis.jms.server.config.JMSQueueConfiguration` 或 `org.apache.activemq.artemis.jms.server.config.TopicConfiguration` 类型的bean来进一步配置队列和topic，具体支持选项可参考[ArtemisProperties](https://github.com/spring-projects/spring-boot/blob/v1.5.4.RELEASE/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/jms/artemis/ArtemisProperties.java)。
 
 JNDI ConnectionFactory
 ------------------
@@ -151,7 +151,7 @@ AMQP
 RabbitMQ
 ------------------
 
-RabbitMQ是一个基于AMQP协议，轻量级的，可靠的，可扩展的和可移植的消息代理，Spring就使用它进行消息传递。RabbitMQ配置被外部属性 `spring.rabbitmq.*` 控制，例如，在 `application.properties` 中声明以下片段, 更多配置参见[RabbitProperties](https://github.com/spring-projects/spring-boot/blob/v1.4.1.RELEASE/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/amqp/RabbitProperties.java)：
+RabbitMQ是一个基于AMQP协议，轻量级的，可靠的，可扩展的和可移植的消息代理，Spring就使用它进行消息传递。RabbitMQ配置被外部属性 `spring.rabbitmq.*` 控制，例如，在 `application.properties` 中声明以下片段, 更多配置参见[RabbitProperties](https://github.com/spring-projects/spring-boot/blob/v1.5.4.RELEASE/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/amqp/RabbitProperties.java)：
 
 {% highlight text %}
 spring.rabbitmq.host=127.0.0.1
