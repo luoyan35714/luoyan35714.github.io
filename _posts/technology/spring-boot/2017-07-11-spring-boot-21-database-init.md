@@ -9,7 +9,9 @@ tag: 教程
 * content
 {:toc}
 
+
 一个数据库可以使用不同的方式进行初始化，这取决于所使用的技术栈。或者可以手动完成该任务，只要数据库是独立的应用。
+
 
 使用JPA初始化数据库
 ==================
@@ -147,7 +149,6 @@ pom.xml
         </dependencies>
     </dependencyManagement>
 </project>
-
 {% endhighlight %}
 
 application.yml
