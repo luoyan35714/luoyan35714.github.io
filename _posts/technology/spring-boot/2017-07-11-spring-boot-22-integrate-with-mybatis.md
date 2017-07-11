@@ -22,7 +22,7 @@ mybatis-spring-boot-starter
 
 这种方式只需要在application.properties中配置相关的Mybatis属性就可以了。数据源使用的是Spring Boot默认的数据源
 
-{% highlight java %}
+{% highlight text %}
 mybatis.mapperLocations: mapper配置文件的路径，支持通配符方式
 mybatis.typeAliasesPackage: 用来扫描Entity的包
 mybatis.config：mybatis-config.xml配置文件的路径
