@@ -469,7 +469,6 @@ public class App {
 
 访问`http://localhost:9090/user/all`，查看所有的用户列表：
 
-03-explorer-result-all.png
 ![/images/blog/spring-boot/22-integrate-with-mybatis/03-run-result-all.png](/images/blog/spring-boot/22-integrate-with-mybatis/03-run-result-all.png)
 
 通过浏览器的Get请求创建一个新的用户`http://localhost:9090/user/save?name=kang&age=30`
@@ -498,4 +497,4 @@ public class App {
 
 Spring Boot 集成MyBatis : [Spring Boot 集成MyBatis](http://blog.csdn.net/isea533/article/details/50359390)
 
-[基于SpringBoot + Mybatis实现SpringMVC Web项目【原创】](http://7player.cn/2015/08/30/%E3%80%90%E5%8E%9F%E5%88%9B%E3%80%91%E5%9F%BA%E4%BA%8Espringboot-mybatis%E5%AE%9E%E7%8E%B0springmvc-web%E9%A1%B9%E7%9B%AE/)
+基于SpringBoot + Mybatis实现SpringMVC Web项目【原创】 : [基于SpringBoot + Mybatis实现SpringMVC Web项目【原创】](http://7player.cn/2015/08/30/%E3%80%90%E5%8E%9F%E5%88%9B%E3%80%91%E5%9F%BA%E4%BA%8Espringboot-mybatis%E5%AE%9E%E7%8E%B0springmvc-web%E9%A1%B9%E7%9B%AE/)
