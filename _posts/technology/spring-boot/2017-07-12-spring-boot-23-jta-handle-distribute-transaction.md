@@ -13,7 +13,7 @@ tag: 教程
 使用JTA处理分布式事务
 ==================
 
-Spring Boot通过[Atomkos]()或[Bitronix]()的内嵌事务管理器支持跨多个XA资源的分布式JTA事务，当部署到恰当的J2EE应用服务器时也会支持JTA事务。
+Spring Boot通过[Atomkos](http://www.atomikos.com/)或[Bitronix](https://github.com/bitronix/btm)的内嵌事务管理器支持跨多个XA资源的分布式JTA事务，当部署到恰当的J2EE应用服务器时也会支持JTA事务。
 
 当发现JTA环境时，Spring Boot将使用Spring的 `JtaTransactionManager` 来管理事务。自动配置的JMS，DataSource和JPA　beans将被升级以支持XA事务。可以使用标准的Spring idioms，比如 `@Transactional` ，来参与到一个分布式事务中。如果处于JTA环境，但仍想使用本地事务，你可以将 `spring.jta.enabled` 属性设置为 `false` 来禁用JTA自动配置功能。
 
@@ -658,6 +658,8 @@ public class App {
 
 参考资料
 ==================
+
+Spring Boot Reference Guide : [http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/](http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/)
 
 Spring-boot下的mybatis多数据源JTA配置 : [http://blog.csdn.net/pichunhan/article/details/70846695](http://blog.csdn.net/pichunhan/article/details/70846695)
 
