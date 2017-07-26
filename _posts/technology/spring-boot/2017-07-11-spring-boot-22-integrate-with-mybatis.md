@@ -469,7 +469,7 @@ public class App {
 
 访问`http://localhost:9090/user/all`，查看所有的用户列表：
 
-![/images/blog/spring-boot/22-integrate-with-mybatis/03-run-result-all.png](/images/blog/spring-boot/22-integrate-with-mybatis/03-run-result-all.png)
+![/images/blog/spring-boot/22-integrate-with-mybatis/03-explorer-result-all.png](/images/blog/spring-boot/22-integrate-with-mybatis/03-explorer-result-all.png)
 
 通过浏览器的Get请求创建一个新的用户`http://localhost:9090/user/save?name=kang&age=30`
 
