@@ -375,6 +375,8 @@ public class PBETest {
 }
 {% endhighlight %}
 
+![/images/blog/encryption/05-symmetric-encryption/07-PBE-FLOW.png](/images/blog/encryption/05-symmetric-encryption/07-PBE-FLOW.png)
+
 
 Maven 依赖
 =================================
