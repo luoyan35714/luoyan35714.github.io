@@ -25,10 +25,10 @@ permalink: /books/
 + 《数据结构(C语言版)》
 + 《企业应用架构模式》
 + 《亿级流量网站架构核心技术——跟开涛学搭建高可用高并发系统》
-+ 《Spring Cloud微服务实战》
 + 《大型网站技术架构：核心原理与案例分析》
 + 《淘宝技术这十年》
-+ 《人类简史 - 从动物到上帝》
++  <del>《Spring Cloud微服务实战》</del>  - 2017.10
++  <del>《人类简史 - 从动物到上帝》</del>  - 2017.09
 +  <del>《JavaEE开发的颠覆者 Spring Boot实战》</del>  - 2017.05
 +  <del>《Java NIO》</del>  - 2017.03
 +  <del>《从PAXOS到ZOOKEEPER分布式一致性原理与实践.pdf》</del>  - 2017.01
