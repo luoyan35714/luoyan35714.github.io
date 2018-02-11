@@ -28,20 +28,128 @@ DH(Diffie-Hellman) - 密钥交换算法
 | 512-1024(64倍数)	| 1024 	| 无			| 无			| JDK 	|
 
 
- 
-![/images/blog/encryption/05-symmetric-encryption/01-DES-introduction.png](/images/blog/encryption/05-symmetric-encryption/01-DES-introduction.png)
+初始化发送方密钥
+---------------------------------
+
+- KeyPairGenerator
+- KeyPair
+- PublicKey
+
+初始化接收方密钥
+---------------------------------
+
+- KeyFactory
+- X509EncodedKeySpec
+- DHPublicKey
+- DHParameterSpec
+- KeyPairGenerator
+- PrivateKey
+
+密钥构建
+---------------------------------
+
+- KeyAgreement
+- SecretKey
+- KeyFactory
+- X509EncodedKeySpec
+- PublicKey
+
+加密，解密
+---------------------------------
+
+- Cipher
+
+
+代码实现
+---------------------------------
+
+{% highlight java %}
+package com.freud.security;
+
+import java.security.KeyFactory;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.spec.X509EncodedKeySpec;
+import java.util.Base64;
+import java.util.Objects;
+
+import javax.crypto.Cipher;
+import javax.crypto.KeyAgreement;
+import javax.crypto.SecretKey;
+import javax.crypto.interfaces.DHPublicKey;
+import javax.crypto.spec.DHParameterSpec;
+
+public class DHTest {
+
+	private static final String src = "林断山明竹隐墙，乱蝉衰草小池塘。";
+
+	public static void main(String[] args) throws Exception {
+		jdkDH();
+	}
+
+	public static void jdkDH() throws Exception {
+		// 1. 初始化发送方密钥
+		KeyPairGenerator senderKeyPairGenerator = KeyPairGenerator.getInstance("DH");
+		senderKeyPairGenerator.initialize(512);
+		KeyPair senderKeyPair = senderKeyPairGenerator.generateKeyPair();
+		byte[] senderPublicKeyEnc = senderKeyPair.getPublic().getEncoded(); // 发送方公钥,通过其他途径发送给接收方(网络等。)
+
+		// 2. 初始化接收方密钥
+		KeyFactory receiverKeyFactory = KeyFactory.getInstance("DH");
+		X509EncodedKeySpec x509EncodedKeySpec = new X509EncodedKeySpec(senderPublicKeyEnc);
+		PublicKey receiverPublicKey = receiverKeyFactory.generatePublic(x509EncodedKeySpec);
+		DHParameterSpec dhParameterSpec = ((DHPublicKey) receiverPublicKey).getParams();
+		KeyPairGenerator receiverKeyPairGenerator = KeyPairGenerator.getInstance("DH");
+		receiverKeyPairGenerator.initialize(dhParameterSpec);
+		KeyPair receiverKeyPair = receiverKeyPairGenerator.generateKeyPair();
+		PrivateKey receivePrimaryKey = receiverKeyPair.getPrivate();
+		byte[] receivePublicKeyEnc = receiverKeyPair.getPublic().getEncoded();
+
+		// 3. 密钥构建
+		KeyAgreement receiverKeyAgreement = KeyAgreement.getInstance("DH");
+		receiverKeyAgreement.init(receivePrimaryKey);
+		receiverKeyAgreement.doPhase(receiverPublicKey, true);
+		SecretKey receiverDesKey = receiverKeyAgreement.generateSecret("DES");
+
+		KeyFactory senderKeyFactory = KeyFactory.getInstance("DH");
+		x509EncodedKeySpec = new X509EncodedKeySpec(receivePublicKeyEnc);
+		PublicKey senderPublicKey = senderKeyFactory.generatePublic(x509EncodedKeySpec);
+		KeyAgreement senderKeyAgreement = KeyAgreement.getInstance("DH");
+		senderKeyAgreement.init(senderKeyPair.getPrivate());
+		senderKeyAgreement.doPhase(senderPublicKey, true);
+		SecretKey senderDesKey = senderKeyAgreement.generateSecret("DES");
+
+		if (Objects.equals(receiverDesKey, senderDesKey)) {
+			System.out.println("双方密钥相同");
+		}
+
+		// 4. 加密
+		Cipher cipher = Cipher.getInstance("DES");
+		cipher.init(Cipher.ENCRYPT_MODE, senderDesKey);
+		byte[] result = cipher.doFinal(src.getBytes());
+		System.out.println("JDK DH encrypt:" + Base64.getEncoder().encodeToString(result));
+
+		// 5. 解密
+		cipher.init(Cipher.DECRYPT_MODE, receiverDesKey);
+		result = cipher.doFinal(result);
+		System.out.println("JDK DH decrypt:" + new String(result));
+	}
+}
+{% endhighlight %}
+
+
+![/images/blog/encryption/06-asymmetric-encryption/01-init-DH.png](/images/blog/encryption/06-asymmetric-encryption/01-init-DH.png)
+
+![/images/blog/encryption/06-asymmetric-encryption/02-DH](/images/blog/encryption/06-asymmetric-encryption/02-DH)
 
 {% highlight java %}
 {% endhighlight %}
-
-![/images/blog/encryption/05-symmetric-encryption/02-DES-FLOW.png](/images/blog/encryption/05-symmetric-encryption/02-DES-FLOW.png)
-
-
 
 
 参考资料
 ===========================
 
-[Java实现消息摘要算法加密](http://www.imooc.com/learn/286?src=sugc)
+[JAVA实现非对称加密](https://www.imooc.com/video/6278)
 
-PBETest : [https://fossies.org/linux/envelopes-sourceonly/thirdparty/bouncycastle-135-customized/test/src/org/bouncycastle/jce/provider/test/PBETest.java](https://fossies.org/linux/envelopes-sourceonly/thirdparty/bouncycastle-135-customized/test/src/org/bouncycastle/jce/provider/test/PBETest.java)
