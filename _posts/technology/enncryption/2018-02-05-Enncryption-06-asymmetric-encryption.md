@@ -142,7 +142,7 @@ public class DHTest {
 
 ![/images/blog/encryption/06-asymmetric-encryption/01-init-DH.png](/images/blog/encryption/06-asymmetric-encryption/01-init-DH.png)
 
-![/images/blog/encryption/06-asymmetric-encryption/02-DH](/images/blog/encryption/06-asymmetric-encryption/02-DH)
+![/images/blog/encryption/06-asymmetric-encryption/02-DH.png](/images/blog/encryption/06-asymmetric-encryption/02-DH.png)
 
 {% highlight java %}
 {% endhighlight %}
