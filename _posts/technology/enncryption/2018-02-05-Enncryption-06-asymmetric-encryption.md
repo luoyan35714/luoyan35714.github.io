@@ -224,9 +224,9 @@ public class RSATest {
 }
 {% endhighlight %}
 
-![/images/blog/encryption/06-asymmetric-encryption/03-rsa-privatekey-to-publickey](/images/blog/encryption/06-asymmetric-encryption/03-rsa-privatekey-to-publickey)
+![/images/blog/encryption/06-asymmetric-encryption/03-rsa-privatekey-to-publickey.png](/images/blog/encryption/06-asymmetric-encryption/03-rsa-privatekey-to-publickey.png)
 
-![/images/blog/encryption/06-asymmetric-encryption/04-rsa-publickey-to-privatekey](/images/blog/encryption/06-asymmetric-encryption/04-rsa-publickey-to-privatekey)
+![/images/blog/encryption/06-asymmetric-encryption/04-rsa-publickey-to-privatekey.png](/images/blog/encryption/06-asymmetric-encryption/04-rsa-publickey-to-privatekey.png)
 
 
 ElGanal
@@ -320,7 +320,7 @@ public class EIGamalTest {
 }
 {% endhighlight %}
 
-![/images/blog/encryption/06-asymmetric-encryption/05-ElGamal](/images/blog/encryption/06-asymmetric-encryption/05-ElGamal)
+![/images/blog/encryption/06-asymmetric-encryption/05-ElGamal.png](/images/blog/encryption/06-asymmetric-encryption/05-ElGamal.png)
 
 
 参考资料
