@@ -144,8 +144,183 @@ public class DHTest {
 
 ![/images/blog/encryption/06-asymmetric-encryption/02-DH.png](/images/blog/encryption/06-asymmetric-encryption/02-DH.png)
 
+
+RSA
+=================================
+
++ 数据加密&数字签名
++ 公钥加密，私钥解密
++ 私钥加密，公钥解密
+
 {% highlight java %}
+package com.freud.security;
+
+import java.security.KeyFactory;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.interfaces.RSAPrivateKey;
+import java.security.interfaces.RSAPublicKey;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.X509EncodedKeySpec;
+
+import javax.crypto.Cipher;
+
+import org.apache.commons.codec.binary.Base64;
+
+public class RSATest {
+
+	private static final String src = "但使龙城飞将在，不教胡马度阴山。";
+
+	public static void main(String[] args) throws Exception {
+
+		// 1.初始化密钥
+		KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
+		keyPairGenerator.initialize(512);
+		KeyPair keyPair = keyPairGenerator.generateKeyPair();
+		RSAPublicKey rsaPublicKey = (RSAPublicKey) keyPair.getPublic();
+		RSAPrivateKey rsaPrivateKey = (RSAPrivateKey) keyPair.getPrivate();
+
+		System.out.println("public key:" + Base64.encodeBase64String(rsaPublicKey.getEncoded()));
+		System.out.println("private key:" + Base64.encodeBase64String(rsaPrivateKey.getEncoded()));
+
+		// 2.私钥加密，公钥解密-加密
+		PKCS8EncodedKeySpec pkcs8EncodedKeySpec = new PKCS8EncodedKeySpec(rsaPrivateKey.getEncoded());
+		KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+		PrivateKey privateKey = keyFactory.generatePrivate(pkcs8EncodedKeySpec);
+		Cipher cipher = Cipher.getInstance("RSA");
+		cipher.init(Cipher.ENCRYPT_MODE, privateKey);
+		byte[] result = cipher.doFinal(src.getBytes());
+		System.out.println("私钥加密，公钥解密-加密：" + Base64.encodeBase64String(result));
+
+		// 3.私钥加密，公钥解密-解密
+		X509EncodedKeySpec x509EncodedKeySpec = new X509EncodedKeySpec(rsaPublicKey.getEncoded());
+		keyFactory = KeyFactory.getInstance("RSA");
+		PublicKey publicKey = keyFactory.generatePublic(x509EncodedKeySpec);
+		cipher = Cipher.getInstance("RSA");
+		cipher.init(Cipher.DECRYPT_MODE, publicKey);
+		result = cipher.doFinal(result);
+		System.out.println("私钥加密，公钥解密-解密:" + new String(result));
+
+		// 4.公钥加密，私钥解密-加密
+		x509EncodedKeySpec = new X509EncodedKeySpec(rsaPublicKey.getEncoded());
+		keyFactory = KeyFactory.getInstance("RSA");
+		publicKey = keyFactory.generatePublic(x509EncodedKeySpec);
+		cipher = Cipher.getInstance("RSA");
+		cipher.init(Cipher.ENCRYPT_MODE, publicKey);
+		result = cipher.doFinal(src.getBytes());
+		System.out.println("公钥加密，私钥解密-加密：" + Base64.encodeBase64String(result));
+
+		// 5.公钥加密，私钥解密-解密
+		pkcs8EncodedKeySpec = new PKCS8EncodedKeySpec(rsaPrivateKey.getEncoded());
+		keyFactory = KeyFactory.getInstance("RSA");
+		privateKey = keyFactory.generatePrivate(pkcs8EncodedKeySpec);
+		cipher = Cipher.getInstance("RSA");
+		cipher.init(Cipher.DECRYPT_MODE, privateKey);
+		result = cipher.doFinal(result);
+		System.out.println("公钥加密，私钥解密-解密：" + new String(result));
+	}
+}
 {% endhighlight %}
+
+![/images/blog/encryption/06-asymmetric-encryption/03-rsa-privatekey-to-publickey](/images/blog/encryption/06-asymmetric-encryption/03-rsa-privatekey-to-publickey)
+
+![/images/blog/encryption/06-asymmetric-encryption/04-rsa-publickey-to-privatekey](/images/blog/encryption/06-asymmetric-encryption/04-rsa-publickey-to-privatekey)
+
+
+ElGanal
+=================================
+
++ 只提供公钥加密算法
++ BouncyCastle
+
+{% highlight java %}
+package com.freud.security;
+
+import java.security.AlgorithmParameterGenerator;
+import java.security.AlgorithmParameters;
+import java.security.KeyFactory;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.SecureRandom;
+import java.security.Security;
+import java.security.interfaces.RSAPrivateKey;
+import java.security.interfaces.RSAPublicKey;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.X509EncodedKeySpec;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.DHParameterSpec;
+
+import org.apache.commons.codec.binary.Base64;
+import org.bouncycastle.crypto.params.DHParameters;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+
+public class EIGamalTest {
+
+	private static final String src = "将有必死之心，士无贪生之念！";
+
+	public static void main(String[] args) throws Exception {
+
+		Security.addProvider(new BouncyCastleProvider());
+
+		// 1.初始化密钥
+		AlgorithmParameterGenerator algorithmParameterGenerator = AlgorithmParameterGenerator.getInstance("ElGamal");
+		algorithmParameterGenerator.init(256);
+		AlgorithmParameters algorithmParameters = algorithmParameterGenerator.generateParameters();
+		DHParameterSpec dhParameterSpec = algorithmParameters.getParameterSpec(DHParameterSpec.class);
+		KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("ElGamal");
+		keyPairGenerator.initialize(dhParameterSpec, new SecureRandom());
+		KeyPair keyPair = keyPairGenerator.generateKeyPair();
+		PublicKey rsaPublicKey = keyPair.getPublic();
+		PrivateKey rsaPrivateKey = keyPair.getPrivate();
+
+		System.out.println("public key:" + Base64.encodeBase64String(rsaPublicKey.getEncoded()));
+		System.out.println("private key:" + Base64.encodeBase64String(rsaPrivateKey.getEncoded()));
+
+//		// 2.私钥加密，公钥解密-加密
+//		PKCS8EncodedKeySpec pkcs8EncodedKeySpec = new PKCS8EncodedKeySpec(rsaPrivateKey.getEncoded());
+//		KeyFactory keyFactory = KeyFactory.getInstance("ElGamal");
+//		PrivateKey privateKey = keyFactory.generatePrivate(pkcs8EncodedKeySpec);
+//		Cipher cipher = Cipher.getInstance("ElGamal");
+//		cipher.init(Cipher.ENCRYPT_MODE, privateKey);
+//		byte[] result = cipher.doFinal(src.getBytes());
+//		System.out.println("私钥加密，公钥解密-加密：" + Base64.encodeBase64String(result));
+//
+//		// 3.私钥加密，公钥解密-解密
+//		X509EncodedKeySpec x509EncodedKeySpec = new X509EncodedKeySpec(rsaPublicKey.getEncoded());
+//		keyFactory = KeyFactory.getInstance("ElGamal");
+//		PublicKey publicKey = keyFactory.generatePublic(x509EncodedKeySpec);
+//		cipher = Cipher.getInstance("RSA");
+//		cipher.init(Cipher.DECRYPT_MODE, publicKey);
+//		result = cipher.doFinal(result);
+//		System.out.println("私钥加密，公钥解密-解密:" + new String(result));
+
+		// 4.公钥加密，私钥解密-加密
+		X509EncodedKeySpec x509EncodedKeySpec = new X509EncodedKeySpec(rsaPublicKey.getEncoded());
+		KeyFactory keyFactory = KeyFactory.getInstance("ElGamal");
+		PublicKey publicKey = keyFactory.generatePublic(x509EncodedKeySpec);
+		Cipher cipher = Cipher.getInstance("ElGamal");
+		cipher.init(Cipher.ENCRYPT_MODE, rsaPublicKey);
+		byte[] result = cipher.doFinal(src.getBytes());
+		System.out.println("公钥加密，私钥解密-加密：" + Base64.encodeBase64String(result));
+
+		// 5.公钥加密，私钥解密-解密
+		PKCS8EncodedKeySpec pkcs8EncodedKeySpec = new PKCS8EncodedKeySpec(rsaPrivateKey.getEncoded());
+		keyFactory = KeyFactory.getInstance("ElGamal");
+		PrivateKey privateKey = keyFactory.generatePrivate(pkcs8EncodedKeySpec);
+		cipher = Cipher.getInstance("EIGamal");
+		cipher.init(Cipher.DECRYPT_MODE, rsaPrivateKey);
+		result = cipher.doFinal(result);
+		System.out.println("公钥加密，私钥解密-解密：" + new String(result));
+	}
+}
+{% endhighlight %}
+
+![/images/blog/encryption/06-asymmetric-encryption/05-ElGamal](/images/blog/encryption/06-asymmetric-encryption/05-ElGamal)
 
 
 参考资料
