@@ -252,9 +252,8 @@ Kafka
 Kafka 是通过 `spring.kafka.*` 外部配置来控制的。详细配置参考[KafkaProperties](https://github.com/spring-projects/spring-boot/blob/v1.5.4.RELEASE/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/kafka/KafkaProperties.java)
 
 {% highlight text %}
-spring.activemq.broker-url=tcp://127.0.0.1:9876
-spring.activemq.user=admin
-spring.activemq.password=secret
+spring.kafka.bootstrap-servers=localhost:9092
+spring.kafka.consumer.group-id=myGroup
 {% endhighlight %}
 
 发送消息
