@@ -230,11 +230,13 @@ Error response from daemon: Unexpected status code 404
 
 解决办法有两个，一个是在nexus上修改repository配置，设置`Enable Docker V1 API`是选中状态，另一种是通过V2的API来访问
 
+{% highlight bash %}
 #由于我们创建了Group Repository，所以此处IP可以是`192.168.59.1:8551`,也可以是`192.168.59.1:8553`
 [root@localhost ~]# curl http://192.168.59.1:8551/v2/_catalog
 {"repositories":["freud"]}
 [root@localhost ~]# curl http://192.168.59.1:8553/v2/freud/tags/list
 {"name":"freud","tags":["latest"]}
+{% endhighlight %}
 
 
 參考資料
