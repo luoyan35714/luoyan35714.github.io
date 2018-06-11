@@ -146,6 +146,7 @@ Wed Jun  6 17:53:35 CST 2018
 [root@localhost ~]# update-ca-trust force-enable
 [root@localhost ~]# mv nexus.crt /etc/pki/ca-trust/source/anchors/nexus.crt
 [root@localhost ~]# update-ca-trust
+[root@localhost ~]# service docker restart
 [root@localhost ~]# docker login -u admin -p admin123 192.168.59.1:8551
 Error response from daemon: Get https://192.168.59.1:8551/v2/: x509: certificate signed by unknown authority
 {% endhighlight %}
@@ -162,6 +163,7 @@ subjectAltName = IP:192.168.59.1
 再次执行`docker login`
 
 {% highlight bash %}
+[root@localhost ~]# service docker restart
 [root@localhost ~]# docker login -u admin -p admin123 192.168.59.1:8551
 Login Succeeded
 {% endhighlight %}
