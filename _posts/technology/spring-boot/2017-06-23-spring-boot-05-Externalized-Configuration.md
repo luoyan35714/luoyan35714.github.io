@@ -2,7 +2,7 @@
 layout: post
 title:  Spring Boot学习笔记(五) - 外化配置
 date:   2017-06-23 16:56:00 +0800
-categories: Spring Boot
+categories: Spring-Boot
 tag: 教程
 ---
 

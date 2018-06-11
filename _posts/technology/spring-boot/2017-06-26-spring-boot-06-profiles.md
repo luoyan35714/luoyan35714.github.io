@@ -2,7 +2,7 @@
 layout: post
 title:  Spring Boot学习笔记(六) - Profiles
 date:   2017-06-26 17:00:00 +0800
-categories: Spring Boot
+categories: Spring-Boot
 tag: 教程
 ---
 

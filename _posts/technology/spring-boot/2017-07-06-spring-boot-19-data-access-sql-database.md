@@ -2,7 +2,7 @@
 layout: post
 title:  Spring Boot学习笔记(十九) - 使用SQL数据库
 date:   2017-07-06 17:09:00 +0800
-categories: Spring Boot
+categories: Spring-Boot
 tag: 教程
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title:  Spring Boot学习笔记(十六) - 调用REST服务
 date:   2017-07-06 14:12:00 +0800
-categories: Spring Boot
+categories: Spring-Boot
 tag: 教程
 ---
 
@@ -22,11 +22,9 @@ tag: 教程
 @Service
 public class MyBean {
 	
-	private final RestTemplate restTemplate;
+	@Autowired
+	private  RestTemplate restTemplate;
 
-	public MyBean(RestTemplateBuilder restTemplateBuilder) {
-		this.restTemplate = restTemplateBuilder.build();
-	}
 	public Details someRestCall(String name) {
 		return this.restTemplate.getForObject("/{name}/details", Details.class, name);
 	}
@@ -157,20 +155,11 @@ import org.springframework.web.client.RestTemplate;
 public class App {
 
 	@Autowired
-	private RestTemplateBuilder restTemplateBuilder;
-
 	private RestTemplate restTemplate;
-
-	private synchronized RestTemplate getRestTemplate() {
-		if (restTemplate == null) {
-			restTemplate = restTemplateBuilder.build();
-		}
-		return restTemplate;
-	}
 
 	@GetMapping("/index")
 	public String index() {
-		return this.getRestTemplate().getForObject("http://localhost:9090/data", String.class);
+		return this.restTemplate.getForObject("http://localhost:9090/data", String.class);
 	}
 
 	@GetMapping("/data")

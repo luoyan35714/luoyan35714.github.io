@@ -2,7 +2,7 @@
 layout: post
 title:  Spring Boot学习笔记(八) - 元注解与组合注解
 date:   2017-06-27 14:04:00 +0800
-categories: Spring Boot
+categories: Spring-Boot
 tag: 教程
 ---
 

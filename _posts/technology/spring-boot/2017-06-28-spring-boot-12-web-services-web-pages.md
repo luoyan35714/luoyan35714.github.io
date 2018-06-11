@@ -2,7 +2,7 @@
 layout: post
 title:  Spring Boot学习笔记(十二) - 构建web服务 - Web网页服务
 date:   2017-06-28 15:40:00 +0800
-categories: Spring Boot
+categories: Spring-Boot
 tag: 教程
 ---
 
