@@ -144,6 +144,7 @@ Wed Jun  6 17:53:35 CST 2018
 [root@localhost ~]# keytool -printcert -sslserver 192.168.59.1:8443 -rfc >nexus.crt
 [root@localhost ~]# yum install ca-certificates
 [root@localhost ~]# update-ca-trust force-enable
+# 还可以放在/etc/docker/certs.d/192.168.59.1:8443目录下
 [root@localhost ~]# mv nexus.crt /etc/pki/ca-trust/source/anchors/nexus.crt
 [root@localhost ~]# update-ca-trust
 [root@localhost ~]# service docker restart

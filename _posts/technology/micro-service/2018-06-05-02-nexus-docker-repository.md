@@ -179,6 +179,15 @@ Push镜像
 #登录
 [root@localhost docker]# docker login -u admin -p admin123 192.168.59.1:8551
 Login Succeeded
+#Docker login成功后会在本地的config.json文件写入相应的认证信息
+[root@ip-192-168-75-128 .docker]# cat ~/.docker/config.json 
+{
+  "auths": {
+    "192.168.59.1:8551": {
+      "auth": "YWRtaW46YWRtaW4xMjM="
+    }
+  }
+}
 [root@localhost docker]# docker push 192.168.59.1:8551/freud:latest
 The push refers to a repository [192.168.59.1:8551/freud]
 0f3a12fef684: Pushed 
