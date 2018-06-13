@@ -2,7 +2,7 @@
 layout: post
 title:  Spring Boot学习笔记(十三) - 自定义WhiteLabel错误页面
 date:   2017-06-30 09:30:00 +0800
-categories: Spring Boot
+categories: Spring-Boot
 tag: 教程
 ---
 

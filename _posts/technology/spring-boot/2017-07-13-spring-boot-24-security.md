@@ -2,7 +2,7 @@
 layout: post
 title:  Spring Boot学习笔记(二四) - 安全
 date:   2017-07-13 13:49:00 +0800
-categories: Spring Boot
+categories: Spring-Boot
 tag: 教程
 ---
 

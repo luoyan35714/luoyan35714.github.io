@@ -2,7 +2,7 @@
 layout: post
 title:  Spring Boot学习笔记(三) - RESTful Controller
 date:   2017-06-21 09:52:00 +0800
-categories: Spring Boot
+categories: Spring-Boot
 tag: 教程
 ---
 

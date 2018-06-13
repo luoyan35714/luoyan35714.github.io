@@ -2,7 +2,7 @@
 layout: post
 title:  Spring Boot学习笔记(二十) - 使用NoSQL数据库
 date:   2017-07-11 09:07:00 +0800
-categories: Spring Boot
+categories: Spring-Boot
 tag: 教程
 ---
 
