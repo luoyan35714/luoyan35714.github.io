@@ -152,6 +152,18 @@ Wed Jun  6 17:53:35 CST 2018
 Error response from daemon: Get https://192.168.59.1:8551/v2/: x509: certificate signed by unknown authority
 {% endhighlight %}
 
+对于Ubuntu系统来说certificate的存放路径是`/usr/local/share/ca-certificates`
+
+{% highlight bash %}
+#生成cert文件
+[root@localhost ~]# keytool -printcert -sslserver 192.168.59.1:8443 -rfc >nexus.crt
+# 还可以放在/etc/docker/certs.d/192.168.59.1:8443目录下
+[root@localhost ~]# mv nexus.crt /usr/local/share/ca-certificates/nexus.crt
+[root@localhost ~]# update-ca-certificates
+[root@localhost ~]# service docker restart
+[root@localhost ~]# docker login -u admin -p admin123 192.168.59.1:8551
+{% endhighlight %}
+
 依然报错如上，说是Unkonw authority，搜索之后发现` 一般情况下，证书只支持域名访问，要使其支持IP地址访问,需要修改配置文件openssl.cnf。`
 
 在Redhat7系统中，文件所在位置是/etc/pki/tls/openssl.cnf。在其中的[ v3_ca]部分，添加subjectAltName选项：
