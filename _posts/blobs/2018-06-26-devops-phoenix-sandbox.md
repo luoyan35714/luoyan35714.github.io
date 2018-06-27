@@ -3,7 +3,7 @@ layout: post
 title:  参加Devops凤凰沙盘的一些个人感悟
 date:   2018-06-26 11:20:00 +0800
 categories: 杂乱
-tag: 心情
+tag: devops
 ---
 
 * content
