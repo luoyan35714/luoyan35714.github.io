@@ -49,7 +49,7 @@ drwxr-xr-x  12 freud  staff   408  8  4 23:08 .
 drwxr-xr-x   7 freud  staff   238  6 21 16:34 ..
 -rw-r--r--   1 freud  staff   885  8  4 23:08 tomcat_cert.keystore
 -rw-r--r--   1 freud  staff  2243  8  4 23:07 tomcat_cert.keystore
-{% endhilight %}
+{% endhighlight %}
 
 命令执行完会在路径下生成两个文件，`tomcat_cert.keystore`和`tomcat_cert.keystore`
 
@@ -70,7 +70,7 @@ drwxr-xr-x   7 freud  staff   238  6 21 16:34 ..
    clientAuth="false" sslProtocol="TLS" 
    keystoreFile="some_location\tomcat_cert.keystore"
    keystorePass="tomcat_cert"/>
-{% highlight xml %}
+{% endhighlight %}
 
 
 配置HTTP重定向到HTTPs
@@ -90,7 +90,7 @@ drwxr-xr-x   7 freud  staff   238  6 21 16:34 ..
 <Connector port="80" protocol="HTTP/1.1"
    connectionTimeout="20000"
    redirectPort="443" />
-{% highlight xml %}
+{% endhighlight %}
 
 将8009处的8443改为443
 ----------------------
@@ -100,7 +100,7 @@ drwxr-xr-x   7 freud  staff   238  6 21 16:34 ..
 <Connector port="8009" protocol="AJP/1.3" redirectPort="8443" />
 <!-- 修改前 -->
 <Connector port="8009" protocol="AJP/1.3" redirectPort="443" />
-{% highlight xml %}
+{% endhighlight %}
 
 修改conf/web.xml
 ----------------------
@@ -116,7 +116,7 @@ drwxr-xr-x   7 freud  staff   238  6 21 16:34 ..
     <transport-guarantee>CONFIDENTIAL</transport-guarantee>
   </user-data-constraint>
 </security-constraint>
-{% highlight xml %}
+{% endhighlight %}
 
 
 验证
