@@ -126,7 +126,7 @@ drwxr-xr-x   7 freud  staff   238  6 21 16:34 ..
 
 {% highlight xml %}
 ./bin/startup.sh
-{% highlight xml %}
+{% endhighlight %}
 
 
 
