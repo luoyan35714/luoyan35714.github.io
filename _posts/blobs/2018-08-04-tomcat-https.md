@@ -56,20 +56,28 @@ drwxr-xr-x   7 freud  staff   238  6 21 16:34 ..
 配置HTTPs访问
 ----------------------
 
-修改Tomcat下的conf/server.xml,修改如下内容:
+使用Tomcat版本为8.5.32, 修改Tomcat下的conf/server.xml,修改如下内容:
+
 
 {% highlight xml %}
  <!-- 修改前
-<Connector port="8443" protocol="org.apache.coyote.http11.Http11Protocol"
-   maxThreads="150" SSLEnabled="true" scheme="https" secure="true"
-   clientAuth="false" sslProtocol="TLS" />
--->
+<Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"
+           maxThreads="150" SSLEnabled="true">
+    <SSLHostConfig>
+        <Certificate certificateKeystoreFile="conf/localhost-rsa.jks"
+                     type="RSA" />
+    </SSLHostConfig>
+</Connector>
 <!-- 修改前 -->
-<Connector port="443" protocol="org.apache.coyote.http11.Http11Protocol"
-   maxThreads="150" SSLEnabled="true" scheme="https" secure="true"
-   clientAuth="false" sslProtocol="TLS" 
-   keystoreFile="some_location\tomcat_cert.keystore"
-   keystorePass="tomcat_cert"/>
+<Connector port="443" protocol="org.apache.coyote.http11.Http11NioProtocol"
+       maxThreads="150" SSLEnabled="true">
+    <SSLHostConfig>
+        <Certificate certificateKeystoreFile="some_location\tomcat_cert.keystore"
+            certificateKeystorePassword="tomcat_cert"
+            certificateKeyAlias="tomcat_cert"
+            type="RSA" />
+    </SSLHostConfig>
+</Connector>
 {% endhighlight %}
 
 
