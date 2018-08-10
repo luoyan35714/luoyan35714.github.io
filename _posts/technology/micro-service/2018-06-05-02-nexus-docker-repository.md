@@ -2,8 +2,8 @@
 layout: post
 title:  微服务--使用Nexus Repository Manager 3.0搭建私有Docker仓库
 date:   2018-06-05 10:50:00 +0800
-categories: 微服务
-tag: 教程
+categories: 技术文档
+tag: 微服务
 ---
 
 * content

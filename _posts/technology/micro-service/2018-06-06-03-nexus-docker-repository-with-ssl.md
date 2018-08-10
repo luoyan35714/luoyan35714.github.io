@@ -2,8 +2,8 @@
 layout: post
 title:  微服务--使用HTTPS在Nexus Repository Manager 3.0上搭建私有Docker仓库
 date:   2018-06-06 17:38:00 +0800
-categories: 微服务
-tag: 教程
+categories: 技术文档
+tag: 微服务
 ---
 
 * content

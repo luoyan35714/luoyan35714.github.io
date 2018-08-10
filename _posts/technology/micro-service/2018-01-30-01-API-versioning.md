@@ -2,8 +2,8 @@
 layout: post
 title:  微服务--API版本控制
 date:   2018-01-30 15:54:54 +0800
-categories: 微服务
-tag: 教程
+categories: 技术文档
+tag: 微服务
 ---
 
 * content
