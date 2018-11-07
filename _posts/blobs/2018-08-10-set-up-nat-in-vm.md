@@ -43,14 +43,16 @@ vmware提供三种方式让主机与虚拟机进行通信，Hostonly，Nat，Bri
 在虚拟机内部修改配置
 ======================
 
-修改 `/etc/sysconfig/network-scripts/ifcfg-ens33`
+修改 `/etc/sysconfig/network-scripts/ifcfg-ens33` 或 `/etc/sysconfig/network-scripts/ifcfg-eth0`
 ----------------------
 
-设置`BOOTPROTO`, `IPADDR`, `NETMASK`, `GATEWAY`
+设置`BOOTPROTO`, `IPADDR`, `NETMASK`, `GATEWAY`和`ONBOOT`
 
 其中GATEWAY一定记得设置，要不然会出现宿主机无法访问虚拟机的问题。
 
 {% highlight bash %}
+$ vi /etc/sysconfig/network-scripts/ifcfg-eth0
+或者
 $ vi /etc/sysconfig/network-scripts/ifcfg-ens33
 TYPE=Ethernet
 PROXY_METHOD=none

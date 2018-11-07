@@ -105,6 +105,7 @@ Error response from daemon: Get https://192.168.59.1:8551/v1/users/: x509: certi
   ],
   "disable-legacy-registry": true
 }
+[root@localhost docker]# service docker restart
 [root@localhost docker]# docker login -u admin -p admin123 192.168.59.1:8551
 Login Succeeded
 {% endhighlight %}

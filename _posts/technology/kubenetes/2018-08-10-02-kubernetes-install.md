@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Kubernetes-02-kubernetes安装
+title:  Kubernetes-01-kubernetes安装
 date:   2018-08-10 10:00:00 +0800
 categories: 技术文档
 tag: Kubernetes
@@ -25,8 +25,8 @@ tag: Kubernetes
 
 {% highlight bash %}
 $ hostnamectl --static set-hostname k8s-master
-$ hostnamectl --static set-hostname k8s-node-1
 $ hostnamectl --static set-hostname k8s-node-2
+$ hostnamectl --static set-hostname k8s-node-3
 {% endhighlight %}
 
 配 hosts
@@ -34,8 +34,8 @@ $ hostnamectl --static set-hostname k8s-node-2
 
 {% highlight bash %}
 $ echo "192.168.75.139  k8s-master
-192.168.75.138  k8s-node-1
-192.168.75.140  k8s-node-2" >> /etc/hosts
+192.168.75.140  k8s-node-2
+192.168.75.142  k8s-node-3" >> /etc/hosts
 {% endhighlight %}
 
 关防火墙和 selinux
@@ -129,7 +129,7 @@ $ sudo yum install -y yum-utils \
 $ sudo yum-config-manager \
     --add-repo \
     https://download.docker.com/linux/centos/docker-ce.repo
-$ yum install docker-ce
+$ yum install -y docker-ce
 $ yum install -y --setopt=obsoletes=0 \
   docker-ce-17.03.2.ce-1.el7.centos \
   docker-ce-selinux-17.03.2.ce-1.el7.centos
@@ -173,16 +173,16 @@ $ journalctl -u kubelet --no-pager
 ---------------------------------
 
 {% highlight bash %}
-gcr.io/google_containers/kube-apiserver-amd64  v1.8.4
-gcr.io/google_containers/kube-controller-manager-amd64  v1.8.4
-gcr.io/google_containers/kube-proxy-amd64  v1.8.4
-gcr.io/google_containers/kube-scheduler-amd64  v1.8.4
-quay.io/coreos/flannel    v0.9.1-amd64
-gcr.io/google_containers/k8s-dns-sidecar-amd64  1.14.5
-gcr.io/google_containers/k8s-dns-kube-dns-amd64  1.14.5
-gcr.io/google_containers/k8s-dns-dnsmasq-nanny-amd64  1.14.5
-gcr.io/google_containers/etcd-amd64  3.0.17
-gcr.io/google_containers/pause-amd64  3.0
+docker pull gcr.io/google_containers/kube-apiserver-amd64  v1.8.4
+docker pull gcr.io/google_containers/kube-controller-manager-amd64  v1.8.4
+docker pull gcr.io/google_containers/kube-proxy-amd64  v1.8.4
+docker pull gcr.io/google_containers/kube-scheduler-amd64  v1.8.4
+docker pull quay.io/coreos/flannel    v0.9.1-amd64
+docker pull gcr.io/google_containers/k8s-dns-sidecar-amd64  1.14.5
+docker pull gcr.io/google_containers/k8s-dns-kube-dns-amd64  1.14.5
+docker pull gcr.io/google_containers/k8s-dns-dnsmasq-nanny-amd64  1.14.5
+docker pull gcr.io/google_containers/etcd-amd64  3.0.17
+docker pull gcr.io/google_containers/pause-amd64  3.0
 {% endhighlight %}
 
 可以使用如下脚本拉取到本地。
@@ -223,6 +223,8 @@ done
 docker pull $ALIYUN_URL/flannel:v0.9.1-amd64
 docker tag $ALIYUN_URL/flannel:v0.9.1-amd64 quay.io/coreos/flannel:v0.9.1-amd64
 docker rmi $ALIYUN_URL/flannel:v0.9.1-amd64
+$ chmod +x pull_k8s_img.sh
+$ ./pull_k8s_img.sh
 {% endhighlight %}
 
 配置 k8s 集群
@@ -338,24 +340,35 @@ node 加入集群
 在 node 节点分别执行
 
 {% highlight bash %}
-#此命令是之前执行kubeadmin之后的最后一行输出，且此命令保存好，以后往集群加Node全指着这条命令了
+#此命令是之前执行kubeadmin之后的最后一行输出，此命令保存好，如果丢失以后想再加入集群比较麻烦。
 $ kubeadm join --token 2d2a69.f25a309035b5c3a1 192.168.75.139:6443 --discovery-token-ca-cert-hash sha256:d6344a3881c51b73ad400747efba7e101a304a73c83d56ed3c500591fa028ad0
 {% endhighlight %}
+
+此处需要注意的是生成的token是有过期时间的，默认24小时。而过24小时候还想要有节点加入到集群，可以在Master节点上执行`kubeadm token create`来生成新的token，如果想生成一个永不过期的token，则可以使用`kubeadm token create --ttl 0`
+
+{% highlight bash %}
+$ kubeadm token create
+[kubeadm] WARNING: starting in 1.8, tokens expire after 24 hours by default (if you require a non-expiring token use --ttl 0)
+962a35.92d554fb807afb3d
+# 将之前命令中的token部分替换掉
+$ kubeadm join --token 2d2a69.f25a309035b5c3a1 192.168.75.139:6443 --discovery-token-ca-cert-hash sha256:d6344a3881c51b73ad400747efba7e101a304a73c83d56ed3c500591fa028ad0
+{% endhighlight %}
+
 
 如果添加的过程中出错想回滚之前的kubeadm join，可以执行如下操作
 
 {% highlight bash %}
 # 在master节点上执行：
-kubectl drain k8s-node-1 --delete-local-data --force --ignore-daemonsets
-kubectl delete node k8s-node-1
+$ kubectl drain k8s-node-2 --delete-local-data --force --ignore-daemonsets
+$ kubectl delete node k8s-node-2
 # 在node2上执行：
-kubeadm reset
+$ kubeadm reset
 {% endhighlight %}
 
-在node-1机器上执行如上命令的时候报错如下
+在node-2机器上执行如上命令的时候报错如下
 
 {% highlight bash %}
-[root@k8s-node-1 k8s]# kubeadm join --token 2d2a69.f25a309035b5c3a1 192.168.75.139:6443 --discovery-token-ca-cert-hash sha256:d6344a3881c51b73ad400747efba7e101a304a73c83d56ed3c500591fa028ad0
+$ kubeadm join --token 2d2a69.f25a309035b5c3a1 192.168.75.139:6443 --discovery-token-ca-cert-hash sha256:d6344a3881c51b73ad400747efba7e101a304a73c83d56ed3c500591fa028ad0
 [kubeadm] WARNING: kubeadm is in beta, please do not use it for production clusters.
 [preflight] Running pre-flight checks
 [preflight] WARNING: docker service is not enabled, please run 'systemctl enable docker.service'
@@ -368,7 +381,7 @@ kubeadm reset
 查询得知原因为时间不同步导致，解决办法有两种，一个是暂时手动设置时间如下：
 
 {% highlight bash %}
-date -s "20180809 22:10:50"
+$ date -s "20180809 22:10:50"
 {% endhighlight %}
 
 另一种是[设置NTP时间同步服务器](https://www.hifreud.com/2015/11/12/time-sync-solution/)
@@ -389,18 +402,21 @@ $ kubectl get nodes
 NAME         STATUS    ROLES     AGE       VERSION
 k8s-master   Ready     master    37m       v1.8.4
 k8s-node-2   Ready     <none>    28m       v1.8.4
+k8s-node-3   Ready     <none>    28m       v1.8.4
 
 $ kubectl get pod --all-namespaces -o wide
-NAMESPACE     NAME                                 READY     STATUS    RESTARTS   AGE       IP               NODE
-kube-system   etcd-k8s-master                      1/1       Running   0          37m       192.168.75.139   k8s-master
-kube-system   kube-apiserver-k8s-master            1/1       Running   0          36m       192.168.75.139   k8s-master
-kube-system   kube-controller-manager-k8s-master   1/1       Running   0          36m       192.168.75.139   k8s-master
-kube-system   kube-dns-545bc4bfd4-zd8ph            3/3       Running   0          37m       10.244.0.2       k8s-master
-kube-system   kube-flannel-ds-j5vm5                1/1       Running   0          28m       192.168.75.140   k8s-node-2
-kube-system   kube-flannel-ds-nnvfs                1/1       Running   0          32m       192.168.75.139   k8s-master
-kube-system   kube-proxy-bjsj5                     1/1       Running   0          28m       192.168.75.140   k8s-node-2
-kube-system   kube-proxy-t9tfn                     1/1       Running   0          37m       192.168.75.139   k8s-master
-kube-system   kube-scheduler-k8s-master            1/1       Running   0          36m       192.168.75.139   k8s-master
+NAMESPACE     NAME                                    READY     STATUS    RESTARTS   AGE       IP               NODE
+kube-system   etcd-k8s-master                         1/1       Running   4          3d        192.168.75.139   k8s-master
+kube-system   kube-apiserver-k8s-master               1/1       Running   4          3d        192.168.75.139   k8s-master
+kube-system   kube-controller-manager-k8s-master      1/1       Running   5          3d        192.168.75.139   k8s-master
+kube-system   kube-dns-545bc4bfd4-zd8ph               3/3       Running   12         3d        10.244.0.6       k8s-master
+kube-system   kube-flannel-ds-j4c6r                   1/1       Running   0          6m        192.168.75.142   k8s-node-3
+kube-system   kube-flannel-ds-j5vm5                   1/1       Running   4          3d        192.168.75.140   k8s-node-2
+kube-system   kube-flannel-ds-nnvfs                   1/1       Running   4          3d        192.168.75.139   k8s-master
+kube-system   kube-proxy-bjsj5                        1/1       Running   4          3d        192.168.75.140   k8s-node-2
+kube-system   kube-proxy-t9tfn                        1/1       Running   4          3d        192.168.75.139   k8s-master
+kube-system   kube-proxy-zgrb7                        1/1       Running   0          6m        192.168.75.142   k8s-node-3
+kube-system   kube-scheduler-k8s-master               1/1       Running   5          3d        192.168.75.139   k8s-master
 {% endhighlight %}
 
 
@@ -411,7 +427,7 @@ kube-system   kube-scheduler-k8s-master            1/1       Running   0        
 ---------------------------------
 
 {% highlight bash %}
-gcr.io/google_containers/kubernetes-dashboard-amd64  v1.8.0
+docker pull gcr.io/google_containers/kubernetes-dashboard-amd64:v1.8.0
 {% endhighlight %}
 
 可以使用如下脚本拉取到本地。
@@ -435,11 +451,15 @@ for imageName in ${images[@]} ; do
   docker tag $ALIYUN_URL/$imageName $GCR_URL/$imageName
   docker rmi $ALIYUN_URL/$imageName
 done
+$ chmod +x pull_k8s_dashboard_img.sh
+$ ./pull_k8s_dashboard_img.sh
 {% endhighlight %}
 
 初始化
 
 {% highlight bash %}
+$ kubectl delete -f https://raw.githubusercontent.com/batizhao/dockerfile/master/k8s/kubernetes-dashboard/kubernetes-dashboard.yaml
+$ kubectl delete -f https://raw.githubusercontent.com/batizhao/dockerfile/master/k8s/kubernetes-dashboard/kubernetes-dashboard-admin.rbac.yaml
 $ kubectl apply -f https://raw.githubusercontent.com/batizhao/dockerfile/master/k8s/kubernetes-dashboard/kubernetes-dashboard.yaml
 $ kubectl apply -f https://raw.githubusercontent.com/batizhao/dockerfile/master/k8s/kubernetes-dashboard/kubernetes-dashboard-admin.rbac.yaml
 {% endhighlight %}
@@ -447,20 +467,48 @@ $ kubectl apply -f https://raw.githubusercontent.com/batizhao/dockerfile/master/
 确认 dashboard 状态
 
 {% highlight bash %}
-$ kubectl get pod --all-namespaces -o wide
-kube-system   kubernetes-dashboard-7486b894c6-bhpx8   0/1       ErrImagePull   0          22s       10.244.1.2       k8s-node-2
+$ kubectl get pod --all-namespaces -o wide|grep -e dashboard -e NAMESPACE
+NAMESPACE     NAME                                    READY     STATUS    RESTARTS   AGE       IP               NODE
+kube-system   kubernetes-dashboard-7486b894c6-65l8c   1/1       Running   0          31m       10.244.2.2       k8s-node-3
 {% endhighlight %}
 
 访问
 
-[https://192.168.75.139:30000](https://192.168.75.139:30000)
+[https://192.168.75.139:30000/](https://192.168.75.139:30000/)
 
-或者在任意主机执行
+访问出错，
 
-$ kubectl proxy --address='192.168.75.139' --port=8086 --accept-hosts='^*$'
+![/images/blog/kubernetes/02-kubernetes-install/01-connection-provate.png](/images/blog/kubernetes/02-kubernetes-install/01-connection-provate.png)
 
-访问：
-[http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/](http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/)
+
+[https://192.168.75.139:6443/ui/](https://192.168.75.139:6443/ui/)
+
+报错如下
+
+{% highlight bash %}
+{
+  "kind": "Status",
+  "apiVersion": "v1",
+  "metadata": {
+    
+  },
+  "status": "Failure",
+  "message": "forbidden: User \"system:anonymous\" cannot get path \"/ui/\"",
+  "reason": "Forbidden",
+  "details": {
+    
+  },
+  "code": 403
+}
+{% endhighlight %}
+
+Kubernetes API Server新增了–anonymous-auth选项，允许匿名请求访问secure port。没有被其他authentication方法拒绝的请求即Anonymous requests， 这样的匿名请求的username为system:anonymous, 归属的组为system:unauthenticated。并且该选线是默认的。这样一来，当采用chrome浏览器访问dashboard UI时很可能无法弹出用户名、密码输入对话框，导致后续authorization失败。为了保证用户名、密码输入对话框的弹出，需要将–anonymous-auth设置为false
+在api-server配置文件中添加--anonymous-auth=false
+
+访问
+
+[https://192.168.75.139:6443/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/](https://192.168.75.139:6443/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/)
+
 
 查看登录 token
 
@@ -477,9 +525,9 @@ $ kubectl describe -n kube-system secret/kubernetes-dashboard-admin-token-8sl79
 准备 Docker 镜像
 
 {% highlight bash %}
-gcr.io/google_containers/heapster-amd64:v1.4.0
-gcr.io/google_containers/heapster-grafana-amd64:v4.4.3
-gcr.io/google_containers/heapster-influxdb-amd64:v1.3.3
+docker pull gcr.io/google_containers/heapster-amd64:v1.4.0
+docker pull gcr.io/google_containers/heapster-grafana-amd64:v4.4.3
+docker pull gcr.io/google_containers/heapster-influxdb-amd64:v1.3.3
 {% endhighlight %}
 
 可以使用下面脚本拉取到本地。
@@ -504,6 +552,8 @@ for imageName in ${images[@]} ; do
   docker tag $ALIYUN_URL/$imageName $GCR_URL/$imageName
   docker rmi $ALIYUN_URL/$imageName
 done
+$ chmod +x pull_k8s_heapster_img.sh
+$ ./pull_k8s_heapster_img.sh
 {% endhighlight %}
 
 初始化
@@ -514,3 +564,11 @@ $ kubectl apply -f https://raw.githubusercontent.com/batizhao/dockerfile/master/
 $ kubectl apply -f https://raw.githubusercontent.com/batizhao/dockerfile/master/k8s/heapster/heapster.yaml 
 $ kubectl apply -f https://raw.githubusercontent.com/batizhao/dockerfile/master/k8s/heapster/influxdb.yaml
 {% endhighlight %}
+
+
+参考资料
+=========================
+
+https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#deploying-the-dashboard-ui
+https://blog.csdn.net/a632189007/article/details/78840971
+本文大部分内容转载自此处 http://batizhao.github.io/2017/12/15/install-kubernetes-1-8-4-use-kubeadm/
