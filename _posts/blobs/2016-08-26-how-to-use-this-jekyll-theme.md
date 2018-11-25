@@ -114,19 +114,22 @@ jekyll server
 
 如果你也像我一样在寻觅一个简洁的博客主题。不妨试下LessOrMore。
 
-当然你也可以为了我的工作打赏！以激励我做出更好的东西。
+之前此处是有打赏功能的，不过最近在整理自己，发现打赏功能偏离了我写这个Jekyll主题的初衷，所以删除了打赏功能。
+
+非常感谢之前打赏过的朋友们！！
 
 支付宝
 ----------------
 
-<img src="{{ '/styles/images/zhifubao.PNG' | prepend: site.baseurl }}" alt="支付宝二维码付款给Freud" width="310" />
+abandoned!
 
 微信
 ----------------
-![微信二维码付款给Freud]({{ '/styles/images/weixin.png' | prepend: site.baseurl }})
+
+abandoned!
 
 
-感谢！
+感谢！ History!
 ------------------------------
 
 | nickname                                 | amount | date       | method 	| remarks                    |
