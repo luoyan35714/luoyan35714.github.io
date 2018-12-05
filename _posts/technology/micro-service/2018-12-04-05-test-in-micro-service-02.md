@@ -24,7 +24,7 @@ tag: 微服务
 
 举个例子，我们有ClassA，在ClassA中有三个方法，分别是methodA, methodB, methodC。那我们的测试方案就是针对ClassA创建一个ClassATest类，并在类中针对每个方法的多个场景进行测试，并且尽量考虑正常情况和异常情况，包括各种临界值的场景。如下图。
 
-![](/images/blog/micro-service/04-test-in-micro-service/01-UT.png)
+![](/images/blog/micro-service/05-unit-test/01-UT.png)
 
 
 项目代码
