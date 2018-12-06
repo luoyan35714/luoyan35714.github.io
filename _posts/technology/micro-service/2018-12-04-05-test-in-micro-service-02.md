@@ -30,31 +30,112 @@ tag: 微服务
 项目代码
 =============
 
-比如我们有一个Product项目，是维护商品信息的，其中的Controller和Service层代码如下。
+比如我们有一个Product项目，是维护商品信息的，其中的Controller层代码如下。
 
-controller
+ProductController
 -------------
 
-service
--------------
+{% highlight java %}
+@RestController
+@RequestMapping("/product")
+public class ProductController {
+
+	@Autowired
+	private ProductService productService;
+
+	@PostMapping("/all")
+	public @ResponseBody List<Product> getProduct(@RequestBody List<Integer> productIds) {
+		return productService.getProducts(productIds);
+	}
+
+}
+{% endhighlight %}
 
 
 测试代码
 =============
 
+那么我们就可以使用 [Mockito](https://site.mockito.org/) 对这个Controller进行单元测试，如下
+
 pom.xml
 -------------
 
-ControllerTest
+{% highlight xml %}
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-test</artifactId>
+	<scope>test</scope>
+</dependency>
+{% endhighlight %}
+
+ProductControllerTest.java
 -------------
 
-ServiceTest
--------------
+{% highlight java %}
+package com.freud.test.product.ut.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
+
+import com.freud.test.product.bean.Product;
+import com.freud.test.product.controller.ProductController;
+import com.freud.test.product.service.ProductService;
+
+@RunWith(MockitoJUnitRunner.class)
+public class ProductControllerTest {
+
+	@InjectMocks
+	private ProductController productController;
+
+	@Mock
+	private ProductService productService;
+
+	@Test
+	public void testGetProduct() {
+
+		List<Product> products = new ArrayList<Product>();
+		Product p1 = new Product();
+		p1.setId(1);
+		p1.setName("Shoes");
+		p1.setDescription("Beautiful shoes");
+		p1.setStorage(10);
+		products.add(p1);
+
+		Product p2 = new Product();
+		p2.setId(2);
+		p2.setName("T-shirt");
+		p2.setDescription("Cheap T-shirt");
+		p2.setStorage(20);
+		products.add(p2);
+		Mockito.when(productService.getProducts(Mockito.any(List.class))).thenReturn(products);
+
+		List<Integer> productIds = new ArrayList<>();
+		productIds.add(new Integer(1));
+		productIds.add(new Integer(2));
+
+		List<Product> response = productController.getProduct(productIds);
+
+		Assert.assertNotNull(response);
+		Assert.assertEquals(2, response.size());
+		Assert.assertEquals(new Integer(1), response.get(0).getId());
+		Assert.assertEquals(new Integer(2), response.get(1).getId());
+	}
+}
+{% endhighlight %}
+
 
 完整代码
 =============
 
-请参照 GITHUB []()
+请参照 GITHUB [ProductControllerTest.java](https://github.com/luoyan35714/TestInMicroServices/blob/master/ms-product/src/test/java/com/freud/test/product/ut/controller/ProductControllerTest.java)
 
 
 參考資料
