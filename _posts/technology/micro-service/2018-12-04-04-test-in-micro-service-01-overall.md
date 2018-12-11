@@ -45,10 +45,10 @@ tag: 微服务
 
 以下只针对Java的技术来说，不同的测试我们可以采用如下的技术来实现。
 
-| 单元测试 | Mockito     |
-| 冒烟测试 | MockMvc     |
-| 集成测试 | RestAssured |
-| BDD      | Cucumber    |
+| 单元测试 	| Mockito				|
+| 冒烟测试 	| MockMvc + WireMock	|
+| 集成测试 	| RestAssured 			|
+| BDD		| Cucumber    			|
 
 參考資料
 =============
