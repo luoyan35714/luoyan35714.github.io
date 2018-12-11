@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  微服务架构下的测试之(三)-冒烟測試
+title:  微服务架构下的测试之(三)-冒烟測試(Smote Test)
 date:   2018-12-10 09:58:00 +0800
 categories: 技术文档
 tag: 微服务
