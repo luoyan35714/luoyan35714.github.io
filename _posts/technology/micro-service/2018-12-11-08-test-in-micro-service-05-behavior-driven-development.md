@@ -47,7 +47,7 @@ tag: 微服务
 
 具体的调用时序图如下：
 
-![](/images/blog/micro-service/07-integration-test/02-order-project.png)
+![](/images/blog/micro-service/08-bdd/02-order-project.png)
 
 现在四个微服务都部署好之后，我们可以启动我们的BDD项目来对整个微服务调用链进行测试。
 
@@ -105,4 +105,4 @@ CreateOrderTest.java
 
 BDD : [https://baike.baidu.com/item/BDD/10735732?fr=aladdin](https://baike.baidu.com/item/BDD/10735732?fr=aladdin)
 
-[Cucumber](https://cucumber.io/)
+Cucumber : [https://cucumber.io/](https://cucumber.io/)
