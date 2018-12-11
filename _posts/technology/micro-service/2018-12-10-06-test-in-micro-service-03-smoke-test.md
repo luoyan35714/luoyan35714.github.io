@@ -31,32 +31,34 @@ tag: 微服务
 项目代码
 =============
 
-还是拿之前的Product项目来说明，ProductService是维护商品信息的，其中的Controller层代码如下。
+举个例子，有一个下单的流程，我们有4个微服务，分别是ms-gateway, ms-service, ms-product, ms-order. 其中
 
-ProductController
--------------
+| ms-gateway | 负责gateway功能，所有微服务在一个子网，保证只有gateway可以与外网交互 |
+| ms-service | 负责业务逻辑的处理 |
+| ms-product | 负责产品信息的维护和库存的维护 |
+| ms-order   | 负责订单信息的维护 |
+
+具体的调用时序图如下：
+
+![](/images/blog/micro-service/06-smoke-test/02-order-project.png)
+
+现在我们要部署ms-service项目，并且相对其进行冒烟测试。
+
+项目controller层代码如下：
 
 {% highlight java %}
-@RestController
-@RequestMapping("/product")
-public class ProductController {
+{% endhighlight %}
 
-	@Autowired
-	private ProductService productService;
+项目service层代码如下：
 
-	@PostMapping("/all")
-	public @ResponseBody List<Product> getProduct(@RequestBody List<Integer> productIds) {
-		return productService.getProducts(productIds);
-	}
-
-}
+{% highlight java %}
 {% endhighlight %}
 
 
 测试代码
 =============
 
-那么我们就可以使用 [MockMVC](https://docs.spring.io/spring/docs/current/spring-framework-reference/testing.html) 对这个项目进行测试，如下
+那么我们就可以使用 [MockMVC](https://docs.spring.io/spring/docs/current/spring-framework-reference/testing.html)和[WireMock](http://wiremock.org/) 对这个项目进行测试，如下
 
 pom.xml
 -------------
@@ -75,80 +77,23 @@ pom.xml
 </dependency>
 {% endhighlight %}
 
-ProductControllerTest.java
+ProductControllerSmokeTest.java
 -------------
 
 {% highlight java %}
-package com.freud.test.product.ut.controller;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
-
-import com.freud.test.product.bean.Product;
-import com.freud.test.product.controller.ProductController;
-import com.freud.test.product.service.ProductService;
-
-@RunWith(MockitoJUnitRunner.class)
-public class ProductControllerTest {
-
-	@InjectMocks
-	private ProductController productController;
-
-	@Mock
-	private ProductService productService;
-
-	@Test
-	public void testGetProduct() {
-
-		List<Product> products = new ArrayList<Product>();
-		Product p1 = new Product();
-		p1.setId(1);
-		p1.setName("Shoes");
-		p1.setDescription("Beautiful shoes");
-		p1.setStorage(10);
-		products.add(p1);
-
-		Product p2 = new Product();
-		p2.setId(2);
-		p2.setName("T-shirt");
-		p2.setDescription("Cheap T-shirt");
-		p2.setStorage(20);
-		products.add(p2);
-		Mockito.when(productService.getProducts(Mockito.any(List.class))).thenReturn(products);
-
-		List<Integer> productIds = new ArrayList<>();
-		productIds.add(new Integer(1));
-		productIds.add(new Integer(2));
-
-		List<Product> response = productController.getProduct(productIds);
-
-		Assert.assertNotNull(response);
-		Assert.assertEquals(2, response.size());
-		Assert.assertEquals(new Integer(1), response.get(0).getId());
-		Assert.assertEquals(new Integer(2), response.get(1).getId());
-	}
-}
 {% endhighlight %}
 
 
 完整代码
 =============
 
-请参照 GITHUB [ProductControllerTest.java](https://github.com/luoyan35714/TestInMicroServices/blob/master/ms-product/src/test/java/com/freud/test/product/ut/controller/ProductControllerTest.java)
+请参照 GITHUB [ms-service](https://github.com/luoyan35714/TestInMicroServices/tree/master/ms-service)
 
 
 參考資料
 =============
 
-单元测试 : [https://baike.baidu.com/item/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95](https://baike.baidu.com/item/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95)
+冒烟测试 : [https://baike.baidu.com/item/%E5%86%92%E7%83%9F%E6%B5%8B%E8%AF%95/2166486?fr=aladdin](https://baike.baidu.com/item/%E5%86%92%E7%83%9F%E6%B5%8B%E8%AF%95/2166486?fr=aladdin)
 
 MockMvc : [https://docs.spring.io/spring/docs/current/spring-framework-reference/testing.html](https://docs.spring.io/spring/docs/current/spring-framework-reference/testing.html)
 
