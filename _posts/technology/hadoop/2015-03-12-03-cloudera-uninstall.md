@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Hadoop 学习笔记之(三) - [转] cloudera manager 卸载
+title:  Hadoop 之(三) - [转] cloudera manager 卸载
 date:   2015-03-12 16:58:00 +0800
 categories: 技术文档
 tag: Hadoop

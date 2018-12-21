@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  OPC-学习笔记(三)-OPC主要功能
+title:  OPC-(三)-OPC主要功能
 date:   2014-12-27 15:59:01 +0800
 category : 技术文档
 tag : OPC

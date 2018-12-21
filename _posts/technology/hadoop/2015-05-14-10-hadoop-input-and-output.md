@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Hadoop 学习笔记之(十) - Hadoop输入和输出
+title:  Hadoop 之(十) - Hadoop输入和输出
 date:   2015-05-14 15:21:00 +0800
 categories: 技术文档
 tag: Hadoop

@@ -1,6 +1,6 @@
 ---
 layout:			post
-title:			Zookeeper学习笔记之(十七) - 我的开源zookeeper_admin
+title:			Zookeeper之(十七) - 我的开源zookeeper_admin
 date:			2017-01-19 10:20:00 +0800
 categories:		技术文档
 tag:			zookeeper
@@ -146,7 +146,7 @@ git clone https://github.com/luoyan35714/zookeeper_admin.git
 
 ![/images/blog/zookeeper/17-zookeeper-admin/18.png](/images/blog/zookeeper/17-zookeeper-admin/18.png)
 
-+ `SET ACL` : 选中节点，点击`SET ACL`,设置相关ACL信息，其中ACL的组成为`scheme:auth:perms`组成，如果想设置多个ACL可以用`;`分隔开。举例如`world:anyone:cdrwa`或`digest:admin:admin:cdrwa;digest:admin:test:cdrwa`,具体ACL相关信息可以参见[Zookeeper学习笔记之(五) - zookeeper ACL](http://www.hifreud.com/2017/01/08/zookeeper-05-acl/)
++ `SET ACL` : 选中节点，点击`SET ACL`,设置相关ACL信息，其中ACL的组成为`scheme:auth:perms`组成，如果想设置多个ACL可以用`;`分隔开。举例如`world:anyone:cdrwa`或`digest:admin:admin:cdrwa;digest:admin:test:cdrwa`,具体ACL相关信息可以参见[Zookeeper之(五) - zookeeper ACL](http://www.hifreud.com/2017/01/08/zookeeper-05-acl/)
 
 ![/images/blog/zookeeper/17-zookeeper-admin/19.png](/images/blog/zookeeper/17-zookeeper-admin/19.png)
 

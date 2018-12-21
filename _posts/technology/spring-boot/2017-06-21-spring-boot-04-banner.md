@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Spring Boot学习笔记(四) - Banner
+title:  Spring Boot(四) - Banner
 date:   2017-06-21 10:42:00 +0800
 categories: Spring-Boot
 tag: 教程

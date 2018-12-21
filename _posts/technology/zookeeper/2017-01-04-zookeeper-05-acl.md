@@ -1,6 +1,6 @@
 ---
 layout:			post
-title:			Zookeeper学习笔记之(五) - zookeeper ACL
+title:			Zookeeper之(五) - zookeeper ACL
 date:			2017-01-08 14:14:00 +0800
 categories:		技术文档
 tag:			zookeeper
@@ -174,4 +174,4 @@ Zookeeper官网：[http://zookeeper.apache.org/](http://zookeeper.apache.org/)
 
 使用ZooKeeper ACL特性进行znode控制 ：[使用ZooKeeper ACL特性进行znode控制](http://aiilive.blog.51cto.com/1925756/1686132)
 
-zookeeper学习笔记1 : [zookeeper学习笔记1](http://5ydycm.blog.51cto.com/115934/1591768/)
+zookeeper1 : [zookeeper1](http://5ydycm.blog.51cto.com/115934/1591768/)

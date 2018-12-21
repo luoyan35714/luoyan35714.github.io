@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Spring Boot学习笔记(十八) - 数据访问
+title:  Spring Boot(十八) - 数据访问
 date:   2017-07-06 16:01:00 +0800
 categories: Spring-Boot
 tag: 教程

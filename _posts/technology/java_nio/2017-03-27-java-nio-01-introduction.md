@@ -1,6 +1,6 @@
 ---
 layout		: post
-title 		: Java NIO系列学习笔记（一） - Java NIO 概述
+title 		: Java NIO系列（一） - Java NIO 概述
 date 		: 2017-03-27 20:40:01 +0800
 categories 	: 技术文档
 tag			: nio

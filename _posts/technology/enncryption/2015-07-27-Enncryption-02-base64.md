@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  加密算法学习笔记(二) - BASE64
+title:  加密算法(二) - BASE64
 date:   2015-07-27 23:31:00 +0800
 categories: 技术文档
 tag: 加密算法

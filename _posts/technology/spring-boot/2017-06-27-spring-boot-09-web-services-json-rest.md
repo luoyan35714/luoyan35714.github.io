@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Spring Boot学习笔记(九) - 构建web服务 - JSON REST
+title:  Spring Boot(九) - 构建web服务 - JSON REST
 date:   2017-06-27 17:30:00 +0800
 categories: Spring-Boot
 tag: 教程

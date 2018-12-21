@@ -1,6 +1,6 @@
 ---
 layout 		: post
-title 		: Java NIO系列学习笔记（二） - Buffer
+title 		: Java NIO系列（二） - Buffer
 date 		: 2017-03-28 14:56:01 +0800
 categories 	: 技术文档
 tag 		: nio

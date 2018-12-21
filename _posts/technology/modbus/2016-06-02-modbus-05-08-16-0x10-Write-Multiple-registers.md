@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Modbus-学习笔记(十二)-0x10 Write Multiple registers(写多保持寄存器 )
+title:  Modbus-(十二)-0x10 Write Multiple registers(写多保持寄存器 )
 date:   2016-06-20 23:46:30 +0800
 category : 技术文档
 tag : Modbus

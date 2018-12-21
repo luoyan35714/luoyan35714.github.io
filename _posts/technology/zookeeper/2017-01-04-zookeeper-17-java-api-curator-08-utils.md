@@ -1,6 +1,6 @@
 ---
 layout:			post
-title:			Zookeeper学习笔记之(十六) - zookeeper java API - curator - 08 - 常用工具
+title:			Zookeeper之(十六) - zookeeper java API - curator - 08 - 常用工具
 date:			2017-01-18 14:54:00 +0800
 categories:		技术文档
 tag:			zookeeper

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Hadoop 学习笔记之(八) - MapReduce Sample之WordCount应用案例
+title:  Hadoop 之(八) - MapReduce Sample之WordCount应用案例
 date:   2015-05-14 14:48:00 +0800
 categories: 技术文档
 tag: Hadoop

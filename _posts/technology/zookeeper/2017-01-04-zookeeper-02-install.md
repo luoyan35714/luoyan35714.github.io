@@ -1,6 +1,6 @@
 ---
 layout:			post
-title:			Zookeeper学习笔记之(二) - Zookeeper安装
+title:			Zookeeper之(二) - Zookeeper安装
 date:			2017-01-05 14:05:00 +0800
 categories:		技术文档
 tag:			zookeeper

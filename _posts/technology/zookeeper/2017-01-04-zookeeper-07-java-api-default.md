@@ -1,6 +1,6 @@
 ---
 layout:			post
-title:			Zookeeper学习笔记之(七) - zookeeper java API - 原生API
+title:			Zookeeper之(七) - zookeeper java API - 原生API
 date:			2017-01-10 14:20:00 +0800
 categories:		技术文档
 tag:			zookeeper

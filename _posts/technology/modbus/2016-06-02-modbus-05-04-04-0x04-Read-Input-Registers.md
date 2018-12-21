@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Modbus-学习笔记(八)-0x04 Read Input Registers(读输入寄存器)
+title:  Modbus-(八)-0x04 Read Input Registers(读输入寄存器)
 date:   2016-06-20 23:42:30 +0800
 category : 技术文档
 tag : Modbus

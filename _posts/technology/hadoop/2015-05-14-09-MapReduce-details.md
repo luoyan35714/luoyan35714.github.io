@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Hadoop 学习笔记之(九) - MapReduce详解
+title:  Hadoop 之(九) - MapReduce详解
 date:   2015-05-14 14:57:00 +0800
 categories: 技术文档
 tag: Hadoop

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  OPC-学习笔记(二)-什么是OPC
+title:  OPC-(二)-什么是OPC
 date:   2014-12-27 15:53:01 +0800
 category : 技术文档
 tag : OPC

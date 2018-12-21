@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Hadoop 学习笔记之(一) - 环境搭建
+title:  Hadoop 之(一) - 环境搭建
 date:   2015-03-11 14:07:00 +0800
 categories: 技术文档
 tag: Hadoop
@@ -150,7 +150,7 @@ hadoop namenode -format
 > http://hadoop.apache.org/docs/r2.3.0/hadoop-project-dist/hadoop-common/ClusterSetup.html
 
 + Cloudera Manager安装
-参照另一文档：[<hadoop 学习笔记(二) - cloudera 5.0.1 安装>](#)
+参照另一文档：[<hadoop (二) - cloudera 5.0.1 安装>](#)
 
 Hadoop Cluster安装
 ===========================

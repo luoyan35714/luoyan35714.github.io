@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Modbus-学习笔记(十四) - MODBUS常用校验算法
+title:  Modbus-(十四) - MODBUS常用校验算法
 date:   2016-09-20 11:04:00 +0800
 category : 技术文档
 tag : Modbus

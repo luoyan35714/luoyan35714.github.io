@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Hadoop 学习笔记之(七) - [转] MapReduce 工作机制
+title:  Hadoop 之(七) - [转] MapReduce 工作机制
 date:   2015-05-14 14:31:00 +0800
 categories: 技术文档
 tag: Hadoop

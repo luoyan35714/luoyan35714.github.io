@@ -1,6 +1,6 @@
 ---
 layout:			post
-title:			Zookeeper学习笔记之(十一) - zookeeper java API - curator - 03 - 选举API
+title:			Zookeeper之(十一) - zookeeper java API - curator - 03 - 选举API
 date:			2017-01-13 14:26:00 +0800
 categories:		技术文档
 tag:			zookeeper

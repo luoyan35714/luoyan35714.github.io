@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Spring Boot学习笔记(十五) - 消息
+title:  Spring Boot(十五) - 消息
 date:   2017-07-05 14:10:00 +0800
 categories: Spring-Boot
 tag: 教程

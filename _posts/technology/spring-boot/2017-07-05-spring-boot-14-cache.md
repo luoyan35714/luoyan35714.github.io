@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Spring Boot学习笔记(十四) - 缓存
+title:  Spring Boot(十四) - 缓存
 date:   2017-07-05 13:44:00 +0800
 categories: Spring-Boot
 tag: 教程

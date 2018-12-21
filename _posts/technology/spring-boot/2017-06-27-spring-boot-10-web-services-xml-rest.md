@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Spring Boot学习笔记(十) - 构建web服务 - XML REST
+title:  Spring Boot(十) - 构建web服务 - XML REST
 date:   2017-06-27 18:00:00 +0800
 categories: Spring-Boot
 tag: 教程

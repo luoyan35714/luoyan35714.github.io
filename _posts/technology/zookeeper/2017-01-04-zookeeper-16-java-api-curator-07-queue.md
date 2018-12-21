@@ -1,6 +1,6 @@
 ---
 layout:			post
-title:			Zookeeper学习笔记之(十五) - zookeeper java API - curator - 07 - 队列
+title:			Zookeeper之(十五) - zookeeper java API - curator - 07 - 队列
 date:			2017-01-18 09:37:00 +0800
 categories:		技术文档
 tag:			zookeeper

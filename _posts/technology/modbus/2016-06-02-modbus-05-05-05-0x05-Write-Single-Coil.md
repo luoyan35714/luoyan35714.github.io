@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Modbus-学习笔记(九)-0x05 Write Single Coil(写单线圈寄存器)
+title:  Modbus-(九)-0x05 Write Single Coil(写单线圈寄存器)
 date:   2016-06-20 23:43:30 +0800
 category : 技术文档
 tag : Modbus

@@ -1,6 +1,6 @@
 ---
 layout:			post
-title:			Zookeeper学习笔记之(九) - zookeeper java API - curator - 01 - 基础API
+title:			Zookeeper之(九) - zookeeper java API - curator - 01 - 基础API
 date:			2017-01-12 14:26:00 +0800
 categories:		技术文档
 tag:			zookeeper

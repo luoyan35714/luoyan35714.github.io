@@ -1,6 +1,6 @@
 ---
 layout:			post
-title:			Zookeeper学习笔记之(十三) - zookeeper java API - curator - 05 - 分布式计数器
+title:			Zookeeper之(十三) - zookeeper java API - curator - 05 - 分布式计数器
 date:			2017-01-17 15:57:00 +0800
 categories:		技术文档
 tag:			zookeeper

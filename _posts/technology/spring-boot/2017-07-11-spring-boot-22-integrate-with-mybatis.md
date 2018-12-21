@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Spring Boot学习笔记(二二) - 与Mybatis集成
+title:  Spring Boot(二二) - 与Mybatis集成
 date:   2017-07-11 16:10:00 +0800
 categories: Spring-Boot
 tag: 教程
