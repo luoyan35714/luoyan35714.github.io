@@ -29,17 +29,17 @@ Release:	6.5
 Codename:	Final
 {% endhighlight %}
 
-+ 下载mysql的Yum源下载
-{% highlight bash %}
-[root@localhost ~]# wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
-[root@localhost ~]# sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm
-{% endhighlight %}
-
-+ 如果存在则删除
++ 如果之前存在Mysql则删除
 {% highlight bash %}
 [root@localhost ~]# yum list installed | grep mysql
 [root@localhost ~]# yum -y remove mysql-libs.x86_64
 [root@localhost ~]# yum list | grep mysql 或 yum -y list mysql*
+{% endhighlight %}
+
++ 下载mysql的Yum源下载
+{% highlight bash %}
+[root@localhost ~]# wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+[root@localhost ~]# sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm
 {% endhighlight %}
 
 + 安装
@@ -49,7 +49,7 @@ Codename:	Final
 
 + 查看安装的Mysql版本
 {% highlight bash %}
-[root@localhost ~]# rpm -qi mysql-server
+[root@localhost ~]# yum list installed | grep mysql
 {% endhighlight %}
 
 + 设置用户和权限
