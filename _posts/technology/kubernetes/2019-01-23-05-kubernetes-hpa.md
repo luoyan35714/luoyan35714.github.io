@@ -333,6 +333,146 @@ sample-metrics-app-hpa   Deployment/sample-metrics-app   866m/100   2         10
 {% endhighlight %}
 
 
+Spring Boot 2.0通过micrometer提供http_requests_total指标信息
+==============
+
+Pom.xml
+--------------
+
+{% highlight xml %}
+<dependency>
+    <groupId>io.micrometer</groupId>
+    <artifactId>micrometer-registry-prometheus</artifactId>
+    <version>1.0.4</version>
+    <scope>runtime</scope>
+</dependency>
+{% endhighlight %}
+
+MetricsConfig.java
+--------------
+
+{% highlight java %}
+package com.freud.hpa.config;
+
+import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.config.MeterFilter;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.actuate.autoconfigure.metrics.MeterRegistryCustomizer;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import java.time.Duration;
+
+@Configuration
+public class MetricsConfig {
+
+    private static final Duration HISTOGRAM_EXPIRY = Duration.ofMinutes(10);
+
+    private static final Duration STEP = Duration.ofSeconds(5);
+
+    @Value("${spring.application.name}")
+    private String serviceName;
+
+    @Bean
+    public MeterRegistryCustomizer<MeterRegistry> metricsCommonTags() { // (2)
+        return registry -> registry.config()
+                .commonTags("service", serviceName) // (3)
+                .meterFilter(MeterFilter.deny(id -> { // (4)
+                    String uri = id.getTag("uri");
+                    return uri != null && uri.startsWith("/swagger");
+                }));
+    }
+
+}
+{% endhighlight %}
+
+WebConfig.java
+--------------
+
+{% highlight java %}
+package com.freud.hpa.config;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+@EnableWebMvc
+public class WebConfig implements WebMvcConfigurer {
+
+  @Autowired
+  private RequestCounterInterceptor requestCounterInterceptor;
+
+  @Override
+  public void addInterceptors(InterceptorRegistry registry) {
+    registry.addInterceptor(requestCounterInterceptor);
+  }
+}
+{% endhighlight %}
+
+RequestCounterInterceptor.java
+--------------
+
+{% highlight java %}
+package com.freud.hpa.config;
+
+import java.lang.reflect.Method;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.method.HandlerMethod;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.MeterRegistry;
+
+@Configuration
+public class RequestCounterInterceptor extends HandlerInterceptorAdapter {
+
+  private static final String METRICS_HTTP_REQUESTS_TOTAL = "http_requests_total";
+  private static final String TAG_METHOD = "method";
+  private static final String TAG_HANDLER = "handler";
+  private static final String TAG_STATUS = "status";
+
+  @Autowired
+  private MeterRegistry registry;
+
+  @Override
+  public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception e)
+      throws Exception {
+
+    String handlerLabel = handler.toString();
+    // get short form of handler method name
+    if (handler instanceof HandlerMethod) {
+      Method method = ((HandlerMethod) handler).getMethod();
+      handlerLabel = method.getDeclaringClass().getSimpleName() + "." + method.getName();
+    }
+
+    Counter http_requests_total = registry.find(METRICS_HTTP_REQUESTS_TOTAL).tag(TAG_METHOD, request.getMethod())
+        .tag(TAG_HANDLER, handlerLabel).tag(TAG_STATUS, Integer.toString(response.getStatus())).counter();
+
+    if (http_requests_total == null) {
+      synchronized (this) {
+        if (http_requests_total == null) {
+          http_requests_total = registry.counter(METRICS_HTTP_REQUESTS_TOTAL, TAG_METHOD, request.getMethod(),
+              TAG_HANDLER, handlerLabel, TAG_STATUS, Integer.toString(response.getStatus()));
+        }
+      }
+    }
+
+    http_requests_total.increment();
+  }
+}
+{% endhighlight %}
+
+
 参考资料
 ==============
 
@@ -353,3 +493,7 @@ Horizontal Pod Autoscaling : [https://www.kubernetes.org.cn/horizontal-pod-autos
 Upgrading kubeadm clusters from v1.10 to v1.11: [https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade-1-11/](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade-1-11/)
 
 kubeadm-workshop: [https://github.com/luxas/kubeadm-workshop](https://github.com/luxas/kubeadm-workshop)
+
+[kubernetes系列]HPA模块深度讲解: [https://juejin.im/post/5b9dfc3df265da0ad947be85](https://juejin.im/post/5b9dfc3df265da0ad947be85)
+
+Kubernetes自动缩扩容HPA算法小结: [https://www.jianshu.com/p/504f49710f84](https://www.jianshu.com/p/504f49710f84)
