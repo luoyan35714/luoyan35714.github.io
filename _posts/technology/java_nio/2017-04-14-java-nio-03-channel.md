@@ -12,8 +12,6 @@ tag 		: nio
 NIO Channel类图Overview
 =======================================
 
-<iframe id="embed_dom" name="embed_dom" frameborder="0" style="border:1px solid #000;display:block;width:800px; height:800px;" src="https://www.processon.com/embed/58ddc78be4b0e56d4d538364"></iframe>
-
 ![/images/blog/java-nio/03-channel/01-nio-channel-uml-class-diagram.png](/images/blog/java-nio/03-channel/01-nio-channel-uml-class-diagram.png)
 
 Channel

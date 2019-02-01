@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Kubernetes-01-kubernetes安装
+title:  Kubernetes (01) kubernetes安装
 date:   2018-08-10 10:00:00 +0800
 categories: 技术文档
 tag: Kubernetes
