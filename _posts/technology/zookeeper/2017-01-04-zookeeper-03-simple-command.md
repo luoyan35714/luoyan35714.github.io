@@ -1,6 +1,6 @@
 ---
 layout:			post
-title:			Zookeeper学习笔记之(三) - zookeeper简单命令
+title:			Zookeeper之(三) - zookeeper简单命令
 date:			2017-01-06 14:08:00 +0800
 categories:		技术文档
 tag:			zookeeper

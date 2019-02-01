@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Modbus-学习笔记(六)-0x02 Read Discrete Inputs(读取离散量输入)
+title:  Modbus-(六)-0x02 Read Discrete Inputs(读取离散量输入)
 date:   2016-06-02 17:50:01 +0800
 category : 技术文档
 tag : Modbus

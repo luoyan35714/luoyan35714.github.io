@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  加密算法学习笔记(一) - 基础
+title:  加密算法(一) - 基础
 date:   2015-07-27 22:17:00 +0800
 categories: 技术文档
 tag: 加密算法

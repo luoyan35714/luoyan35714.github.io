@@ -1,6 +1,6 @@
 ---
 layout:			post
-title:			Zookeeper学习笔记之(八) - zookeeper java API - zkclient
+title:			Zookeeper之(八) - zookeeper java API - zkclient
 date:			2017-01-11 14:23:00 +0800
 categories:		技术文档
 tag:			zookeeper

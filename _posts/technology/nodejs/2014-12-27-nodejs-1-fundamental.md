@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Node.js-学习笔记(一)-入门
+title:  Node.js-(一)-入门
 date:   2014-12-27 13:03:01 +0800
 category : 技术文档
 tag : node.js

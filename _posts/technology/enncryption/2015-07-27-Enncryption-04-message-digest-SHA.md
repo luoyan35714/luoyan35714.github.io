@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  加密算法学习笔记(四) - 消息摘要算法-SHA
+title:  加密算法(四) - 消息摘要算法-SHA
 date:   2015-08-04 00:16:00 +0800
 categories: 技术文档
 tag: 加密算法

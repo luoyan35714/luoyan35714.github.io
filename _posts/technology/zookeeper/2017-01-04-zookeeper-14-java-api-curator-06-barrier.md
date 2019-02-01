@@ -1,6 +1,6 @@
 ---
 layout:			post
-title:			Zookeeper学习笔记之(十四) - zookeeper java API - curator - 06 - barrier
+title:			Zookeeper之(十四) - zookeeper java API - curator - 06 - barrier
 date:			2017-01-17 16:48:00 +0800
 categories:		技术文档
 tag:			zookeeper

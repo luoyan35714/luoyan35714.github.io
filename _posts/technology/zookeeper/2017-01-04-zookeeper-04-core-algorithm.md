@@ -1,6 +1,6 @@
 ---
 layout:			post
-title:			Zookeeper学习笔记之(四) - zookeeper核心算法
+title:			Zookeeper之(四) - zookeeper核心算法
 date:			2017-01-07 14:11:00 +0800
 categories:		技术文档
 tag:			zookeeper

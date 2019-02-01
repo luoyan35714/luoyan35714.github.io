@@ -1,6 +1,6 @@
 ---
 layout 		: post
-title 		: Java NIO系列学习笔记（五） - Selector
+title 		: Java NIO系列（五） - Selector
 date 		: 2017-04-18 10:56:01 +0800
 categories 	: 技术文档
 tag 		: nio

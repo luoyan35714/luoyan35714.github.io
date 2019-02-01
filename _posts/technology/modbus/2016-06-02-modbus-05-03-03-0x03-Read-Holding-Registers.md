@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Modbus-学习笔记(七)-0x03 Read Holding Registers(读保持寄存器)
+title:  Modbus-(七)-0x03 Read Holding Registers(读保持寄存器)
 date:   2016-06-20 23:41:01 +0800
 category : 技术文档
 tag : Modbus

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  OPC-学习笔记(五)-OPC Client Java调用之JeasyOPC
+title:  OPC-(五)-OPC Client Java调用之JeasyOPC
 date:   2014-12-27 16:17:01 +0800
 category : 技术文档
 tag : OPC

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Spring Boot学习笔记(十一) - 构建web服务 - WebService
+title:  Spring Boot(十一) - 构建web服务 - WebService
 date:   2017-06-28 09:33:00 +0800
 categories: Spring-Boot
 tag: 教程

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Hadoop 学习笔记之(十一) - Hadoop小文件优化
+title:  Hadoop 之(十一) - Hadoop小文件优化
 date:   2015-05-15 10:10:00 +0800
 categories: 技术文档
 tag: Hadoop

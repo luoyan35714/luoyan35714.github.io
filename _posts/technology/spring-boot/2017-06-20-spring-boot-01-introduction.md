@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Spring Boot学习笔记(一) - 简单介绍
+title:  Spring Boot(一) - 简单介绍
 date:   2017-06-20 17:13:00 +0800
 categories: Spring-Boot
 tag: 教程

@@ -1,6 +1,6 @@
 ---
 layout 		: post
-title 		: Java NIO系列学习笔记（四） - Pipe
+title 		: Java NIO系列（四） - Pipe
 date 		: 2017-04-17 17:31:01 +0800
 categories 	: 技术文档
 tag 		: nio

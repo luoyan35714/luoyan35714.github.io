@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  JAVA OSGi学习笔记(五)-Component注册Service模块实现
+title:  JAVA OSGi(五)-Component注册Service模块实现
 date:   2014-12-19 00:12:01 +0800
 categories: 技术文档
 tag: OSGi

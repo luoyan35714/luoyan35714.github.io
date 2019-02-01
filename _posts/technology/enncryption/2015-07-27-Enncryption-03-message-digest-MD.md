@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  加密算法学习笔记(三) - 消息摘要算法-MD
+title:  加密算法(三) - 消息摘要算法-MD
 date:   2015-08-03 23:28:00 +0800
 categories: 技术文档
 tag: 加密算法

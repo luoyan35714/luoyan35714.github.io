@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Hadoop 学习笔记之(二) - cloudera 5.0.1 安装
+title:  Hadoop 之(二) - cloudera 5.0.1 安装
 date:   2015-03-11 15:16:00 +0800
 categories: 技术文档
 tag: Hadoop

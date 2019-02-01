@@ -1,6 +1,6 @@
 ---
 layout		: post
-title 		: Java NIO系列学习笔记（三） - Channel
+title 		: Java NIO系列（三） - Channel
 date 		: 2017-04-14 17:41:00 +0800
 categories 	: 技术文档
 tag 		: nio

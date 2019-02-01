@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Modbus-学习笔记(二)-模拟环境搭建
+title:  Modbus-(二)-模拟环境搭建
 date:   2016-06-02 17:46:01 +0800
 category : 技术文档
 tag : Modbus

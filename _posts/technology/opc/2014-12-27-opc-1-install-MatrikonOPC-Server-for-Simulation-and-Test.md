@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  OPC-学习笔记(一)-安装Matrikon OPC Simulation Server
+title:  OPC-(一)-安装Matrikon OPC Simulation Server
 date:   2014-12-27 15:36:01 +0800
 category : 技术文档
 tag : OPC

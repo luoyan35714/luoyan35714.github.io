@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  OPC-学习笔记(四)-OPC Client Java调用之Utgard
+title:  OPC-(四)-OPC Client Java调用之Utgard
 date:   2014-12-27 16:08:01 +0800
 category : 技术文档
 tag : OPC

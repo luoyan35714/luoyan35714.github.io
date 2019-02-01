@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  JAVA OSGi学习笔记(零)-OSGi简介
+title:  JAVA OSGi(零)-OSGi简介
 date:   2014-12-18 12:31:01 +0800
 categories: 技术文档
 tag: OSGi

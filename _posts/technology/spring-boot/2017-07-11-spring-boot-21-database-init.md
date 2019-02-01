@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Spring Boot学习笔记(二一) - 数据库初始化
+title:  Spring Boot(二一) - 数据库初始化
 date:   2017-07-11 11:29:00 +0800
 categories: Spring-Boot
 tag: 教程

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Modbus-学习笔记(十一)-0x0F Write Multiple Coils(写多线圈寄存器)
+title:  Modbus-(十一)-0x0F Write Multiple Coils(写多线圈寄存器)
 date:   2016-06-20 23:45:30 +0800
 category : 技术文档
 tag : Modbus

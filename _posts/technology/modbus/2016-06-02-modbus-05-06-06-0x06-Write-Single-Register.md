@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Modbus-学习笔记(十)-0x06 Write Single Register(写单保持寄存器)
+title:  Modbus-(十)-0x06 Write Single Register(写单保持寄存器)
 date:   2016-06-20 23:44:30 +0800
 category : 技术文档
 tag : Modbus

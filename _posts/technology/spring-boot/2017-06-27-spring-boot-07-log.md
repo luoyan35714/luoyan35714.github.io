@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Spring Boot学习笔记(七) - 日志
+title:  Spring Boot(七) - 日志
 date:   2017-06-27 10:57:00 +0800
 categories: Spring-Boot
 tag: 教程

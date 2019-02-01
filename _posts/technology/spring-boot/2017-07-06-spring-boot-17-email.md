@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Spring Boot学习笔记(十七) - 邮件发送
+title:  Spring Boot(十七) - 邮件发送
 date:   2017-07-06 14:45:00 +0800
 categories: Spring-Boot
 tag: 教程

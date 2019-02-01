@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Spring Boot学习笔记(十六) - 调用REST服务
+title:  Spring Boot(十六) - 调用REST服务
 date:   2017-07-06 14:12:00 +0800
 categories: Spring-Boot
 tag: 教程

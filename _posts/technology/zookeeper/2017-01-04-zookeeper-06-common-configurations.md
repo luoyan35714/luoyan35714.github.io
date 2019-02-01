@@ -1,6 +1,6 @@
 ---
 layout:			post
-title:			Zookeeper学习笔记之(六) - zookeeper常用配置
+title:			Zookeeper之(六) - zookeeper常用配置
 date:			2017-01-09 14:17:00 +0800
 categories:		技术文档
 tag:			zookeeper

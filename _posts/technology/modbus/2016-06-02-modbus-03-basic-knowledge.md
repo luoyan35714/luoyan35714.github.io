@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Modbus-学习笔记(三)-基础知识
+title:  Modbus-(三)-基础知识
 date:   2016-06-02 17:47:01 +0800
 category : 技术文档
 tag : Modbus
