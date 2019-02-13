@@ -29,9 +29,50 @@ Horizontal Pod Autoscaling可以根据CPU使用率或应用自定义metrics自�
 
 ![/images/blog/kubernetes/05-hpa/01-k8s-HPA.png](/images/blog/kubernetes/05-hpa/01-k8s-HPA.png)
 
-+ 支持两种metrics查询方式： Heapster(Deprecated as of Kubernetes 1.11)和自定义的REST API
++ 支持多种metrics查询方式: Resource Metrics API和Custom Metrics API，其中Resource Metrics API包含[Heapster(Deprecated as of Kubernetes 1.11)](https://github.com/kubernetes/heapster)和[Metrics Server](https://github.com/kubernetes-incubator/metrics-server)两种方式， 再Resource Metrics中`autoscaling/v1`只支持CPU，在`autoscaling/v2beta2`支持CPU, Memory和Custom Metrics； Custom Metrics API有一些第三方的组件，比如[Prometheus Adapter](https://github.com/directxman12/k8s-prometheus-adapter), [Microsoft Azure Adapter](https://github.com/Azure/azure-k8s-metrics-adapter), [Datadog Cluster Agent](https://github.com/DataDog/datadog-agent/blob/c4f38af1897bac294d8fed6285098b14aafa6178/docs/cluster-agent/CUSTOM_METRICS_SERVER.md), [Google Stackdriver (coming soon)](https://github.com/GoogleCloudPlatform/k8s-stackdriver)
 
-+ 支持多metrics
++ 支持[Multiple Metrics](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/#autoscaling-on-multiple-metrics-and-custom-metrics)
+
+{% highlight yaml %}
+metrics:
+- type: Resource
+  resource:
+    name: cpu
+    target:
+      kind: AverageUtilization
+      averageUtilization: 50
+- type: Pods
+  pods:
+    metric:
+      name: packets-per-second
+    targetAverageValue: 1k
+- type: Object
+  object:
+    metric:
+      name: requests-per-second
+    describedObject:
+      apiVersion: extensions/v1beta1
+      kind: Ingress
+      name: main-route
+    target:
+      kind: Value
+      value: 10k
+{% endhighlight %}
+
++ 支持[External Metrics](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/#autoscaling-on-metrics-not-related-to-kubernetes-objects)
+
+{% highlight yaml %}
+- type: External
+  external:
+    metric:
+      name: queue_messages_ready
+      selector: "queue=worker_tasks"
+    target:
+      type: AverageValue
+      averageValue: 30
+{% endhighlight %}
+
+> 需要注意的是再v1.12和之前的版本中，配置方式略有不同，所以再选择集群的时候需要注意。
 
 
 自动伸缩算法
@@ -44,16 +85,6 @@ Horizontal Pod Autoscaling可以根据CPU使用率或应用自定义metrics自�
 + 控制管理器每隔30s（可以通过`--horizontal-pod-autoscaler-sync-period`修改）查询metrics的资源使用情况
 
 + 在每一次作出决策后的一段时间内，将不再进行扩缩容。对于扩容而言，这个时间为3分钟(可以通过`--horizontal-pod-autoscaler-upscale-delay`修改)，但是在v1.12之后这个功能被移除了。缩容为5分钟(可以通过`--horizontal-pod-autoscaler-downscale-delay`进行调整)。
-
-
-metrics APIs
-==============
-
-+ resource metrics: `autoscaling/v1`只支持CPU，在`autoscaling/v2beta2`支持CPU, Memory和Custom Metrics
-
-+ custom metrics: 
-
-+ external metrics: 
 
 
 针对CPU的扩缩容实践
@@ -497,3 +528,5 @@ kubeadm-workshop: [https://github.com/luxas/kubeadm-workshop](https://github.com
 [kubernetes系列]HPA模块深度讲解: [https://juejin.im/post/5b9dfc3df265da0ad947be85](https://juejin.im/post/5b9dfc3df265da0ad947be85)
 
 Kubernetes自动缩扩容HPA算法小结: [https://www.jianshu.com/p/504f49710f84](https://www.jianshu.com/p/504f49710f84)
+
+Metrics Implementations : [https://github.com/kubernetes/metrics/blob/master/IMPLEMENTATIONS.md](https://github.com/kubernetes/metrics/blob/master/IMPLEMENTATIONS.md)
