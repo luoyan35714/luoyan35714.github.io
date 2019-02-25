@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Kubernetes (03) Horizontal Pod Autoscaler
+title:  Kubernetes (04) Horizontal Pod Autoscaler
 date:   2019-01-23 16:24:00 +0800
 categories: 技术文档
 tag: Kubernetes
