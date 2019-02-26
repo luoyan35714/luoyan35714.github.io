@@ -10,7 +10,7 @@ tag: devops
 {:toc}
 
 
-什么是Devlops凤凰沙盘
+什么是Devops凤凰沙盘
 ==================
 
 DevOps《凤凰项目沙盘》是由欧洲著名沙盘研发机构Gaming Works的创始人Jan Schilt先生联手《凤凰项目》一书的作者Gene Kim 先生联手开发的同名沙盘演练课程。
