@@ -2,8 +2,8 @@
 layout: post
 title:  Spring Boot(九) - 构建web服务 - JSON REST
 date:   2017-06-27 17:30:00 +0800
-categories: Spring-Boot
-tag: 教程
+categories: 技术文档
+tag: Spring-Boot
 ---
 
 * content

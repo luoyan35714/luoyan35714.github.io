@@ -2,8 +2,8 @@
 layout: post
 title:  Spring Boot(十二) - 构建web服务 - Web网页服务
 date:   2017-06-28 15:40:00 +0800
-categories: Spring-Boot
-tag: 教程
+categories: 技术文档
+tag: Spring-Boot
 ---
 
 * content

@@ -2,8 +2,8 @@
 layout: post
 title:  Spring Boot(二三) - 使用JTA处理分布式事务
 date:   2017-07-12 09:08:00 +0800
-categories: Spring-Boot
-tag: 教程
+categories: 技术文档
+tag: Spring-Boot
 ---
 
 * content

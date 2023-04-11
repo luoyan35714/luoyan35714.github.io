@@ -2,8 +2,8 @@
 layout: post
 title:  Spring Boot(十七) - 邮件发送
 date:   2017-07-06 14:45:00 +0800
-categories: Spring-Boot
-tag: 教程
+categories: 技术文档
+tag: Spring-Boot
 ---
 
 * content

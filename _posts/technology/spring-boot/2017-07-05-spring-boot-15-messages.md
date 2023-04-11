@@ -2,8 +2,8 @@
 layout: post
 title:  Spring Boot(十五) - 消息
 date:   2017-07-05 14:10:00 +0800
-categories: Spring-Boot
-tag: 教程
+categories: 技术文档
+tag: Spring-Boot
 ---
 
 * content
