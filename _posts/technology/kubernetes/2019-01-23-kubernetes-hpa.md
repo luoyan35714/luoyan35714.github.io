@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Kubernetes (03) Horizontal Pod Autoscaler
+title:  Kubernetes Horizontal Pod Autoscaler
 date:   2019-01-23 16:24:00 +0800
 categories: 技术文档
 tag: Kubernetes
@@ -27,7 +27,7 @@ Horizontal Pod Autoscaler
 
 Horizontal Pod Autoscaling可以根据CPU使用率或应用自定义metrics自动扩展Pod数量（支持replication controller、deployment和replica set）。但是需要注意的是HPA不能作用在不能扩展的对象上，比如DaemonSets。
 
-![/images/blog/kubernetes/05-hpa/01-k8s-HPA.png](/images/blog/kubernetes/05-hpa/01-k8s-HPA.png)
+![/images/blog/kubernetes/00-hpa/01-k8s-HPA.png](/images/blog/kubernetes/00-hpa/01-k8s-HPA.png)
 
 + 支持多种metrics查询方式: Resource Metrics API和Custom Metrics API，其中Resource Metrics API包含[Heapster(Deprecated as of Kubernetes 1.11)](https://github.com/kubernetes/heapster)和[Metrics Server](https://github.com/kubernetes-incubator/metrics-server)两种方式， 再Resource Metrics中`autoscaling/v1`只支持CPU，在`autoscaling/v2beta2`支持CPU, Memory和Custom Metrics； Custom Metrics API有一些第三方的组件，比如[Prometheus Adapter](https://github.com/directxman12/k8s-prometheus-adapter), [Microsoft Azure Adapter](https://github.com/Azure/azure-k8s-metrics-adapter), [Datadog Cluster Agent](https://github.com/DataDog/datadog-agent/blob/c4f38af1897bac294d8fed6285098b14aafa6178/docs/cluster-agent/CUSTOM_METRICS_SERVER.md), [Google Stackdriver (coming soon)](https://github.com/GoogleCloudPlatform/k8s-stackdriver)
 
@@ -188,7 +188,7 @@ php-apache   Deployment/php-apache   0% / 50%               1         10        
 
 整体架构设计图如下：
 
-![/images/blog/kubernetes/05-hpa/02-k8s-HPA-custom-metrics-prometheus.png](/images/blog/kubernetes/05-hpa/02-k8s-HPA-custom-metrics-prometheus.png)
+![/images/blog/kubernetes/00-hpa/02-k8s-HPA-custom-metrics-prometheus.png](/images/blog/kubernetes/00-hpa/02-k8s-HPA-custom-metrics-prometheus.png)
 
 安装Prometheus Operator
 --------------
