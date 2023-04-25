@@ -461,6 +461,7 @@ $ ctr i ls -q
 #### 9.2 安装
 
 ```bash
+# https://docs.projectcalico.org/archive/v3.20/manifests/calico.yaml
 $ curl -s -L https://docs.projectcalico.org/manifests/calico.yaml > calico.yaml
 # 修改calico.yaml中的文件，其中value为kubeadm.yaml中的networking.podSubnet
 # - name: CALICO_IPV4POOL_CIDR

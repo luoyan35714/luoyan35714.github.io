@@ -114,6 +114,7 @@ $ ntpdate time.windows.com
 # 更新系统
 $ yum update -y --exclude=kernel*
 # 网速太慢可以从百度网盘下载
+# 备用地址 https://mirror.rcg.sfu.ca/mirror/ELRepo/kernel/el7/x86_64/RPMS/
 $ wget https://elrepo.org/linux/kernel/el7/x86_64/RPMS/kernel-lt-5.4.203-1.el7.elrepo.x86_64.rpm
 $ wget https://elrepo.org/linux/kernel/el7/x86_64/RPMS/kernel-lt-devel-5.4.203-1.el7.elrepo.x86_64.rpm
 # 安装系统内容
