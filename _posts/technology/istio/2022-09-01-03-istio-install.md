@@ -11,12 +11,14 @@ tag: Kubernetes
 
 
 ## 安装Istioctl
-+ 1. 下载安装包
++ 1) 下载安装包
+
 ```bash
 $ curl -L https://istio.io/downloadIstio | sh -
 ```
 
-+ 2. 设置路径
++ 2) 设置路径
+
 ```bash
 $ cd istio-1.7.1
 $ export PATH=$PWD/bin:$PATH
@@ -24,7 +26,8 @@ $ export PATH=$PWD/bin:$PATH
 
 ## 在Kubernetes中安装Istio并尝试部署Demo Project
 
-+ 1. Install Istio
++ 1) Install Istio
+
 ```bash
 $ istioctl install --set profile=demo
 ✔ Istio core installed                                                                                                                                             
@@ -34,15 +37,17 @@ $ istioctl install --set profile=demo
 ✔ Installation complete  
 ```
 
-+ 2. 设置默认添加Envoy的sidecar
++ 2) 设置默认添加Envoy的sidecar
+
 ```bash
 $ kubectl create ns istio-demo
 $ kubectl label namespace istio-demo istio-injection=enabled
 namespace/istio-demo labeled
 ```
 
-+ 3. 修改`samples/bookinfo/platform/kube/bookinfo.yaml`路径下的每个组件添加namespace `istio-demo`
-+ 4. 部署bookinfo
++ 3) 修改`samples/bookinfo/platform/kube/bookinfo.yaml`路径下的每个组件添加namespace `istio-demo`
++ 4) 部署bookinfo
+
 ```bash
 ➜  istio-1.7.1 kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
 service/details created
@@ -61,7 +66,8 @@ serviceaccount/bookinfo-productpage created
 deployment.apps/productpage-v1 created
 ```
 
-+ 5. 验证部署内容
++ 5) 验证部署内容
+
 ```bash
 $ kubectl get services -n istio-demo
 NAME          TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
@@ -85,13 +91,15 @@ reviews-v2-7d79d5bd5d-llvph       2/2     Running   0          10m
 reviews-v3-7dbcdcbc56-wgd69       2/2     Running   0          10m
 ```
 
-+ 6. 验证是否成功 
++ 6) 验证是否成功 
+
 ```bash
 $ kubectl exec "$(kubectl get pod -l app=ratings -o jsonpath='{.items[0].metadata.name}' -n istio-demo)"  -n istio-demo -c ratings -- curl -s productpage:9080/productpage| grep -o "<title>.*</title>"
 <title>Simple Bookstore App</title>
 ```
 
-+ 7. 对集群操作
++ 7) 对集群操作
+
 ```bash
 $ kubectl get svc -n istio-system
 NAME                   TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)                                                                      AGE
@@ -105,7 +113,8 @@ wse-test-10d7d95763d0f236970efbfbd8681327-0001.eu-de.containers.appdomain.cloud 
 wse-test.eu-de.containers.appdomain.cloud                                         169.50.28.246   None             created           wse-test                                         default   
 ```
 
-+ 8. 对外暴露服务
++ 8) 对外暴露服务
+
 ```bash
 # 修改gateway和virtualservice中的域名为如上wse-test-10d7d95763d0f236970efbfbd8681327-0001.eu-de.containers.appdomain.cloud
 # 自定义二级域名istio.wse-test-10d7d95763d0f236970efbfbd8681327-0001.eu-de.containers.appdomain.cloud
@@ -114,5 +123,6 @@ gateway.networking.istio.io/bookinfo-gateway created
 virtualservice.networking.istio.io/bookinfo created
 ```
 
-+ 9. 从集群外访问
++ 9) 从集群外访问
+
 [http://istio.wse-test-10d7d95763d0f236970efbfbd8681327-0001.eu-de.containers.appdomain.cloud/productpage](http://istio.wse-test-10d7d95763d0f236970efbfbd8681327-0001.eu-de.containers.appdomain.cloud/productpage)

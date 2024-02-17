@@ -68,6 +68,7 @@ spec:
 
 ## destination rule
 是对目标服务的一次封装，host的默认扩展后缀是default.svc.cluster.local,即service的名字，通过label的判定，生成对应的subset，以提供给virtualservice使用。
+
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
@@ -87,6 +88,7 @@ spec:
 
 ## service entry
 将网格外的服务加入网络中.流量从Istio出集群的方式有两种，一种是通过Egress Gateway，一种是通过ServiceEntry
+
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
 kind: ServiceEntry

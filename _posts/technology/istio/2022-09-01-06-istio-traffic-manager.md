@@ -25,6 +25,7 @@ destinationrule.networking.istio.io/details created
 
 
 ## 1. 流量转发
+
 ```bash
 # 部署所有的virtual service
 $ kubectl apply -f samples/bookinfo/networking/virtual-service-all-v1.yaml -n istio-demo
@@ -192,6 +193,7 @@ metadata:
 ```
 
 + 基于用户的流量转发
+
 ```bash
 $ kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-test-v2.yaml -n istio-demo
 virtualservice.networking.istio.io/reviews configured
@@ -263,6 +265,7 @@ spec:
 ![/images/blog/istio/06-istio-traffic-manager/01-error.png](/images/blog/istio/06-istio-traffic-manager/01-error.png)
 
 + 还可以直接配置http abort错误
+
 ```bash
 $ kubectl apply -f samples/bookinfo/networking/virtual-service-ratings-test-abort.yaml -n istio-demo
 $ cat samples/bookinfo/networking/virtual-service-ratings-test-abort.yaml
@@ -299,6 +302,7 @@ spec:
 
 ## 3. 熔断
 + 配置httpbin服务
+
 ```bash
 # 如果配置了sidecar自动注入功能的话
 $ kubectl apply -f samples/httpbin/httpbin.yaml -n istio-demo
@@ -307,6 +311,7 @@ $ kubectl apply -f <(istioctl kube-inject -f samples/httpbin/httpbin.yaml)  -n i
 ```
 
 + 创建一个destinationrule
+
 ```bash
 $ kubectl apply -f - <<EOF
 apiVersion: networking.istio.io/v1alpha3
@@ -334,6 +339,7 @@ $ kubectl get destinationrule httpbin -o yaml -n istio-demo
 ```
 
 + 添加客户端
+
 ```bash
 # 当开启了sidecar自动注入功能之后
 $ kubectl apply -f samples/httpbin/sample-client/fortio-deploy.yaml -n istio-demo
@@ -342,6 +348,7 @@ $ kubectl apply -f <(istioctl kube-inject -f samples/httpbin/sample-client/forti
 ```
 
 + 集群内执行如下测试httpbin是否部署成功
+
 ```bash
 $ export FORTIO_POD=$(kubectl get pods -lapp=fortio -o 'jsonpath={.items[0].metadata.name}' -n istio-demo)
 $ echo $FORTIO_POD
@@ -375,6 +382,7 @@ x-envoy-upstream-service-time: 24
 ```
 
 + 测试熔断
+
 ```bash
 # 设置2个并发(-c 2)，并发送20个request(-n 20)
 $ kubectl exec "$FORTIO_POD" -n istio-demo -c fortio -- /usr/bin/fortio load -c 2 -qps 0 -n 20 -loglevel Warning http://httpbin:8000/get
@@ -456,6 +464,7 @@ All done 30 calls (plus 0 warmup) 3.100 ms avg, 659.7 qps
 	+ Code 200 : 20 (66.7 %)
 	+ Code 503 : 10 (33.3 %)
 + 查看istio-proxy可以得到相关的失败数，其中upstram_rq_pending_overflow:96 表示被标记为熔断
+
 ```bash
 $ kubectl exec "$FORTIO_POD" -n istio-demo -c istio-proxy -- pilot-agent request GET stats | grep httpbin | grep pending
 cluster.outbound|8000||httpbin.istio-demo.svc.cluster.local.circuit_breakers.default.rq_pending_open: 0
@@ -477,6 +486,7 @@ virtualservice.networking.istio.io/details unchanged
 ```
 
 + 配置review的请求进入v2
+
 ```bash
 $ kubectl apply -n istio-demo -f - <<EOF
 apiVersion: networking.istio.io/v1alpha3
@@ -495,6 +505,7 @@ EOF
 ```
 
 + 给ratings服务添加2秒的错误注入延迟
+
 ```bash
 $ kubectl apply -n istio-demo -f - <<EOF
 apiVersion: networking.istio.io/v1alpha3
@@ -515,10 +526,12 @@ spec:
         subset: v1
 EOF
 ```
+
 + 打开[http://istio.wse-test-10d7d95763d0f236970efbfbd8681327-0001.eu-de.containers.appdomain.cloud/productpage](http://istio.wse-test-10d7d95763d0f236970efbfbd8681327-0001.eu-de.containers.appdomain.cloud/productpage)
 + 两秒之后服务正常显示
 
 + 然后给reviews服务添加一个0.5秒的timeout
+
 ```bash
 $ kubectl apply -n istio-demo -f - <<EOF
 apiVersion: networking.istio.io/v1alpha3
@@ -541,6 +554,7 @@ EOF
 
 ## 5. 流量转换
 + 执行如下命令确保所有的流量都打在v1上
+
 ```bash
 $ kubectl apply -f samples/bookinfo/networking/virtual-service-all-v1.yaml -n istio-demo
 virtualservice.networking.istio.io/productpage unchanged
@@ -552,11 +566,13 @@ virtualservice.networking.istio.io/details unchanged
 + 打开http://istio.wse-test-10d7d95763d0f236970efbfbd8681327-0001.eu-de.containers.appdomain.cloud/productpage
 + 发现服务正常访问
 + 从reviews:v1迁移50%的流量到v3
+
 ```bash
 $ kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-50-v3.yaml -n istio-demo
 ```
 
 + 稍等一会然后查看规则是否配置成功
+
 ```bash
 $ kubectl get virtualservice reviews -o yaml -n istio-demo
 apiVersion: networking.istio.io/v1beta1
@@ -581,6 +597,7 @@ spec:
 + 然后不停刷新页面，会发现页面时而显示star功能，时而没有
 
 + 当v3稳定的时候迁移所有的流量到v3
+
 ```bash
 $ kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-v3.yaml -n istio-demo
 virtualservice.networking.istio.io/reviews configured
@@ -591,6 +608,7 @@ virtualservice.networking.istio.io/reviews configured
 ## 6. 流量镜像
 
 + 分别部署httpbin-v1和httpbin-v2
+
 ```bash
 # httpbin-v1
 $ cat <<EOF | kubectl create -n istio-demo -f -
@@ -669,6 +687,7 @@ EOF
 ```
 
 + 部署后台服务确保之后可以通过curl进行测试
+
 ```bash
 $ cat <<EOF | kubectl create -n istio-demo -f -
 apiVersion: apps/v1
@@ -695,6 +714,7 @@ deployment.apps/sleep created
 ```
 
 + 创建一个默认的路由规则，将所有的流量发送到v1
+
 ```bash
 $ kubectl apply -n istio-demo -f - <<EOF
 apiVersion: networking.istio.io/v1alpha3
@@ -731,6 +751,7 @@ destinationrule.networking.istio.io/httpbin configured
 ```
 
 + 访问一下这个service
+
 ```bash
 $ export SLEEP_POD=$(kubectl get pod -n istio-demo -l app=sleep -o jsonpath={.items..metadata.name})
 $ echo $SLEEP_POD
@@ -752,6 +773,7 @@ $ kubectl exec "${SLEEP_POD}" -n istio-demo  -c sleep -- curl -s http://httpbin:
 ```
 
 + 分别查看httpbin v1和v2的日志
+
 ```bash
 $ export V1_POD=$(kubectl get pod -n istio-demo -l app=httpbin,version=v1 -o jsonpath={.items..metadata.name})
 $ echo $V1_POD
@@ -772,6 +794,7 @@ $ kubectl logs "$V2_POD" -n istio-demo -c httpbin
 ```
 
 + 镜像流量到V2
+
 ```bash
 $ kubectl apply -n istio-demo -f - <<EOF
 apiVersion: networking.istio.io/v1alpha3
@@ -795,6 +818,7 @@ EOF
 ```
 
 + 发送测试流量
+
 ```bash
 $ kubectl exec "${SLEEP_POD}" -n istio-demo -c sleep -- curl -s http://httpbin:8000/headers
 {
@@ -814,6 +838,7 @@ $ kubectl exec "${SLEEP_POD}" -n istio-demo -c sleep -- curl -s http://httpbin:8
 ```
 
 + 分别查看v1和v2的日志
+
 ```bash
 $ kubectl logs "$V1_POD" -n istio-demo -c httpbin
 127.0.0.1 - - [18/Jan/2021:01:37:23 +0000] "GET /headers HTTP/1.1" 200 559 "-" "curl/7.35.0"
@@ -822,10 +847,11 @@ $ kubectl logs "$V2_POD" -n istio-demo -c httpbin
 ```
 
 ## 参考文档
-https://istio.io/latest/docs/tasks/traffic-management
-https://jimmysong.io/istio-handbook/concepts/traffic-management-basic.html
-https://istio.io/latest/zh/docs/concepts/traffic-management/
-https://istio.io/latest/docs/examples/bookinfo/
-https://izsk.me/2020/02/29/Istio-VirtualService-DestinationRule/
-https://github.com/istio/istio/tree/master/samples/bookinfo
+
+[https://istio.io/latest/docs/tasks/traffic-management](https://istio.io/latest/docs/tasks/traffic-management)
+[https://jimmysong.io/istio-handbook/concepts/traffic-management-basic.html](https://jimmysong.io/istio-handbook/concepts/traffic-management-basic.html)
+[https://istio.io/latest/zh/docs/concepts/traffic-management/](https://istio.io/latest/zh/docs/concepts/traffic-management/)
+[https://istio.io/latest/docs/examples/bookinfo/](https://istio.io/latest/docs/examples/bookinfo/)
+[https://izsk.me/2020/02/29/Istio-VirtualService-DestinationRule/](https://izsk.me/2020/02/29/Istio-VirtualService-DestinationRule/)
+[https://github.com/istio/istio/tree/master/samples/bookinfo](https://github.com/istio/istio/tree/master/samples/bookinfo)
  
