@@ -77,6 +77,13 @@ $ mysql > flush privileges;
 [root@localhost ~]#vi /etc/my.cnf
 # 在[mysqld]后添加如下行，0代表大小写敏感，1代表不敏感
 lower_case_table_names= 0
+
+/etc/my.cnf.d/
+# mysql 8.0以后
+[root@localhost ~]# cat > /etc/my.cnf.d/my.cnf <<EOF 
+[mysqld]
+lower_case_table_names=2
+EOF
 [root@localhost ~]# service mysqld restart 
 ```
 
