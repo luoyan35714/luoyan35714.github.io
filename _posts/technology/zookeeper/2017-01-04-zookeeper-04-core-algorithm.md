@@ -1,4 +1,4 @@
----
+<!-- ---
 layout:			post
 title:			Zookeeper之(四) - zookeeper核心算法
 date:			2017-01-07 14:11:00 +0800
@@ -26,3 +26,4 @@ zookeeper
 Zookeeper官网：[http://zookeeper.apache.org/](http://zookeeper.apache.org/)
 
 《从PAXOS到ZOOKEEPER分布式一致性原理与实践》 - 倪超
+ -->
