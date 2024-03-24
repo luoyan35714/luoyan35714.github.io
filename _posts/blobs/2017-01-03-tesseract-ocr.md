@@ -2,8 +2,8 @@
 layout: post
 title:  tesseract-ocr引擎初探
 date:   2017-01-03 14:03:00 +0800
-categories: document
-tag: 光学字符识别
+categories: 技术文档
+tag: OCR
 ---
 
 * content

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  微服务架构下的测试之(一)-解决方案
+title:  微服务架构下的测试
 date:   2018-12-04 20:05:00 +0800
 categories: 技术文档
 tag: 微服务

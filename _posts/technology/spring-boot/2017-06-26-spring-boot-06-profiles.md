@@ -2,8 +2,8 @@
 layout: post
 title:  Spring Boot(六) - Profiles
 date:   2017-06-26 17:00:00 +0800
-categories: Spring-Boot
-tag: 教程
+categories: 技术文档
+tag: Spring-Boot
 ---
 
 * content

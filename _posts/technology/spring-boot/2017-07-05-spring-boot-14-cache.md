@@ -2,8 +2,8 @@
 layout: post
 title:  Spring Boot(十四) - 缓存
 date:   2017-07-05 13:44:00 +0800
-categories: Spring-Boot
-tag: 教程
+categories: 技术文档
+tag: Spring-Boot
 ---
 
 * content

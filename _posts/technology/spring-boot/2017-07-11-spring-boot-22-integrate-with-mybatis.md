@@ -2,8 +2,8 @@
 layout: post
 title:  Spring Boot(二二) - 与Mybatis集成
 date:   2017-07-11 16:10:00 +0800
-categories: Spring-Boot
-tag: 教程
+categories: 技术文档
+tag: Spring-Boot
 ---
 
 * content

@@ -1,9 +1,11 @@
 
 <div class="banner">
   <div class="container">
+    <a href="{{ '/' | prepend: site.baseurl }}">Home</a>  /
   	{% if page.categories != null %}
     	<a href="{{ '/categories/' | prepend: site.baseurl }}#{{page.categories}}-ref">{{page.categories}}</a>	/
-    	<a href="{{ '/tag/' | prepend: site.baseurl }}#{{page.tag}}-ref">{{page.tag}}</a>
+    	<a href="{{ '/tag/' | prepend: site.baseurl }}#{{page.tag}}-ref">{{page.tag}}</a>  /
+      {{ page.title }}
     {% else %}
     	{{ site.banner }}
     {% endif %}

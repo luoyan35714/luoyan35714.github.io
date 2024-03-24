@@ -2,7 +2,7 @@
 layout: post
 title:  常用RAID(Redundant Array of Independent Disks)技术总结
 date:   2016-10-21 11:19:00 +0800
-categories: document
+categories: 技术文档
 tag: 硬盘
 ---
 

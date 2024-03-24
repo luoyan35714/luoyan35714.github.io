@@ -2,8 +2,8 @@
 layout: post
 title:  Spring Boot(二) - 第一个Spring Boot程序
 date:   2017-06-20 18:14:00 +0800
-categories: Spring-Boot
-tag: 教程
+categories: 技术文档
+tag: Spring-Boot
 ---
 
 * content

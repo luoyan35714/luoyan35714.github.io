@@ -5413,7 +5413,7 @@ button.close {
 body {
   position: relative;
   /* For scrollyspy */
-  padding-top: 50px;
+  padding-top: 0px;
   /* Account for fixed navbar */
 }
 /* Keep code small in tables on account of limited space */

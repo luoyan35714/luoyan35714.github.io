@@ -3,7 +3,6 @@ name: Freud's Blog
 email: luoyan35714@126.com
 author: Freud Kang
 url: http://www.hifreud.com
-resume_site: http://www.hifreud.com/Resume.io/
 github: https://github.com/luoyan35714/
 baseurl: ""
 description: Stay hungry, stay foolish. 少年辛苦终身事，莫向光阴惰寸功。
@@ -22,4 +21,4 @@ github_username: luoyan35714
 # Build settings
 markdown: kramdown
 
-baidu_analysis: 94be4b0f9fc5d94cc0d0415ea6761ae9
+baidu_analysis: b643b4745911e42e573126a4e4fe713f
