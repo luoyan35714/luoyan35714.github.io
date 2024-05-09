@@ -3,7 +3,7 @@ layout:       post
 title:        Git的三种workflow和最佳实践
 date:         2019-02-25 22:39:00 +0800
 categories:   杂乱
-tag:          VMWare
+tag:          git
 ---
 
 * content
