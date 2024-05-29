@@ -12,15 +12,15 @@ tag:          权限管理
 
 ## 权限校验流程
 
-[01-authentication-in-microservice.png](images/blog/architecture/authentication-in-microservice/01-authentication-in-microservice.png)
+![01-authentication-in-microservice.png](images/blog/architecture/authentication-in-microservice/01-authentication-in-microservice.png)
 
 
 ## 登录 - 流程图
 
-[02-login.png](images/blog/architecture/authentication-in-microservice/02-login.png)
+![02-login.png](images/blog/architecture/authentication-in-microservice/02-login.png)
 
 
 ## Refresh Token - 流程图
 
-[03-refresh-token.png](images/blog/architecture/authentication-in-microservice/03-refresh-token.png)
+![03-refresh-token.png](images/blog/architecture/authentication-in-microservice/03-refresh-token.png)
 
