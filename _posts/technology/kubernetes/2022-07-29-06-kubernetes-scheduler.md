@@ -389,6 +389,7 @@ spec:
 | memory | 与 requests.memory 相同。 |
 
 #### 2.6.3 存储资源配额
+
 | 资源名称 | 描述 |
 | -------- | ---- |
 | requests.storage | 所有 PVC，存储资源的需求总量不能超过该值。 |
