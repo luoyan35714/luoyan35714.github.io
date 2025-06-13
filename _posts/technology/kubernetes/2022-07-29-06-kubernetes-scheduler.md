@@ -406,8 +406,8 @@ spec:
 
 | 配额声明 | 描述 |
 | -------- | ---- |
-| count/<resource>.<group> | 用于非核心（core）组的资源 |
-| count/<resource> | 用于核心组的资源 |
+| count/`<resource>`.`<group>` | 用于非核心（core）组的资源 |
+| count/`<resource>` | 用于核心组的资源 |
 
 常用的对象数量配额
 
